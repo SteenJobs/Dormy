@@ -112,7 +112,6 @@ class WelcomePageViewController: UIPageViewController, UIPageViewControllerDataS
         pageContentViewController.currentImage = self.imageArray[index]
         pageContentViewController.currentBackgroundColor = self.backgroundColors[index]
         pageContentViewController.currentTextColor = self.textColors[index]
-        
         return pageContentViewController
     }
     

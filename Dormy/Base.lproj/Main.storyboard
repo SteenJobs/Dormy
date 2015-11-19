@@ -9,6 +9,10 @@
         <mutableArray key="LucidaGrande.ttc">
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
+            <string>LucidaGrande</string>
+            <string>LucidaGrande</string>
+            <string>LucidaGrande</string>
+            <string>LucidaGrande</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -42,6 +46,10 @@
                                                 <exclude reference="hcb-is-BHP"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="signupButton:" destination="2bd-w2-d10" eventType="touchUpInside" id="862-De-ZqW"/>
+                                            <segue destination="ThF-eT-tT5" kind="presentation" id="BPi-wZ-QPh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJm-iV-zPK">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="88"/>
@@ -58,6 +66,9 @@
                                                 <exclude reference="8d8-S6-Cdo"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="loginButton:" destination="2bd-w2-d10" eventType="touchUpInside" id="BBR-T5-fLp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -100,6 +111,23 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="376"/>
         </scene>
+        <!--Sign Up Nav Controller-->
+        <scene sceneID="PkS-bn-ORn">
+            <objects>
+                <navigationController storyboardIdentifier="SignUpNavController" id="ThF-eT-tT5" customClass="SignUpNavController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s4y-3K-KO1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Pcl-OD-f8E" kind="relationship" relationship="rootViewController" id="X9d-SX-f0R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cwa-ve-uuy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="1770"/>
+        </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="Dg7-rj-05w">
             <objects>
@@ -107,6 +135,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yi-cb-B9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="669" y="375"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="xN6-kW-Ryc">
+            <objects>
+                <viewController storyboardIdentifier="SignUpViewController" id="Pcl-OD-f8E" customClass="SignUpViewController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jef-Yq-sFY"/>
+                        <viewControllerLayoutGuide type="bottom" id="4PM-hd-1a6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh7-OT-msb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xEH-dL-3fv">
+                                <rect key="frame" x="6" y="85" width="588" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xrq-pW-Vim"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Your College" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EdU-Kg-J9q">
+                                <rect key="frame" x="6" y="123" width="588" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dorm Building" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Apc-Kb-FKo">
+                                <rect key="frame" x="6" y="161" width="588" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FxQ-HL-Irj">
+                                <rect key="frame" x="6" y="199" width="588" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Alc-Ju-wXn">
+                                <rect key="frame" x="0.0" y="254" width="600" height="111.5"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Alc-Ju-wXn" secondAttribute="height" multiplier="188:35" constant="1.085714285714289" id="1uh-7s-or9"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="completeButtonTapped:" destination="Pcl-OD-f8E" eventType="touchUpInside" id="xSG-wr-zKo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="EdU-Kg-J9q" firstAttribute="width" secondItem="xEH-dL-3fv" secondAttribute="width" id="47c-It-4Df"/>
+                            <constraint firstItem="xEH-dL-3fv" firstAttribute="leading" secondItem="kh7-OT-msb" secondAttribute="leading" constant="6" id="8fB-9c-eph"/>
+                            <constraint firstItem="FxQ-HL-Irj" firstAttribute="width" secondItem="xEH-dL-3fv" secondAttribute="width" id="A4j-WS-ael"/>
+                            <constraint firstItem="Alc-Ju-wXn" firstAttribute="leading" secondItem="kh7-OT-msb" secondAttribute="leading" id="BTH-TF-Jra"/>
+                            <constraint firstItem="Apc-Kb-FKo" firstAttribute="height" secondItem="xEH-dL-3fv" secondAttribute="height" id="E6U-Bq-caK"/>
+                            <constraint firstItem="Apc-Kb-FKo" firstAttribute="width" secondItem="xEH-dL-3fv" secondAttribute="width" id="Igy-mh-MfT"/>
+                            <constraint firstItem="FxQ-HL-Irj" firstAttribute="height" secondItem="xEH-dL-3fv" secondAttribute="height" id="J6b-5h-vcv"/>
+                            <constraint firstItem="Alc-Ju-wXn" firstAttribute="top" secondItem="FxQ-HL-Irj" secondAttribute="bottom" constant="25" id="MKL-CS-4fj"/>
+                            <constraint firstItem="EdU-Kg-J9q" firstAttribute="height" secondItem="xEH-dL-3fv" secondAttribute="height" id="PtB-7m-FZo"/>
+                            <constraint firstItem="FxQ-HL-Irj" firstAttribute="centerX" secondItem="kh7-OT-msb" secondAttribute="centerX" id="SeC-lE-5Sf"/>
+                            <constraint firstItem="EdU-Kg-J9q" firstAttribute="top" secondItem="xEH-dL-3fv" secondAttribute="bottom" constant="8" id="WBm-e9-fdh"/>
+                            <constraint firstAttribute="trailing" secondItem="FxQ-HL-Irj" secondAttribute="trailing" constant="6" id="WRm-dR-pJo"/>
+                            <constraint firstItem="FxQ-HL-Irj" firstAttribute="leading" secondItem="kh7-OT-msb" secondAttribute="leading" constant="6" id="Y4H-fR-Gie"/>
+                            <constraint firstItem="FxQ-HL-Irj" firstAttribute="top" secondItem="Apc-Kb-FKo" secondAttribute="bottom" constant="8" id="YrP-gr-snO"/>
+                            <constraint firstAttribute="trailing" secondItem="EdU-Kg-J9q" secondAttribute="trailing" constant="6" id="Zrz-Vv-AkH"/>
+                            <constraint firstAttribute="trailing" secondItem="xEH-dL-3fv" secondAttribute="trailing" constant="6" id="eBB-L4-Idm"/>
+                            <constraint firstItem="EdU-Kg-J9q" firstAttribute="leading" secondItem="kh7-OT-msb" secondAttribute="leading" constant="6" id="eLs-oP-cpY"/>
+                            <constraint firstAttribute="trailing" secondItem="Alc-Ju-wXn" secondAttribute="trailing" id="ewo-Yh-2nz"/>
+                            <constraint firstItem="Apc-Kb-FKo" firstAttribute="leading" secondItem="kh7-OT-msb" secondAttribute="leading" constant="6" id="gSc-lo-rLg"/>
+                            <constraint firstItem="xEH-dL-3fv" firstAttribute="top" secondItem="jef-Yq-sFY" secondAttribute="bottom" constant="21" id="iaO-t6-CNT"/>
+                            <constraint firstItem="xEH-dL-3fv" firstAttribute="centerX" secondItem="kh7-OT-msb" secondAttribute="centerX" id="nCN-Qt-Zrj"/>
+                            <constraint firstAttribute="trailing" secondItem="Apc-Kb-FKo" secondAttribute="trailing" constant="6" id="u8e-M8-Odp"/>
+                            <constraint firstItem="EdU-Kg-J9q" firstAttribute="centerX" secondItem="kh7-OT-msb" secondAttribute="centerX" id="uvv-iA-ja0"/>
+                            <constraint firstItem="Apc-Kb-FKo" firstAttribute="top" secondItem="EdU-Kg-J9q" secondAttribute="bottom" constant="8" id="y3j-2S-HJe"/>
+                            <constraint firstItem="Apc-Kb-FKo" firstAttribute="centerX" secondItem="kh7-OT-msb" secondAttribute="centerX" id="ytI-K2-1iF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9Vh-1i-1HW"/>
+                    <connections>
+                        <outlet property="TFHeight" destination="Xrq-pW-Vim" id="N2s-y9-jkO"/>
+                        <outlet property="completeButton" destination="Alc-Ju-wXn" id="Zhk-X4-0YG"/>
+                        <outlet property="textField1" destination="xEH-dL-3fv" id="tpi-Ao-zMs"/>
+                        <outlet property="textField2" destination="EdU-Kg-J9q" id="BuN-pC-RhG"/>
+                        <outlet property="textField3" destination="Apc-Kb-FKo" id="QWb-no-D80"/>
+                        <outlet property="textField4" destination="FxQ-HL-Irj" id="hQa-94-Da8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfW-Ek-LIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="1770"/>
         </scene>
         <!--Welcome Content View Controller-->
         <scene sceneID="fuA-ht-1Ng">
