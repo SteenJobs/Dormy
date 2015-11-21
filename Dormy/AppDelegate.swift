@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Parse
 import Bolts
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        // Initialize Stripe CC payments
+        Stripe.setDefaultPublishableKey("pk_test_gUqDwP7kxpk4ygGsLmkPaau2")
         
         return true
     }
