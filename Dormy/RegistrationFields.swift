@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 class RegistrationFields: UITextField {
     
@@ -32,6 +33,15 @@ class RegistrationFields: UITextField {
             }
         } else {
             return true
+        }
+    }
+    
+    func markCardField(validated: Bool) {
+        self.layer.borderWidth = 2.0
+        if !validated {
+            self.layer.borderColor = UIColor.redColor().CGColor
+        } else {
+            self.layer.borderColor = UIColor.greenColor().CGColor
         }
     }
     

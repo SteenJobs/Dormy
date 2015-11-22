@@ -8,13 +8,15 @@
 
 import UIKit
 import Parse
+import Stripe
 
-class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, STPPaymentCardTextFieldDelegate {
 
     @IBOutlet var textField1: RegistrationFields!
     @IBOutlet var textField2: RegistrationFields!
     @IBOutlet var textField3: RegistrationFields!
     @IBOutlet var textField4: RegistrationFields!
+    var stripeField: STPPaymentCardTextField?
     @IBOutlet var completeButton: UIButton!
     @IBOutlet var TFHeight: NSLayoutConstraint!
     
@@ -23,7 +25,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var numberOfTextFields: Int?
     var textFields: [RegistrationFields]?
     // Change placeholders to type attribute so still works even if remove placeholders
-    var placeHolderDict = [["E-mail Address", "Phone Number", "Password", "Confirm Password"], ["Full Name", "Choose Your College", "Dorm Building", "Room Number"], ["Card Number", "CCV", "Zip Code"]]
+    var placeHolderDict = [["E-mail Address", "Phone Number", "Password", "Confirm Password"], ["Full Name", "Choose Your College", "Dorm Building", "Room Number"], ["Card Number", "Expiration Date", "CCV", "Zip Code"]]
     var navBarTitle = ["SIGN UP", "CREATE PROFILE", "CREATE PROFILE"]
     var buttons = ["signup-next", "signup-next", "signup-done"]
     
@@ -46,15 +48,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             RegistrationInfo.sharedInstance.roomNumber = textField4.text
         case 2:
             RegistrationInfo.sharedInstance.cardNumber = textField1.text
-            RegistrationInfo.sharedInstance.CCV = textField2.text
-            RegistrationInfo.sharedInstance.zip = textField3.text
+            RegistrationInfo.sharedInstance.expirationDate = textField2.text
+            RegistrationInfo.sharedInstance.CCV = textField3.text
+            RegistrationInfo.sharedInstance.zip = textField4.text
         default:
             print("index out of range")
         }
         
         if !self.validateSubmission() {
-            self.showAlertView("Error", message: "Please fix any errors before continuing.")
-            return
+            //self.showAlertView("Error", message: "Please fix any errors before continuing.")
+            //return
         }
         
         if self.completeButton.tag == 0 {
@@ -88,6 +91,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         numberOfTextFields = placeHolderDict[index].count
         textFields = [self.textField1, self.textField2, self.textField3, self.textField4]
+        
+        
         let slice = textFields![self.numberOfTextFields!..<textFields!.count]
         for textField in slice {
             textField.hidden = true
@@ -100,6 +105,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             textField.placeholder = placeHolder
             textField.type = placeHolder
             textField.clearButtonMode = UITextFieldViewMode.WhileEditing
+            textField.addTarget(self, action: Selector("checkTextField:"), forControlEvents: UIControlEvents.EditingChanged)
+
             switch placeHolder {
             case "E-mail Address":
                 textField.keyboardType = UIKeyboardType.EmailAddress
@@ -107,6 +114,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 textField.keyboardType = UIKeyboardType.PhonePad
                 //validator.registerField(textField, rules: [RequiredRule(), PhoneNumberRule()])
             case "Card Number":
+                textField.keyboardType = UIKeyboardType.NumberPad
+            case "Expiration Date":
                 textField.keyboardType = UIKeyboardType.NumberPad
             case "CCV":
                 textField.keyboardType = UIKeyboardType.NumberPad
@@ -125,7 +134,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             }
         }
         
-        
+    
         
         let x = NSString(string: "HELLO").sizeWithAttributes([NSFontAttributeName: UIFont(name: "Lucida Grande", size: 30.0)!])
         let adjustedSize = CGSizeMake(ceil(x.width), ceil(x.height))
@@ -135,7 +144,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         // Do any additional setup after loading the view.
     }
     
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -184,11 +192,69 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
+    var cardBrand: STPCardBrand?
+    func checkTextField(sender: UITextField) {
+        let textField = sender
+    
+        if self.index == 2 {
+            switch textField.placeholder! {
+            case "Card Number":
+                let validation = STPCardValidator.validationStateForNumber(textField.text!, validatingCardBrand: true)
+                let isValidated = self.validateCardField(validation, textField: textFields![0])
+                if isValidated {
+                    cardBrand = STPCardValidator.brandForNumber(textField.text!)
+                }
+            case "Expiration Date":
+                let date = Expiration.cardExpiryWithString(textField.text!)
+                let validation = STPCardValidator.validationStateForExpirationYear(date.year!, inMonth: date.month!)
+                self.validateCardField(validation, textField: textFields![1])
+            case "CCV":
+                if let brand = self.cardBrand {
+                    let validation = STPCardValidator.validationStateForCVC(textField.text!, cardBrand: brand)
+                    self.validateCardField(validation, textField: textFields![2])
+                } else {
+                    self.validateCardField(STPCardValidationState.Invalid, textField: textFields![2])
+                }
+            default:
+                print("Not a CC Field")
+            }
+        }
+
+    }
+    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if textField.inputView != nil && textField.inputView!.isMemberOfClass(UIPickerView) {
             return false
-        } else {
+        }
+        if textField.placeholder == "Expiration Date" {
+            let date = Expiration.cardExpiryWithString(textField.text! + string)
+            let year = date.year!
+            if string != "" {
+                if year.characters.count < 3 {
+                    textField.text = date.formattedStringWithTrail()
+                    let validation = STPCardValidator.validationStateForExpirationYear(date.year!, inMonth: date.month!)
+                    self.validateCardField(validation, textField: textFields![1])
+                }
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+
+    func validateCardField(state: STPCardValidationState, textField: RegistrationFields) -> Bool {
+        if textField.text!.isEmpty {
+            textField.layer.borderColor = UIColor.blackColor().CGColor
+            textField.layer.borderWidth = 0.0
+            return false
+        }
+        if state == STPCardValidationState.Valid {
+            textField.markCardField(true)
             return true
+        } else {
+            textField.markCardField(false)
+            return false
         }
     }
     
@@ -241,7 +307,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-
+    
     // User Sign Up
     
     //??? Move to RegistrationInfo Class?

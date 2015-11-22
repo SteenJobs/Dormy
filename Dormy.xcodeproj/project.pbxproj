@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D00299A51C012209001A6D00 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00299A41C012209001A6D00 /* Stripe.framework */; };
+		D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00299A61C014FF9001A6D00 /* Expiration.swift */; };
 		D008339E1BF4095800BB81D9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D008339C1BF4095800BB81D9 /* Bolts.framework */; };
 		D008339F1BF4095800BB81D9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D008339D1BF4095800BB81D9 /* Parse.framework */; };
 		D00833A21BF4099800BB81D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A11BF4099800BB81D9 /* AudioToolbox.framework */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		D00299A41C012209001A6D00 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Dormy/Stripe.framework; sourceTree = "<group>"; };
+		D00299A61C014FF9001A6D00 /* Expiration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expiration.swift; sourceTree = "<group>"; };
 		D008339C1BF4095800BB81D9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Dormy/Bolts.framework; sourceTree = "<group>"; };
 		D008339D1BF4095800BB81D9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Dormy/Parse.framework; sourceTree = "<group>"; };
 		D00833A11BF4099800BB81D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -277,6 +279,7 @@
 			children = (
 				D0D1959C1BFD401700BE804D /* RegistrationInfo.swift */,
 				D0BACD481BFE9332004C792C /* RegistrationFields.swift */,
+				D00299A61C014FF9001A6D00 /* Expiration.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				D095F89B1BF14F0C0068B58C /* RootViewController.swift in Sources */,
 				D0BACD491BFE9332004C792C /* RegistrationFields.swift in Sources */,
 				D0D195991BFD199C00BE804D /* SignUpNavController.swift in Sources */,
+				D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */,
 				D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */,
 				D0BACD741BFEA30F004C792C /* Rule.swift in Sources */,
 				D0BACD6A1BFEA30F004C792C /* ConfirmRule.swift in Sources */,

@@ -20,6 +20,7 @@ class RegistrationInfo {
     var dormBuilding: String?
     var roomNumber: String?
     var cardNumber: String?
+    var expirationDate: String?
     var CCV: String?
     var zip: String?
     
@@ -32,8 +33,18 @@ class RegistrationInfo {
         case 1:
             return [fullName, college, dormBuilding, roomNumber]
         case 2:
+            if let number = self.cardNumber {
+                let length = number.startIndex.distanceTo(number.endIndex)
+                if length >= 4 {
+                    let firstFour = number.substringWithRange(Range<String.Index>(start: number.startIndex, end: number.startIndex.advancedBy(4)))
+                    self.cardNumber = firstFour
+                } else {
+                    self.cardNumber = nil
+                }
+            }
+            self.expirationDate = nil
             self.CCV = nil
-            return [cardNumber, CCV, zip]
+            return [cardNumber, expirationDate, CCV, zip]
         default:
             return []
         }
