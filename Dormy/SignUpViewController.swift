@@ -48,7 +48,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             RegistrationInfo.sharedInstance.roomNumber = textField4.text
         case 2:
             RegistrationInfo.sharedInstance.cardNumber = textField1.text
-            RegistrationInfo.sharedInstance.expirationDate = textField2.text
+            let date = Expiration.cardExpiryWithString(textField2.text!)
+            RegistrationInfo.sharedInstance.expirationDate = date
             RegistrationInfo.sharedInstance.CCV = textField3.text
             RegistrationInfo.sharedInstance.zip = textField4.text
         default:
@@ -359,6 +360,32 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     }
                 }
             }
+        }
+    }
+    
+    func saveCC() {
+        let info = RegistrationInfo.sharedInstance
+        let card = STPCardParams()
+        card.number = info.cardNumber
+        card.expMonth = UInt(info.expirationDate!.month!)!
+        card.expYear = UInt(info.expirationDate!.year!)!
+        card.cvc = info.CCV
+        card.addressZip = info.zip
+        
+        STPAPIClient.sharedClient().createTokenWithCard(card) { token, error in
+            if let error = error {
+                if let errorString = error.userInfo["error"] as? String {
+                    self.showAlertView("Error", message: errorString)
+                }
+            } else {
+                self.createCustomer(token!)
+            }
+        }
+    }
+    
+    func createCustomer(token: STPToken) {
+        PFCloud.callFunctionInBackground("create_customer", withParameters: ["token": token]) {
+            (response: AnyObject?, error: NSError?) -> Void in
         }
     }
 }

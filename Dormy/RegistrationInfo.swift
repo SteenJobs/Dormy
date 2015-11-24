@@ -20,7 +20,7 @@ class RegistrationInfo {
     var dormBuilding: String?
     var roomNumber: String?
     var cardNumber: String?
-    var expirationDate: String?
+    var expirationDate: Expiration?
     var CCV: String?
     var zip: String?
     
@@ -44,7 +44,7 @@ class RegistrationInfo {
             }
             self.expirationDate = nil
             self.CCV = nil
-            return [cardNumber, expirationDate, CCV, zip]
+            return [cardNumber, expirationDate?.formattedString(), CCV, zip]
         default:
             return []
         }

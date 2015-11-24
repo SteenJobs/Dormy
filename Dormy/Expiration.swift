@@ -12,6 +12,7 @@ class Expiration {
     
     var month: String?
     var year: String?
+    var date: String?
     
     init() {
         self.month = ""
