@@ -56,10 +56,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             print("index out of range")
         }
         
+        self.view.endEditing(true)
+        
         if !self.validateSubmission() {
             //self.showAlertView("Error", message: "Please fix any errors before continuing.")
             //return
         }
+        
         
         if self.completeButton.tag == 0 {
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SignUpViewController") as! SignUpViewController
@@ -70,7 +73,35 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             self.navigationController!.pushViewController(nextVC, animated: true)
         } else {
             //TODO: Save user to parse
-            self.signUp()
+            self.signUp() { saved in
+                if saved {
+                    self.saveCC()
+                    
+                    //TODO: Notify user that email verification has been sent
+                    let alert = UIAlertController(title: "Thank you for registering with Dormy!", message: "A verification email will be sent to the address you provided. Once you've verified your account you will be able to start booking jobs.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: { void in
+                        let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RequestsViewController") as! RequestsViewController
+                       
+                        let nav = self.navigationController! as! RootNavController
+                        
+                        let root = nav.parentDelegate as! RootViewController
+                        root.mainVC = requestsVC
+                        root.addChildViewController(requestsVC)
+                        //???
+                        root.view.addSubview(requestsVC.view)
+                        
+                        root.mainVC!.didMoveToParentViewController(root)
+                        nav.dismissViewControllerAnimated(true, completion: nil)
+                        root.pageVC.removeFromParentViewController()
+                        //self.dismissViewControllerAnimated(false, completion: nil)
+                        //self.presentViewController(requestsVC, animated: true, completion: nil)
+                    }))
+                    
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    print("User could not be saved")
+                }
+            }
         }
     }
 
@@ -313,7 +344,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     //??? Move to RegistrationInfo Class?
 
-    func signUp() {
+    func signUp(completionHandler: (saved: Bool) -> ()) {
         var user = PFUser()
         let userInfo = RegistrationInfo.sharedInstance
         user.username = userInfo.email
@@ -327,15 +358,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         user.signUpInBackgroundWithBlock() { (succeeded: Bool, error: NSError?) -> Void in
             if let error = error {
+                completionHandler(saved: false)
                 if let errorString = error.userInfo["error"] as? String {
                     self.showAlertView("Error", message: errorString)
                 }
             } else {
-                //TODO: Notify user that email verification has been sent
-                self.showAlertView("Thank you for registering with Dormy!", message: "A verification email will be sent to the address you provided. Once you've verified your account you will be able to start booking jobs.")
+                
                 //TODO: Present user with login screen
                 // Remove values from RegistrationInfo instance
-                RegistrationInfo.sharedInstance.resetRegistrationInfo()
+                
+                completionHandler(saved: true)
+                
+                
+                //RegistrationInfo.sharedInstance.resetRegistrationInfo()
             }
         }
     }
@@ -384,8 +419,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func createCustomer(token: STPToken) {
-        PFCloud.callFunctionInBackground("create_customer", withParameters: ["token": token]) {
+        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!,"token": token.tokenId]) {
             (response: AnyObject?, error: NSError?) -> Void in
+            
+            print(response)
+            print(error)
         }
     }
 }

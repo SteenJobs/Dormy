@@ -36,6 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize Stripe CC payments
         Stripe.setDefaultPublishableKey("pk_test_gUqDwP7kxpk4ygGsLmkPaau2")
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if PFUser.currentUser() != nil {
+            let mainVC = storyboard.instantiateViewControllerWithIdentifier("RequestsViewController") as! RequestsViewController
+            self.window?.rootViewController = mainVC
+        } else {
+            let mainVC = storyboard.instantiateViewControllerWithIdentifier("RootViewController") as! RootViewController
+            self.window?.rootViewController = mainVC
+        }
+        
         return true
     }
 

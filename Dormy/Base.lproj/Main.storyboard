@@ -48,7 +48,7 @@
                                         </variation>
                                         <connections>
                                             <action selector="signupButton:" destination="2bd-w2-d10" eventType="touchUpInside" id="862-De-ZqW"/>
-                                            <segue destination="ThF-eT-tT5" kind="presentation" id="BPi-wZ-QPh"/>
+                                            <segue destination="ThF-eT-tT5" kind="presentation" identifier="RootNavSegue" id="BPi-wZ-QPh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJm-iV-zPK">
@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="376"/>
         </scene>
-        <!--Sign Up Nav Controller-->
+        <!--Root Nav Controller-->
         <scene sceneID="PkS-bn-ORn">
             <objects>
-                <navigationController storyboardIdentifier="SignUpNavController" id="ThF-eT-tT5" customClass="SignUpNavController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SignUpNavController" id="ThF-eT-tT5" customClass="RootNavController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s4y-3K-KO1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -127,6 +127,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cwa-ve-uuy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="1770"/>
+        </scene>
+        <!--Requests View Controller-->
+        <scene sceneID="deF-8J-Abg">
+            <objects>
+                <viewController storyboardIdentifier="RequestsViewController" id="lk9-x2-5WO" customClass="RequestsViewController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u75-01-XVc"/>
+                        <viewControllerLayoutGuide type="bottom" id="JUD-gP-D6v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="27F-sf-AkT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dormy-main-logo" translatesAutoresizingMaskIntoConstraints="NO" id="5Qf-Ob-pvo">
+                                <rect key="frame" x="20" y="72" width="560" height="205"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5Qf-Ob-pvo" secondAttribute="height" multiplier="172:63" id="XaK-vx-ur3"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="407" id="YIS-7h-71F"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YIS-7h-71F"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bf-63-km4">
+                                <rect key="frame" x="0.0" y="651" width="600" height="149"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Bf-63-km4" secondAttribute="height" multiplier="125:31" id="R8d-vT-AXI"/>
+                                </constraints>
+                                <state key="normal" image="get-clean-button"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="requests-title" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-PH-MPv">
+                                <rect key="frame" x="0.0" y="285" width="600" height="60"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oWi-PH-MPv" secondAttribute="height" multiplier="10:1" id="Zwt-4z-hPf"/>
+                                </constraints>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brh-z2-BnS">
+                                <rect key="frame" x="20" y="353" width="560" height="290"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="ja2-of-SOw" kind="embed" id="v3p-mP-Tj2"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.043137254901960784" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Brh-z2-BnS" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" constant="20" id="0fs-Sl-cVN"/>
+                            <constraint firstAttribute="trailing" secondItem="Brh-z2-BnS" secondAttribute="trailing" constant="20" id="1gz-BX-7PP"/>
+                            <constraint firstItem="5Qf-Ob-pvo" firstAttribute="top" secondItem="u75-01-XVc" secondAttribute="bottom" constant="8" id="1nS-BN-TQI"/>
+                            <constraint firstItem="4Bf-63-km4" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" id="1vy-Y7-K8i"/>
+                            <constraint firstItem="4Bf-63-km4" firstAttribute="top" secondItem="Brh-z2-BnS" secondAttribute="bottom" constant="8" id="3D7-EE-Yjm"/>
+                            <constraint firstItem="5Qf-Ob-pvo" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" constant="20" id="7HD-rs-Y90"/>
+                            <constraint firstItem="Brh-z2-BnS" firstAttribute="top" secondItem="oWi-PH-MPv" secondAttribute="bottom" constant="8" id="IUL-bV-m0U"/>
+                            <constraint firstAttribute="trailing" secondItem="oWi-PH-MPv" secondAttribute="trailing" id="KxS-ps-Uaw"/>
+                            <constraint firstItem="oWi-PH-MPv" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" id="P8b-ia-Noz"/>
+                            <constraint firstAttribute="trailing" secondItem="4Bf-63-km4" secondAttribute="trailing" id="Uhl-39-cEN"/>
+                            <constraint firstItem="oWi-PH-MPv" firstAttribute="top" secondItem="5Qf-Ob-pvo" secondAttribute="bottom" constant="8" id="WAI-Eb-4Cr"/>
+                            <constraint firstItem="5Qf-Ob-pvo" firstAttribute="width" secondItem="5Qf-Ob-pvo" secondAttribute="height" multiplier="172:63" id="WUg-eK-tjJ"/>
+                            <constraint firstAttribute="trailing" secondItem="5Qf-Ob-pvo" secondAttribute="trailing" constant="20" id="pjR-Hj-sQp"/>
+                            <constraint firstItem="5Qf-Ob-pvo" firstAttribute="centerX" secondItem="27F-sf-AkT" secondAttribute="centerX" id="xhl-hQ-xPH"/>
+                            <constraint firstItem="JUD-gP-D6v" firstAttribute="top" secondItem="4Bf-63-km4" secondAttribute="bottom" id="yc8-U9-yW4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WUg-eK-tjJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="890-PW-wbL"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ma-PV-tft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="2548"/>
+        </scene>
+        <!--Requests Table View Controller-->
+        <scene sceneID="F2V-GH-pPR">
+            <objects>
+                <tableViewController storyboardIdentifier="RequestsTableViewController" id="ja2-of-SOw" customClass="RequestsTableViewController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3iH-lU-wWP">
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="290"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.043137254901960784" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RequestTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestTableViewCell" id="GdY-jf-D1P" customClass="RequestTableViewCell" customModule="Dormy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GdY-jf-D1P" id="URI-GV-ry3">
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ja2-of-SOw" id="5GC-Xb-pvQ"/>
+                            <outlet property="delegate" destination="ja2-of-SOw" id="xku-zU-52V"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4O-1H-y3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1433" y="2478"/>
         </scene>
         <!--Welcome Page View Controller-->
         <scene sceneID="Dg7-rj-05w">
@@ -338,11 +450,32 @@ you want your dorm cleaning.</string>
             </objects>
             <point key="canvasLocation" x="669" y="1049"/>
         </scene>
+        <!--Main Nav Controller-->
+        <scene sceneID="wPo-Ox-uHS">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavController" automaticallyAdjustsScrollViewInsets="NO" id="f8f-gV-OfO" customClass="MainNavController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8bG-5B-1hc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lk9-x2-5WO" kind="relationship" relationship="rootViewController" id="ItV-Df-FhO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X8F-O6-E0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="2448"/>
+        </scene>
     </scenes>
     <resources>
         <image name="book-logo" width="114" height="103"/>
         <image name="dormy-main-logo" width="688" height="253"/>
+        <image name="get-clean-button" width="750" height="186"/>
         <image name="login-button" width="375" height="110"/>
+        <image name="requests-title" width="750" height="73"/>
         <image name="signup-button" width="375" height="110"/>
     </resources>
 </document>

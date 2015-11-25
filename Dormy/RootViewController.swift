@@ -14,6 +14,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var buttonView: UIView!
     var pageVC: WelcomePageViewController!
+    var mainVC: RequestsViewController?
     
     @IBAction func signupButton(sender: AnyObject) {
         
@@ -26,12 +27,6 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Object has been saved.")
-        }
-
         pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
         pageVC.pageControl = self.pageControl
         self.addChildViewController(pageVC)
@@ -58,14 +53,20 @@ class RootViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "RootNavSegue" {
+            let navVC = segue.destinationViewController as! RootNavController
+            navVC.parentDelegate = self
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }
