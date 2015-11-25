@@ -17,6 +17,10 @@ class RequestsTableViewController: UITableViewController {
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "InProgressTableViewCell")
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
+        let nibName2 = UINib(nibName: "WaitingCell", bundle:nil)
+        self.tableView.registerNib(nibName2, forCellReuseIdentifier: "WaitingTableViewCell")
+
+        
         self.tableView.estimatedRowHeight = 156.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -34,7 +38,15 @@ class RequestsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("InProgressTableViewCell", forIndexPath: indexPath) as! InProgressTableViewCell
+        
+        var cell: UITableViewCell
+        if 2 == 2 {
+            cell = tableView.dequeueReusableCellWithIdentifier("InProgressTableViewCell", forIndexPath: indexPath) as! InProgressTableViewCell
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier("WaitingTableViewCell", forIndexPath: indexPath) as! WaitingTableViewCell
+        }
+        
+        
 
         // Configure the cell...
 

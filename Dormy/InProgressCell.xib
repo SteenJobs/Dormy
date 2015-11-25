@@ -12,7 +12,7 @@
             <string>LucidaGrande-Bold</string>
             <string>LucidaGrande-Bold</string>
             <string>LucidaGrande-Bold</string>
-            <string>LucidaGrande</string>
+            <string>LucidaGrande-Bold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -38,8 +38,8 @@
                                         <color key="textColor" red="0.64313725490196072" green="0.75294117647058822" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SzN-jC-N0a">
-                                        <rect key="frame" x="321" y="12" width="116.5" height="16.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdfasdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SzN-jC-N0a">
+                                        <rect key="frame" x="375" y="12.5" width="62.5" height="16.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="LucidaGrande-Bold" family="Lucida Grande" pointSize="14"/>
                                         <color key="textColor" red="0.64313725490196072" green="0.75294117647058822" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,15 +59,15 @@
                                         <color key="textColor" red="0.64313725490196072" green="0.75294117647058822" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lcv-9C-vHG">
-                                        <rect key="frame" x="321" y="47" width="116.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdfasdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lcv-9C-vHG">
+                                        <rect key="frame" x="375" y="47.5" width="62.5" height="16.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="LucidaGrande-Bold" family="Lucida Grande" pointSize="14"/>
                                         <color key="textColor" red="0.64313725490196072" green="0.75294117647058822" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="oY6-TE-jus">
-                                        <rect key="frame" x="321" y="82" width="116.5" height="16.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="asdfasdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="oY6-TE-jus">
+                                        <rect key="frame" x="375" y="82.5" width="62.5" height="16.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="LucidaGrande-Bold" family="Lucida Grande" pointSize="14"/>
                                         <color key="textColor" red="0.64313725490196072" green="0.75294117647058822" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,7 +151,7 @@
                                     <constraint firstAttribute="height" constant="22" id="6JU-rc-l7o"/>
                                     <constraint firstAttribute="height" constant="29.5" id="lbx-3J-vw0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="LucidaGrande-Bold" family="Lucida Grande" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
