@@ -56,7 +56,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             print("index out of range")
         }
         
-        self.view.endEditing(true)
+        hideKeyboard()
         
         if !self.validateSubmission() {
             //self.showAlertView("Error", message: "Please fix any errors before continuing.")
@@ -90,6 +90,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         //???
                         root.view.addSubview(requestsVC.view)
                         
+                        root.pageControl.hidden = true
                         root.mainVC!.didMoveToParentViewController(root)
                         nav.dismissViewControllerAnimated(true, completion: nil)
                         root.pageVC.removeFromParentViewController()
@@ -117,9 +118,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             self.completeButton.tag = 0
         }
         
-        pickerView = UIPickerView()
-        pickerView?.dataSource = self
-        pickerView?.delegate = self
         
         numberOfTextFields = placeHolderDict[index].count
         textFields = [self.textField1, self.textField2, self.textField3, self.textField4]
@@ -159,6 +157,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             case "Confirm Password":
                 textField.secureTextEntry = true
             case "Choose Your College":
+                pickerView = UIPickerView()
+                pickerView?.dataSource = self
+                pickerView?.delegate = self
+                textField.inputAccessoryView = self.getKeyboardAccessoryWithTitle("Done", selector: Selector("hideKeyboard"))
                 textField.inputView = pickerView
             default:
                 textField.keyboardType = UIKeyboardType.Default
@@ -313,6 +315,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
+    func getKeyboardAccessoryWithTitle(title: String, selector: Selector) -> UIToolbar {
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 50))
+        toolbar.barStyle = UIBarStyle.Default
+        let item1 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let item2 = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Done, target: self, action: selector)
+        toolbar.items = [item1, item2]
+        toolbar.sizeToFit()
+        return toolbar
+    }
     
     // Misc Functions
 
@@ -332,6 +343,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     func closeSignUpView() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
     func showAlertView(title: String, message: String) {

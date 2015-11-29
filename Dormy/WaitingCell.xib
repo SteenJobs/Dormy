@@ -157,8 +157,8 @@
             <animations/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="packageLabel" destination="ct4-B2-4Ce" id="LAy-Vm-aQt"/>
-                <outlet property="requestedDateLabel" destination="qpu-3j-RXP" id="PfD-bs-4fF"/>
+                <outlet property="packageLabel" destination="ct4-B2-4Ce" id="RP5-LA-ozI"/>
+                <outlet property="requestedDateLabel" destination="qpu-3j-RXP" id="B0B-EZ-xbd"/>
             </connections>
             <point key="canvasLocation" x="-223" y="-817.25"/>
         </tableViewCell>

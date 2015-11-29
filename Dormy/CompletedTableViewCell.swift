@@ -10,6 +10,10 @@ import UIKit
 
 class CompletedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cleanerLabel: UILabel!
+    @IBOutlet weak var dateCleanedLabel: UILabel!
+    @IBOutlet weak var packageLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

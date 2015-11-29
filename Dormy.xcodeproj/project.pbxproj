@@ -35,13 +35,17 @@
 		D0A02B961C0572620033D20C /* CompletedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A02B951C0572620033D20C /* CompletedCell.xib */; };
 		D0A02B981C0572890033D20C /* WaitingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A02B971C0572890033D20C /* WaitingTableViewCell.swift */; };
 		D0A02B9A1C05728F0033D20C /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A02B991C05728F0033D20C /* CompletedTableViewCell.swift */; };
-		D0A02BA81C0585DC0033D20C /* DownPicker-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0A02B9D1C0585DC0033D20C /* DownPicker-Info.plist */; };
-		D0A02BA91C0585DC0033D20C /* DownPickerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A02BA01C0585DC0033D20C /* DownPickerAppDelegate.m */; };
-		D0A02BAA1C0585DC0033D20C /* DownPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A02BA21C0585DC0033D20C /* DownPickerViewController.m */; };
-		D0A02BAB1C0585DC0033D20C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0A02BA31C0585DC0033D20C /* InfoPlist.strings */; };
-		D0A02BAC1C0585DC0033D20C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A02BA51C0585DC0033D20C /* Images.xcassets */; };
-		D0A02BAD1C0585DC0033D20C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A02BA61C0585DC0033D20C /* main.m */; };
-		D0A02BAE1C0585DC0033D20C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A02BA71C0585DC0033D20C /* Main.storyboard */; };
+		D0A02BB51C058D0C0033D20C /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A02BB41C058D0C0033D20C /* Job.swift */; };
+		D0A02BB71C0591680033D20C /* Abadi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0A02BB61C0591680033D20C /* Abadi.ttf */; };
+		D0A02BBA1C05946D0033D20C /* NewCleanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A02BB91C05946D0033D20C /* NewCleanViewController.swift */; };
+		D0A02C4A1C0595260033D20C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D0A02C131C0595260033D20C /* .gitkeep */; };
+		D0A02C4B1C0595260033D20C /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A02C141C0595260033D20C /* downArrow.png */; };
+		D0A02C4C1C0595260033D20C /* downArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A02C151C0595260033D20C /* downArrow@2x.png */; };
+		D0A02C4D1C0595260033D20C /* downArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0A02C161C0595260033D20C /* downArrow@3x.png */; };
+		D0A02C4E1C0595260033D20C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D0A02C181C0595260033D20C /* .gitkeep */; };
+		D0A02C4F1C0595260033D20C /* DownPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A02C1A1C0595260033D20C /* DownPicker.m */; };
+		D0A02C501C0595260033D20C /* UIDownPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A02C1C1C0595260033D20C /* UIDownPicker.m */; };
+		D0A02C511C0595260033D20C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D0A02C1D1C0595260033D20C /* README.md */; };
 		D0BACD491BFE9332004C792C /* RegistrationFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD481BFE9332004C792C /* RegistrationFields.swift */; };
 		D0BACD671BFEA30F004C792C /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD4C1BFEA30F004C792C /* ValidationError.swift */; };
 		D0BACD681BFEA30F004C792C /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD4D1BFEA30F004C792C /* Validator.swift */; };
@@ -98,16 +102,20 @@
 		D0A02B951C0572620033D20C /* CompletedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompletedCell.xib; sourceTree = "<group>"; };
 		D0A02B971C0572890033D20C /* WaitingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingTableViewCell.swift; sourceTree = "<group>"; };
 		D0A02B991C05728F0033D20C /* CompletedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedTableViewCell.swift; sourceTree = "<group>"; };
-		D0A02B9D1C0585DC0033D20C /* DownPicker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DownPicker-Info.plist"; sourceTree = "<group>"; };
-		D0A02B9E1C0585DC0033D20C /* DownPicker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DownPicker-Prefix.pch"; sourceTree = "<group>"; };
-		D0A02B9F1C0585DC0033D20C /* DownPickerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownPickerAppDelegate.h; sourceTree = "<group>"; };
-		D0A02BA01C0585DC0033D20C /* DownPickerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownPickerAppDelegate.m; sourceTree = "<group>"; };
-		D0A02BA11C0585DC0033D20C /* DownPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownPickerViewController.h; sourceTree = "<group>"; };
-		D0A02BA21C0585DC0033D20C /* DownPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownPickerViewController.m; sourceTree = "<group>"; };
-		D0A02BA41C0585DC0033D20C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D0A02BA51C0585DC0033D20C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D0A02BA61C0585DC0033D20C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D0A02BA71C0585DC0033D20C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D0A02BB41C058D0C0033D20C /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		D0A02BB61C0591680033D20C /* Abadi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Abadi.ttf; sourceTree = "<group>"; };
+		D0A02BB81C0592DD0033D20C /* Dormy-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Dormy-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0A02BB91C05946D0033D20C /* NewCleanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCleanViewController.swift; sourceTree = "<group>"; };
+		D0A02C131C0595260033D20C /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		D0A02C141C0595260033D20C /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
+		D0A02C151C0595260033D20C /* downArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downArrow@2x.png"; sourceTree = "<group>"; };
+		D0A02C161C0595260033D20C /* downArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downArrow@3x.png"; sourceTree = "<group>"; };
+		D0A02C181C0595260033D20C /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		D0A02C191C0595260033D20C /* DownPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownPicker.h; sourceTree = "<group>"; };
+		D0A02C1A1C0595260033D20C /* DownPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownPicker.m; sourceTree = "<group>"; };
+		D0A02C1B1C0595260033D20C /* UIDownPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDownPicker.h; sourceTree = "<group>"; };
+		D0A02C1C1C0595260033D20C /* UIDownPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDownPicker.m; sourceTree = "<group>"; };
+		D0A02C1D1C0595260033D20C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D0BACD481BFE9332004C792C /* RegistrationFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFields.swift; sourceTree = "<group>"; };
 		D0BACD4C1BFEA30F004C792C /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		D0BACD4D1BFEA30F004C792C /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -193,6 +201,7 @@
 		D095F89F1BF176760068B58C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				D0A02BB61C0591680033D20C /* Abadi.ttf */,
 				D095F8981BF12B650068B58C /* LucidaGrande.ttc */,
 			);
 			name = Fonts;
@@ -228,27 +237,10 @@
 		D0A02B9B1C0585C20033D20C /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				D0A02B9C1C0585DC0033D20C /* DownPicker */,
+				D0A02BBB1C0595260033D20C /* DownPicker */,
 				D0BACD4A1BFEA30F004C792C /* SwiftValidator */,
 			);
 			name = Vendors;
-			sourceTree = "<group>";
-		};
-		D0A02B9C1C0585DC0033D20C /* DownPicker */ = {
-			isa = PBXGroup;
-			children = (
-				D0A02B9D1C0585DC0033D20C /* DownPicker-Info.plist */,
-				D0A02B9E1C0585DC0033D20C /* DownPicker-Prefix.pch */,
-				D0A02B9F1C0585DC0033D20C /* DownPickerAppDelegate.h */,
-				D0A02BA01C0585DC0033D20C /* DownPickerAppDelegate.m */,
-				D0A02BA11C0585DC0033D20C /* DownPickerViewController.h */,
-				D0A02BA21C0585DC0033D20C /* DownPickerViewController.m */,
-				D0A02BA31C0585DC0033D20C /* InfoPlist.strings */,
-				D0A02BA51C0585DC0033D20C /* Images.xcassets */,
-				D0A02BA61C0585DC0033D20C /* main.m */,
-				D0A02BA71C0585DC0033D20C /* Main.storyboard */,
-			);
-			path = DownPicker;
 			sourceTree = "<group>";
 		};
 		D0A02BAF1C0588CF0033D20C /* Nibs */ = {
@@ -267,6 +259,7 @@
 				D0349C6D1C05395700759577 /* RequestsViewController.swift */,
 				D0349C6F1C056CF600759577 /* MainNavController.swift */,
 				D0A02B8F1C056F0A0033D20C /* RequestsTableViewController.swift */,
+				D0A02BB91C05946D0033D20C /* NewCleanViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -287,6 +280,7 @@
 				D0A02B911C056F3D0033D20C /* InProgressTableViewCell.swift */,
 				D0A02B971C0572890033D20C /* WaitingTableViewCell.swift */,
 				D0A02B991C05728F0033D20C /* CompletedTableViewCell.swift */,
+				D0A02BB41C058D0C0033D20C /* Job.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -299,6 +293,48 @@
 				D0BACD481BFE9332004C792C /* RegistrationFields.swift */,
 			);
 			name = SignUp;
+			sourceTree = "<group>";
+		};
+		D0A02BBB1C0595260033D20C /* DownPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D0A02C111C0595260033D20C /* Pod */,
+				D0A02C1D1C0595260033D20C /* README.md */,
+			);
+			name = DownPicker;
+			path = "DownPicker-master-2";
+			sourceTree = "<group>";
+		};
+		D0A02C111C0595260033D20C /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				D0A02C121C0595260033D20C /* Assets */,
+				D0A02C171C0595260033D20C /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		D0A02C121C0595260033D20C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D0A02C131C0595260033D20C /* .gitkeep */,
+				D0A02C141C0595260033D20C /* downArrow.png */,
+				D0A02C151C0595260033D20C /* downArrow@2x.png */,
+				D0A02C161C0595260033D20C /* downArrow@3x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D0A02C171C0595260033D20C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D0A02C181C0595260033D20C /* .gitkeep */,
+				D0A02C191C0595260033D20C /* DownPicker.h */,
+				D0A02C1A1C0595260033D20C /* DownPicker.m */,
+				D0A02C1B1C0595260033D20C /* UIDownPicker.h */,
+				D0A02C1C1C0595260033D20C /* UIDownPicker.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		D0BACD471BFE7E56004C792C /* SignUp */ = {
@@ -370,6 +406,7 @@
 		D0D144F71BEFFFD5002DEBF9 /* Dormy */ = {
 			isa = PBXGroup;
 			children = (
+				D0A02BB81C0592DD0033D20C /* Dormy-Bridging-Header.h */,
 				D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */,
 				D0D145071BEFFFD5002DEBF9 /* Info.plist */,
 				D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */,
@@ -452,18 +489,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A02C4C1C0595260033D20C /* downArrow@2x.png in Resources */,
 				D0A02B941C0572570033D20C /* WaitingCell.xib in Resources */,
 				D095F8991BF12B650068B58C /* LucidaGrande.ttc in Resources */,
+				D0A02C4D1C0595260033D20C /* downArrow@3x.png in Resources */,
 				D0D145061BEFFFD5002DEBF9 /* LaunchScreen.storyboard in Resources */,
-				D0A02BAE1C0585DC0033D20C /* Main.storyboard in Resources */,
+				D0A02C4B1C0595260033D20C /* downArrow.png in Resources */,
 				D0D145031BEFFFD5002DEBF9 /* Assets.xcassets in Resources */,
-				D0A02BAC1C0585DC0033D20C /* Images.xcassets in Resources */,
+				D0A02BB71C0591680033D20C /* Abadi.ttf in Resources */,
 				D0BACD691BFEA30F004C792C /* Info.plist in Resources */,
+				D0A02C4A1C0595260033D20C /* .gitkeep in Resources */,
 				D0D144FE1BEFFFD5002DEBF9 /* Main.storyboard in Resources */,
 				D0A02B8E1C056E2F0033D20C /* InProgressCell.xib in Resources */,
-				D0A02BA81C0585DC0033D20C /* DownPicker-Info.plist in Resources */,
 				D0A02B961C0572620033D20C /* CompletedCell.xib in Resources */,
-				D0A02BAB1C0585DC0033D20C /* InfoPlist.strings in Resources */,
+				D0A02C4E1C0595260033D20C /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,33 +517,35 @@
 				D0BACD6E1BFEA30F004C792C /* MaxLengthRule.swift in Sources */,
 				D095F89B1BF14F0C0068B58C /* RootViewController.swift in Sources */,
 				D0BACD491BFE9332004C792C /* RegistrationFields.swift in Sources */,
+				D0A02C511C0595260033D20C /* README.md in Sources */,
 				D0D195991BFD199C00BE804D /* RootNavController.swift in Sources */,
-				D0A02BAD1C0585DC0033D20C /* main.m in Sources */,
 				D0349C6E1C05395700759577 /* RequestsViewController.swift in Sources */,
 				D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */,
 				D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */,
 				D0BACD741BFEA30F004C792C /* Rule.swift in Sources */,
+				D0A02BBA1C05946D0033D20C /* NewCleanViewController.swift in Sources */,
 				D0BACD6A1BFEA30F004C792C /* ConfirmRule.swift in Sources */,
 				D0BACD681BFEA30F004C792C /* Validator.swift in Sources */,
 				D0D145011BEFFFD5002DEBF9 /* Dormy.xcdatamodeld in Sources */,
 				D0A02B921C056F3D0033D20C /* InProgressTableViewCell.swift in Sources */,
 				D0BACD6C1BFEA30F004C792C /* FloatRule.swift in Sources */,
+				D0A02C501C0595260033D20C /* UIDownPicker.m in Sources */,
 				D095F8951BF11F5E0068B58C /* WelcomePageViewController.swift in Sources */,
 				D0BACD6F1BFEA30F004C792C /* MinLengthRule.swift in Sources */,
 				D0BACD6D1BFEA30F004C792C /* FullNameRule.swift in Sources */,
 				D0D1959D1BFD401700BE804D /* RegistrationInfo.swift in Sources */,
 				D0BACD671BFEA30F004C792C /* ValidationError.swift in Sources */,
 				D0BACD761BFEA30F004C792C /* ZipCodeRule.swift in Sources */,
+				D0A02C4F1C0595260033D20C /* DownPicker.m in Sources */,
 				D0BACD731BFEA30F004C792C /* RequiredRule.swift in Sources */,
 				D0BACD701BFEA30F004C792C /* PasswordRule.swift in Sources */,
-				D0A02BAA1C0585DC0033D20C /* DownPickerViewController.m in Sources */,
-				D0A02BA91C0585DC0033D20C /* DownPickerAppDelegate.m in Sources */,
 				D0A02B901C056F0A0033D20C /* RequestsTableViewController.swift in Sources */,
 				D0A02B9A1C05728F0033D20C /* CompletedTableViewCell.swift in Sources */,
 				D0BACD721BFEA30F004C792C /* RegexRule.swift in Sources */,
 				D0BACD751BFEA30F004C792C /* ValidationRule.swift in Sources */,
 				D0BACD711BFEA30F004C792C /* PhoneNumberRule.swift in Sources */,
 				D095F89D1BF15FF50068B58C /* UIColorExtensions.swift in Sources */,
+				D0A02BB51C058D0C0033D20C /* Job.swift in Sources */,
 				D0349C701C056CF600759577 /* MainNavController.swift in Sources */,
 				D0D144F91BEFFFD5002DEBF9 /* AppDelegate.swift in Sources */,
 				D0BACD6B1BFEA30F004C792C /* EmailRule.swift in Sources */,
@@ -515,14 +556,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D0A02BA31C0585DC0033D20C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0A02BA41C0585DC0033D20C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -582,6 +615,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/Dormy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -620,6 +654,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/Dormy-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

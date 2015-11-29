@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Abadi.ttf</string>
 		<string>LucidaGrande.ttc</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

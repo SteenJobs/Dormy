@@ -10,6 +10,9 @@ import UIKit
 
 class WaitingTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var requestedDateLabel: UILabel!
+    @IBOutlet weak var packageLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

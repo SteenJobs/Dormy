@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         // Initialize Parse.
+        Job.registerSubclass()
         //TODO: Store in 'Settings' file, which should be added to .gitignore
         Parse.setApplicationId("egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8",
             clientKey: "OERocQgPTWXBYP81XgUqOv9R1mqGtiQumVa03w02")

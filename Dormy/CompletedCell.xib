@@ -121,25 +121,25 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="6sV-Az-3tl"/>
-                                        <exclude reference="acx-Ep-OpE"/>
                                         <exclude reference="9uk-5d-8hg"/>
+                                        <exclude reference="acx-Ep-OpE"/>
                                         <exclude reference="Qhv-8A-Zm9"/>
-                                        <exclude reference="s2g-Iv-UxB"/>
                                         <exclude reference="TNb-zd-Lyp"/>
+                                        <exclude reference="s2g-Iv-UxB"/>
                                         <exclude reference="ten-d3-UQS"/>
-                                        <exclude reference="X6m-gk-mhl"/>
-                                        <exclude reference="ub3-s6-ZOE"/>
-                                        <exclude reference="sN1-Zw-x7Q"/>
-                                        <exclude reference="dzN-m2-olG"/>
                                         <exclude reference="Avh-iP-qjf"/>
+                                        <exclude reference="X6m-gk-mhl"/>
                                         <exclude reference="Xrg-fb-eu0"/>
-                                        <exclude reference="zJd-dz-iGN"/>
+                                        <exclude reference="dzN-m2-olG"/>
+                                        <exclude reference="sN1-Zw-x7Q"/>
+                                        <exclude reference="ub3-s6-ZOE"/>
                                         <exclude reference="Xhk-id-mrb"/>
+                                        <exclude reference="zJd-dz-iGN"/>
                                         <exclude reference="DR2-h1-l7s"/>
                                         <exclude reference="Uua-YE-ucH"/>
-                                        <exclude reference="aqo-fT-VVz"/>
                                         <exclude reference="3ad-th-n9Q"/>
                                         <exclude reference="XEJ-me-Aae"/>
+                                        <exclude reference="aqo-fT-VVz"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -196,9 +196,9 @@
             <animations/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="cleanerLabel" destination="yFg-p4-a7U" id="rQc-fE-xaF"/>
-                <outlet property="packageLabel" destination="TDZ-4c-5n0" id="3rv-Wm-wnO"/>
-                <outlet property="requestedDateLabel" destination="0cU-x7-Sjj" id="5F5-YB-ioC"/>
+                <outlet property="cleanerLabel" destination="yFg-p4-a7U" id="Btd-5v-8V6"/>
+                <outlet property="dateCleanedLabel" destination="0cU-x7-Sjj" id="X4e-mL-TZ9"/>
+                <outlet property="packageLabel" destination="TDZ-4c-5n0" id="GF5-gY-Z9C"/>
             </connections>
             <point key="canvasLocation" x="-223" y="-797.25"/>
         </tableViewCell>
