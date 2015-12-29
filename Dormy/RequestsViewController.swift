@@ -17,12 +17,30 @@ class RequestsViewController: UIViewController {
         
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let navBar = self.navigationController!.navigationBar
+        let settingsButton = UIBarButtonItem(image: UIImage(named: "gear-icon"), style: .Plain, target: self, action: Selector("goToProfile"))
+        
+        self.navigationItem.rightBarButtonItem = settingsButton
+        
+        navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navBar.shadowImage = UIImage()
+        navBar.tintColor = UIColor.whiteColor()
+        navBar.translucent = false
+        navBar.barTintColor = UIColor(rgba: "#0f386b")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func goToProfile() {
+        
+    }
 
     /*
     // MARK: - Navigation

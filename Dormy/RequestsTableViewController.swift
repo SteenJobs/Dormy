@@ -62,9 +62,24 @@ class RequestsTableViewController: UITableViewController {
             return cell
         case JobStatus.InProgress.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier("InProgressTableViewCell", forIndexPath: indexPath) as! InProgressTableViewCell
+            let cleaner = job.cleaner!
+            let package = job.package!
+            
+            cell.cleanerLabel.text = cleaner["full_name"] as! String
+            cell.requestedDateLabel.text = job.requestedDate!
+            cell.packageLabel.text = package["name"] as! String + " - $\(package["price"] as! Int)"
+            
             return cell
         case JobStatus.Completed.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier("CompletedTableViewCell", forIndexPath: indexPath) as! CompletedTableViewCell
+            let package = job.package!
+            let cleaner = job.cleaner!
+            
+            cell.cleanerLabel.text = cleaner["full_name"] as! String
+            cell.dateCleanedLabel.text = job.completedDate!
+            cell.packageLabel.text = package["name"] as! String + " - $\(package["price"] as! Int)"
+            
+            
             return cell
         default:
             let cell = UITableViewCell()
@@ -73,10 +88,14 @@ class RequestsTableViewController: UITableViewController {
 
     }
     
+    
     func loadJobs() {
         let currentUser = PFUser.currentUser()!
         
         let query = PFQuery(className: "Job")
+        query.includeKey("dormer")
+        query.includeKey("package")
+        query.includeKey("cleaner")
         query.whereKey("dormer", equalTo: currentUser)
         query.findObjectsInBackgroundWithBlock() { (jobs: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
@@ -84,6 +103,7 @@ class RequestsTableViewController: UITableViewController {
                     self.showAlertView("Error", message: errorString)
                 }
             } else {
+                // remove and use 'include'
                 self.loadPackages(jobs!) { bool in
                     if bool {
                         self.tableView.reloadData()

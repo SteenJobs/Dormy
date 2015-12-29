@@ -26,6 +26,8 @@ class Job: PFObject, PFSubclassing {
     @NSManaged var status: String?
     @NSManaged var package: PFObject?
     @NSManaged var cleaner: PFUser?
+    @NSManaged var completedDate: String?
+    @NSManaged var completedTime: String?
     
     override class func initialize() {
         struct Static {

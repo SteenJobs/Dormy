@@ -23,6 +23,11 @@
 		D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */; };
 		D0349C6E1C05395700759577 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6D1C05395700759577 /* RequestsViewController.swift */; };
 		D0349C701C056CF600759577 /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6F1C056CF600759577 /* MainNavController.swift */; };
+		D095E2E41C33143800240BD6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2E31C33143800240BD6 /* LogInViewController.swift */; };
+		D095E2EE1C33341400240BD6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */; };
+		D095E2EF1C33341400240BD6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */; };
+		D095E2F01C33341400240BD6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */; };
+		D095E2F21C3335CA00240BD6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2F11C3335CA00240BD6 /* ParseFacebookUtilsV4.framework */; };
 		D095F8951BF11F5E0068B58C /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095F8941BF11F5E0068B58C /* WelcomePageViewController.swift */; };
 		D095F8971BF11F7F0068B58C /* WelcomeContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095F8961BF11F7F0068B58C /* WelcomeContentViewController.swift */; };
 		D095F8991BF12B650068B58C /* LucidaGrande.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D095F8981BF12B650068B58C /* LucidaGrande.ttc */; };
@@ -90,6 +95,11 @@
 		D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D0349C6D1C05395700759577 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		D0349C6F1C056CF600759577 /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
+		D095E2E31C33143800240BD6 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		D095E2F11C3335CA00240BD6 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		D095F8941BF11F5E0068B58C /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		D095F8961BF11F7F0068B58C /* WelcomeContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeContentViewController.swift; sourceTree = "<group>"; };
 		D095F8981BF12B650068B58C /* LucidaGrande.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = LucidaGrande.ttc; sourceTree = "<group>"; };
@@ -153,15 +163,19 @@
 			files = (
 				D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */,
 				D00299A51C012209001A6D00 /* Stripe.framework in Frameworks */,
+				D095E2EF1C33341400240BD6 /* FBSDKLoginKit.framework in Frameworks */,
 				D00833B21BF40A0100BB81D9 /* libz.tbd in Frameworks */,
 				D00833B01BF409F700BB81D9 /* SystemConfiguration.framework in Frameworks */,
 				D00833AE1BF409F000BB81D9 /* StoreKit.framework in Frameworks */,
 				D00833AC1BF409C300BB81D9 /* Security.framework in Frameworks */,
 				D00833AA1BF409B200BB81D9 /* QuartzCore.framework in Frameworks */,
+				D095E2F01C33341400240BD6 /* FBSDKShareKit.framework in Frameworks */,
 				D00833A81BF409AD00BB81D9 /* CoreLocation.framework in Frameworks */,
 				D00833A61BF409A600BB81D9 /* CoreGraphics.framework in Frameworks */,
 				D00833A41BF409A000BB81D9 /* CFNetwork.framework in Frameworks */,
 				D00833A21BF4099800BB81D9 /* AudioToolbox.framework in Frameworks */,
+				D095E2EE1C33341400240BD6 /* FBSDKCoreKit.framework in Frameworks */,
+				D095E2F21C3335CA00240BD6 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				D008339F1BF4095800BB81D9 /* Parse.framework in Frameworks */,
 				D008339E1BF4095800BB81D9 /* Bolts.framework in Frameworks */,
 			);
@@ -173,9 +187,11 @@
 		D00833A01BF4097100BB81D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D095E2F11C3335CA00240BD6 /* ParseFacebookUtilsV4.framework */,
+				D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */,
+				D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */,
+				D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */,
 				D00299A41C012209001A6D00 /* Stripe.framework */,
-				D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */,
-				D00833B11BF40A0100BB81D9 /* libz.tbd */,
 				D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */,
 				D00833AD1BF409F000BB81D9 /* StoreKit.framework */,
 				D00833AB1BF409C300BB81D9 /* Security.framework */,
@@ -186,6 +202,8 @@
 				D00833A11BF4099800BB81D9 /* AudioToolbox.framework */,
 				D008339C1BF4095800BB81D9 /* Bolts.framework */,
 				D008339D1BF4095800BB81D9 /* Parse.framework */,
+				D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */,
+				D00833B11BF40A0100BB81D9 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -342,6 +360,7 @@
 			children = (
 				D0D195981BFD199C00BE804D /* RootNavController.swift */,
 				D0D1959A1BFD19BF00BE804D /* SignUpViewController.swift */,
+				D095E2E31C33143800240BD6 /* LogInViewController.swift */,
 			);
 			name = SignUp;
 			sourceTree = "<group>";
@@ -549,6 +568,7 @@
 				D0349C701C056CF600759577 /* MainNavController.swift in Sources */,
 				D0D144F91BEFFFD5002DEBF9 /* AppDelegate.swift in Sources */,
 				D0BACD6B1BFEA30F004C792C /* EmailRule.swift in Sources */,
+				D095E2E41C33143800240BD6 /* LogInViewController.swift in Sources */,
 				D095F8971BF11F7F0068B58C /* WelcomeContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

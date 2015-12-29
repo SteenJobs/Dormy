@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 class RegistrationInfo {
     static let sharedInstance = RegistrationInfo()
@@ -16,7 +17,7 @@ class RegistrationInfo {
     var password: String?
     var confirmPassword: String?
     var fullName: String?
-    var college: String?
+    var college: PFObject?
     var dormBuilding: String?
     var roomNumber: String?
     var cardNumber: String?
@@ -31,7 +32,11 @@ class RegistrationInfo {
             self.confirmPassword = nil
             return [email, phone, password, confirmPassword]
         case 1:
-            return [fullName, college, dormBuilding, roomNumber]
+            var collegeName: String?
+            if let name = college?["name"] as? String {
+                collegeName = name
+            }
+            return [fullName, collegeName, dormBuilding, roomNumber]
         case 2:
             if let number = self.cardNumber {
                 let length = number.startIndex.distanceTo(number.endIndex)

@@ -11,5 +11,7 @@
 
 #import "DownPicker.h"
 #import <Parse/PFObject+Subclass.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 #endif /* Dormy_Bridging_Header_h */

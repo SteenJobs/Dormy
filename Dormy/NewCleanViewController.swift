@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationBarDelegate {
 
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var specialInstructions: UITextView!
@@ -71,8 +71,8 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-
+        self.navBar.delegate = self
+        
         self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navBar.shadowImage = UIImage()
         self.navBar.translucent = true
@@ -80,6 +80,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: Selector("closeNewCleanView"))
         let navItem = UINavigationItem()
         navItem.rightBarButtonItem = doneButton
+        navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
         self.navBar.items = [navItem]
         
         // Do any additional setup after loading the view.
@@ -100,6 +101,10 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.packageTF.delegate = self
         self.specialInstructions.delegate = self
         
+    }
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
     }
     
     func closeNewCleanView() {

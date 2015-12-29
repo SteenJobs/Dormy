@@ -24,6 +24,8 @@ class RegistrationFields: UITextField {
                 return self.markField(self.validateEmailAddress())
             case "Phone Number":
                 return self.markField(self.validatePhoneNumber())
+            case "Password":
+                return self.markField(self.validatePassword())
             case "Confirm Password":
                 return self.markField(self.validateConfirmPassword())
             case "Choose Your College":
@@ -97,6 +99,14 @@ class RegistrationFields: UITextField {
         let regex2 = "^\\d{3}-\\d{3}-\\d{4}$"
         if self.text?.rangeOfString(regex, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil || self.text?.rangeOfString(regex2, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil {
             return true
+        } else {
+            return false
+        }
+    }
+    
+    func validatePassword() -> Bool {
+        if let password = self.text {
+            return !password.isEmpty
         } else {
             return false
         }

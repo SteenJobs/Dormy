@@ -31,6 +31,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     
     // Placeholder for Parse data - set with single value of "--"
     var colleges = ["--"] //["YU", "Columbia", "NYU", "BU"]
+    var PFColleges: [PFObject]? = []
     
     let validator = Validator()
     
@@ -42,8 +43,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             RegistrationInfo.sharedInstance.password = textField3.text
             RegistrationInfo.sharedInstance.confirmPassword = textField4.text
         case 1:
-            RegistrationInfo.sharedInstance.fullName = textField1.text
-            RegistrationInfo.sharedInstance.college = textField2.text
+            RegistrationInfo.sharedInstance.fullName = textField1.text // TODO: Separate into two TF to ensure both are present
+            let filter = self.PFColleges?.filter({(college: PFObject) -> Bool in return college["name"] as? String == textField2.text!})
+            RegistrationInfo.sharedInstance.college = filter?.first
             RegistrationInfo.sharedInstance.dormBuilding = textField3.text
             RegistrationInfo.sharedInstance.roomNumber = textField4.text
         case 2:
@@ -60,7 +62,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         if !self.validateSubmission() {
             //self.showAlertView("Error", message: "Please fix any errors before continuing.")
-            //return
+            return
         }
         
         
@@ -197,6 +199,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.navigationItem.backBarButtonItem = backButton
         self.navigationItem.rightBarButtonItem = doneButton
         self.completeButton.setBackgroundImage(UIImage(named: buttons[self.index]), forState: .Normal)
+        
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Highlighted)
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        
     }
 
     
@@ -210,6 +218,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             }
         }
         if let field = registrationField {
+            if field.type == "Password" {
+                RegistrationInfo.sharedInstance.password = field.text
+            }
             if field.error == true {
                 field.validate()
             }
@@ -270,6 +281,27 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     self.validateCardField(validation, textField: textFields![1])
                 }
                 return false
+            }
+        }
+        var registrationField: RegistrationFields?
+        for field in self.textFields! {
+            if field == textField {
+                registrationField = field
+                
+            }
+        }
+        if let field = registrationField {
+            if CGColorEqualToColor(field.layer.borderColor, UIColor.redColor().CGColor) || CGColorEqualToColor(field.layer.borderColor, UIColor.greenColor().CGColor) {
+                let currentText = field.text!
+                if string == "" {
+                    field.text = field.text!.substringToIndex(field.text!.endIndex.predecessor())
+                    field.validate()
+                    field.text = currentText
+                } else {
+                    field.text = field.text! + string
+                    field.validate()
+                    field.text = currentText
+                }
             }
         }
         
@@ -405,6 +437,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         return order1 < order2
                     })
                     self.colleges = ["--"]
+                    self.PFColleges = orderedColleges
                     for college in orderedColleges {
                         self.colleges.append(college["name"] as! String)
                     }

@@ -63,6 +63,10 @@ class RootViewController: UIViewController {
             let navVC = segue.destinationViewController as! RootNavController
             navVC.parentDelegate = self
         }
+        if segue.identifier == "LogInSegue" {
+            let loginVC = segue.destinationViewController as! LogInViewController
+            loginVC.parentDelegate = self
+        }
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
