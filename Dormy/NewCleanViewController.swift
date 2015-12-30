@@ -22,6 +22,9 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var packageDict = [String: PFObject]()
     var activeField: UITextField?
     var activeTV: UITextView?
+    var customer: Customer?
+    // ???
+    var customerLoaded: Bool = false
     
     @IBAction func requestJob(sender: AnyObject) {
         let textFields: [UITextField] = [self.dateField, self.timeField, self.packageTF]
@@ -37,22 +40,27 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         job.instructions = specialInstructions.text
         
         let isValidated = job.validate()
-        if isValidated {
-            job.saveInBackgroundWithBlock() { success, error in
-                if let error = error {
-                    if let errorString = error.userInfo["error"] as? String {
-                        self.showAlertView("Error", message: errorString)
+        if isValidated && self.customerLoaded {
+            Customer.chargeCustomer(self.customer!, job: job) { success in
+                if success {
+                    job.saveInBackgroundWithBlock() { success, error in
+                        if let error = error {
+                            if let errorString = error.userInfo["error"] as? String {
+                                self.showAlertView("Error", message: errorString)
+                            }
+                        } else {
+                            let relation = currentUser!.relationForKey("jobs")
+                            relation.addObject(job)
+                            currentUser!.saveInBackground()
+                            let alert = UIAlertController(title: "Success!", message: "Your request has been successfully recorded.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }))
+                            self.presentViewController(alert, animated: true, completion: nil) 
+                        }
                     }
                 } else {
-                    let relation = currentUser!.relationForKey("jobs")
-                    relation.addObject(job)
-                    currentUser!.saveInBackground()
-                    let alert = UIAlertController(title: "Success!", message: "Your request has been successfully recorded.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    }))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                    
+                    print("Couldn't charge the customer")
                 }
             }
         } else {
@@ -100,6 +108,11 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.timeField.delegate = self
         self.packageTF.delegate = self
         self.specialInstructions.delegate = self
+        
+        Customer.getStripeCustomerInfo() { customer in
+            self.customer = customer
+            self.customerLoaded = true
+        }
         
     }
     

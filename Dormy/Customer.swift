@@ -37,6 +37,37 @@ class Customer {
                 }
                 completionHandler(customer: customer)
             }
+            if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    class func chargeCustomer(customer: Customer, job: Job, completionHandler: (succeeded: Bool) -> ()) {
+        PFCloud.callFunctionInBackground("charge_customer", withParameters: ["customerID": customer.customerID, "source": customer.defaultSource!, "packageID": job.package!.objectId!]) { (response: AnyObject?, error: NSError?) -> Void in
+            if let error = error {
+                print(error)
+                completionHandler(succeeded: false)
+            }
+            if let dict = response as? NSDictionary {
+                let status = dict["status"] as! String
+                print(status)
+                let chargeID = dict["charge"] as! String
+                let charge = PFObject(className: "Charge")
+                charge["charge_id"] = chargeID
+                charge["user"] = PFUser.currentUser()!
+                charge.saveInBackgroundWithBlock() { success, error in
+                    if let error = error {
+                        print(error)
+                        completionHandler(succeeded: false)
+                        return
+                    }
+                    completionHandler(succeeded: true)
+                    return
+                }
+            } else {
+                completionHandler(succeeded: false)
+            }
         }
     }
     
