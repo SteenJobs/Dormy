@@ -27,8 +27,13 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var customerLoaded: Bool = false
     
     @IBAction func requestJob(sender: AnyObject) {
-        let textFields: [UITextField] = [self.dateField, self.timeField, self.packageTF]
+        let activityIndicator = MBProgressHUD(view: self.view)
+        activityIndicator.labelText = "Loading"
+        self.view.addSubview(activityIndicator)
+        activityIndicator.show(true)
         
+        let textFields: [UITextField] = [self.dateField, self.timeField, self.packageTF]
+    
         let currentUser = PFUser.currentUser()
         
         let job = Job()
@@ -46,12 +51,14 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
                     job.saveInBackgroundWithBlock() { success, error in
                         if let error = error {
                             if let errorString = error.userInfo["error"] as? String {
+                                activityIndicator.hide(true)
                                 self.showAlertView("Error", message: errorString)
                             }
                         } else {
                             let relation = currentUser!.relationForKey("jobs")
                             relation.addObject(job)
                             currentUser!.saveInBackground()
+                            activityIndicator.hide(true)
                             let alert = UIAlertController(title: "Success!", message: "Your request has been successfully recorded.", preferredStyle: UIAlertControllerStyle.Alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
                                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -60,10 +67,12 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
                         }
                     }
                 } else {
+                    activityIndicator.hide(true)
                     print("Couldn't charge the customer")
                 }
             }
         } else {
+            activityIndicator.hide(true)
             self.showAlertView("Error", message: "Please make sure all required fields are filled out.")
             for textField in textFields {
                 if textField.text!.isEmpty {

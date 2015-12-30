@@ -38,7 +38,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBAction func completeButtonTapped(sender: AnyObject) {
         switch self.index {
         case 0:
-            RegistrationInfo.sharedInstance.email = textField1.text
+            RegistrationInfo.sharedInstance.email = textField1.text?.lowercaseString
             RegistrationInfo.sharedInstance.phone = textField2.text
             RegistrationInfo.sharedInstance.password = textField3.text
             RegistrationInfo.sharedInstance.confirmPassword = textField4.text

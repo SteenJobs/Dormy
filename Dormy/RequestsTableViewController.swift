@@ -16,7 +16,12 @@ class RequestsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.loadJobs()
+        // Set up a refresh control, call reload to start things up
+        refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = UIColor.whiteColor()
+        refreshControl?.addTarget(self, action: "reload", forControlEvents: .ValueChanged)
+        
+        //self.loadJobs()
         
         let nibName = UINib(nibName: "InProgressCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "InProgressTableViewCell")
@@ -35,7 +40,9 @@ class RequestsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.loadJobs()
+        self.loadJobs() { void in
+            print("Jobs loaded")
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,8 +95,13 @@ class RequestsTableViewController: UITableViewController {
 
     }
     
+    func reload() {
+        self.loadJobs() { void in
+            self.refreshControl?.endRefreshing()
+        }
+    }
     
-    func loadJobs() {
+    func loadJobs(completionHandler: () -> ()) {
         let currentUser = PFUser.currentUser()!
         
         let query = PFQuery(className: "Job")
@@ -99,21 +111,33 @@ class RequestsTableViewController: UITableViewController {
         query.whereKey("dormer", equalTo: currentUser)
         query.findObjectsInBackgroundWithBlock() { (jobs: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
-                if let errorString = error.userInfo["error"] as? String {
-                    self.showAlertView("Error", message: errorString)
-                }
+                self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
+                completionHandler()
             } else {
                 // remove and use 'include'
+                if jobs != nil {
+                    self.jobs = []
+                    for job in jobs! {
+                        let localJob = job as! Job
+                        self.jobs.append(localJob)
+                    }
+                    self.tableView.reloadData()
+                    completionHandler()
+                }
+                
+                /*
                 self.loadPackages(jobs!) { bool in
                     if bool {
                         self.tableView.reloadData()
                     }
                 }
+                */
             }
         }
     }
     
     
+    /*
     func loadPackages(jobs: [PFObject], completionHandler: (finished: Bool) -> ()) {
         self.jobs = []
         for job in jobs {
@@ -133,9 +157,10 @@ class RequestsTableViewController: UITableViewController {
         }
         
     }
+    */
     
         
-    func showAlertView(title: String, message: String) {
+    func showAlertView(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)

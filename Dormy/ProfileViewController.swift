@@ -61,14 +61,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.populateUserTextFields()
-        
-        Customer.getStripeCustomerInfo() { customer in
-            self.stripeCustomer = customer
-            if self.stripeCustomer?.cardBrand != nil && self.stripeCustomer?.last4 != nil {
-                self.creditCardTF.text = "\(self.stripeCustomer!.cardBrand!) *****\(self.stripeCustomer!.last4!)"
-            }
-        }
+        self.populateTextFields()
         
         self.registerForKeyboardNotifications()
     }
@@ -123,13 +116,25 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         self.scrollView.scrollIndicatorInsets = contentInsets
     }
     
-    func populateUserTextFields() {
+    func populateTextFields() {
+        let activityIndicator = MBProgressHUD(view: self.view)
+        activityIndicator.labelText = "Loading"
+        self.view.addSubview(activityIndicator)
+        activityIndicator.show(true)
+        
         let user = PFUser.currentUser()!
         self.emailTF.text = user.email
         self.nameTF.text = user["full_name"] as? String
         self.dormBuildingTF.text = user["dorm_building"] as? String
         self.roomNumberTF.text = user["room_number"] as? String
         self.phoneTF.text = user["phone"] as? String
+        Customer.getStripeCustomerInfo() { customer in
+            self.stripeCustomer = customer
+            if self.stripeCustomer?.cardBrand != nil && self.stripeCustomer?.last4 != nil {
+                self.creditCardTF.text = "\(self.stripeCustomer!.cardBrand!) *****\(self.stripeCustomer!.last4!)"
+            }
+            activityIndicator.hide(true)
+        }
     }
     
     

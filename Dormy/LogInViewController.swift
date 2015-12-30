@@ -41,15 +41,24 @@ class LogInViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func loginTapped(sender: AnyObject) {
-        let username = self.emailTF.text!
+        let activityIndicator = MBProgressHUD(view: self.view)
+        activityIndicator.labelText = "Signing In..."
+        self.view.addSubview(activityIndicator)
+        activityIndicator.show(true)
+        
+        let username = self.emailTF.text!.lowercaseString
         let password = self.passwordTF.text!
         PFUser.logInWithUsernameInBackground(username, password: password) {
             (user: PFUser?, error: NSError?) -> Void in
+            activityIndicator.hide(true)
             if user != nil {
                 self.presentMainView()
             } else {
                 if let error = error {
                     print(error)
+                    let alert = UIAlertController(title: error.localizedDescription, message: error.localizedFailureReason, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                 }
             }
         }
