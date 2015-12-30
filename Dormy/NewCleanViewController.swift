@@ -100,6 +100,8 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
         self.navBar.items = [navItem]
         
+        self.specialInstructions.inputAccessoryView = self.getKeyboardAccessoryWithTitle("Done", selector: Selector("hideKeyboard"))
+        
         // Do any additional setup after loading the view.
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = UIDatePickerMode.Date

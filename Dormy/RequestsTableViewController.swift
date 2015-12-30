@@ -40,7 +40,9 @@ class RequestsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.refreshControl?.beginRefreshing()
         self.loadJobs() { void in
+            self.refreshControl?.endRefreshing()
             print("Jobs loaded")
         }
     }
