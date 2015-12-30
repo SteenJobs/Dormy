@@ -18,7 +18,6 @@ class RequestsTableViewController: UITableViewController {
 
         // Set up a refresh control, call reload to start things up
         refreshControl = UIRefreshControl()
-        refreshControl?.tintColor = UIColor.whiteColor()
         refreshControl?.addTarget(self, action: "reload", forControlEvents: .ValueChanged)
         
         //self.loadJobs()
@@ -39,6 +38,9 @@ class RequestsTableViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        refreshControl?.tintColor = UIColor.whiteColor()
+        self.tableView.contentOffset = CGPointMake(0, -self.refreshControl!.frame.size.height)
         
         self.refreshControl?.beginRefreshing()
         self.loadJobs() { void in

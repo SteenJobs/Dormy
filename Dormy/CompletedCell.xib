@@ -18,7 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CompletedTableViewCell" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="CompletedTableViewCell" rowHeight="161" id="kta-Ra-Bj4" customClass="CompletedTableViewCell" customModule="Dormy" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CompletedTableViewCell" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="CompletedTableViewCell" rowHeight="161" id="kta-Ra-Bj4" customClass="CompletedTableViewCell" customModule="Dormy" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="462" height="151.5"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kta-Ra-Bj4" id="IQx-aJ-nhG">
