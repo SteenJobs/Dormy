@@ -14,7 +14,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var buttonView: UIView!
     var pageVC: WelcomePageViewController!
-    var mainVC: RequestsViewController?
+    var mainVC: MainNavController?
     
     @IBAction func signupButton(sender: AnyObject) {
         

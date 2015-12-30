@@ -39,7 +39,8 @@ class RequestsViewController: UIViewController {
     }
     
     func goToProfile() {
-        
+        let profileVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        self.presentViewController(profileVC, animated: true, completion: nil)
     }
 
     /*

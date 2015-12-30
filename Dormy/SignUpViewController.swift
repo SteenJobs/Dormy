@@ -82,7 +82,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     //TODO: Notify user that email verification has been sent
                     let alert = UIAlertController(title: "Thank you for registering with Dormy!", message: "A verification email will be sent to the address you provided. Once you've verified your account you will be able to start booking jobs.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: { void in
-                        let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RequestsViewController") as! RequestsViewController
+                        let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
                        
                         let nav = self.navigationController! as! RootNavController
                         

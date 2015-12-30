@@ -41,10 +41,22 @@ class LogInViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func loginTapped(sender: AnyObject) {
+        let username = self.emailTF.text!
+        let password = self.passwordTF.text!
+        PFUser.logInWithUsernameInBackground(username, password: password) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if user != nil {
+                self.presentMainView()
+            } else {
+                if let error = error {
+                    print(error)
+                }
+            }
+        }
     }
     
     func presentMainView() {
-        let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RequestsViewController") as! RequestsViewController
+        let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
         
         let root = self.parentDelegate as! RootViewController
         root.mainVC = requestsVC
