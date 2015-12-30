@@ -56,12 +56,15 @@ class Customer {
                 let charge = PFObject(className: "Charge")
                 charge["charge_id"] = chargeID
                 charge["user"] = PFUser.currentUser()!
+                charge["job"] = job
                 charge.saveInBackgroundWithBlock() { success, error in
                     if let error = error {
                         print(error)
                         completionHandler(succeeded: false)
                         return
                     }
+                    job.charge = charge
+                    job.saveInBackground()
                     completionHandler(succeeded: true)
                     return
                 }

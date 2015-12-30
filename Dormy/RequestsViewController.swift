@@ -29,7 +29,7 @@ class RequestsViewController: UIViewController {
         navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navBar.shadowImage = UIImage()
         navBar.tintColor = UIColor.whiteColor()
-        navBar.translucent = false
+        navBar.translucent = true
         navBar.barTintColor = UIColor(rgba: "#0f386b")
     }
 

@@ -276,19 +276,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dormy-main-logo" translatesAutoresizingMaskIntoConstraints="NO" id="5Qf-Ob-pvo">
-                                <rect key="frame" x="20" y="72" width="560" height="205"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5Qf-Ob-pvo" secondAttribute="height" multiplier="172:63" id="XaK-vx-ur3"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="407" id="YIS-7h-71F"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="YIS-7h-71F"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bf-63-km4">
                                 <rect key="frame" x="0.0" y="651" width="600" height="149"/>
                                 <animations/>
@@ -300,27 +287,40 @@
                                     <segue destination="poY-Zv-hGz" kind="presentation" id="YNt-JY-krt"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="requests-title" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-PH-MPv">
-                                <rect key="frame" x="0.0" y="285" width="600" height="60"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="oWi-PH-MPv" secondAttribute="height" multiplier="10:1" id="Zwt-4z-hPf"/>
-                                </constraints>
-                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brh-z2-BnS">
-                                <rect key="frame" x="20" y="353" width="560" height="290"/>
+                                <rect key="frame" x="20" y="309" width="560" height="334"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="ja2-of-SOw" kind="embed" id="v3p-mP-Tj2"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dormy-main-logo" translatesAutoresizingMaskIntoConstraints="NO" id="5Qf-Ob-pvo">
+                                <rect key="frame" x="20" y="28" width="560" height="205"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5Qf-Ob-pvo" secondAttribute="height" multiplier="172:63" id="XaK-vx-ur3"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="407" id="YIS-7h-71F"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YIS-7h-71F"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="requests-title" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-PH-MPv">
+                                <rect key="frame" x="0.0" y="241" width="600" height="60"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oWi-PH-MPv" secondAttribute="height" multiplier="10:1" id="Zwt-4z-hPf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.043137254901960784" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Brh-z2-BnS" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" constant="20" id="0fs-Sl-cVN"/>
                             <constraint firstAttribute="trailing" secondItem="Brh-z2-BnS" secondAttribute="trailing" constant="20" id="1gz-BX-7PP"/>
-                            <constraint firstItem="5Qf-Ob-pvo" firstAttribute="top" secondItem="u75-01-XVc" secondAttribute="bottom" constant="8" id="1nS-BN-TQI"/>
+                            <constraint firstItem="5Qf-Ob-pvo" firstAttribute="top" secondItem="u75-01-XVc" secondAttribute="bottom" constant="-36" id="1nS-BN-TQI"/>
                             <constraint firstItem="4Bf-63-km4" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" id="1vy-Y7-K8i"/>
                             <constraint firstItem="4Bf-63-km4" firstAttribute="top" secondItem="Brh-z2-BnS" secondAttribute="bottom" constant="8" id="3D7-EE-Yjm"/>
                             <constraint firstItem="5Qf-Ob-pvo" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" constant="20" id="7HD-rs-Y90"/>
@@ -827,7 +827,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="RequestsTableViewController" id="ja2-of-SOw" customClass="RequestsTableViewController" customModule="Dormy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3iH-lU-wWP">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="290"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="334"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.043137254901960784" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
