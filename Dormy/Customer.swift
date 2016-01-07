@@ -20,7 +20,7 @@ class Customer {
         self.customerID = customerID
     }
     
-    class func getStripeCustomerInfo(completionHandler: (customer: Customer?) -> ()) {
+    class func getStripeCustomerInfo(completionHandler: (customer: Customer?, error: NSError?) -> ()) {
         PFCloud.callFunctionInBackground("get_customer", withParameters: nil) { (response: AnyObject?, error: NSError?) -> Void in
             if let dict = response as? NSDictionary {
                 let customerID = dict["customer_id"] as! String
@@ -35,10 +35,11 @@ class Customer {
                 if let last4 = dict["last4"] as? String {
                     customer.last4 = last4
                 }
-                completionHandler(customer: customer)
+                completionHandler(customer: customer, error: nil)
             }
             if let error = error {
                 print(error)
+                completionHandler(customer: nil, error: error)
             }
         }
     }

@@ -32,6 +32,12 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.view.addSubview(activityIndicator)
         activityIndicator.show(true)
         
+        if !validateUserInfo() {
+            activityIndicator.hide(true)
+            self.showAlertView("Error", message: "Please fill out all of the required fields in your user profile to place a cleaning request.")
+            return
+        }
+        
         let textFields: [UITextField] = [self.dateField, self.timeField, self.packageTF]
     
         let currentUser = PFUser.currentUser()
@@ -43,6 +49,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         job.status = JobStatus.Waiting.rawValue
         job.package = self.packageDict[packageTF.text!]
         job.instructions = specialInstructions.text
+        job.college = currentUser!["college"] as? PFObject
         
         let isValidated = job.validate()
         if isValidated && self.customerLoaded {
@@ -73,7 +80,13 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
             }
         } else {
             activityIndicator.hide(true)
-            self.showAlertView("Error", message: "Please make sure all required fields are filled out.")
+            if isValidated == true && self.customerLoaded != true {
+                self.showAlertView("Error", message: "Please verify within your profile that your payment information has been submitted successfully.")
+            } else if isValidated != true && self.customerLoaded == true {
+                self.showAlertView("Error", message: "Please make sure all required fields are filled out.")
+            } else {
+                self.showAlertView("Error", message: "Please make sure all required fields are filled out and your payment information has been submitted successfully.")
+            }
             for textField in textFields {
                 if textField.text!.isEmpty {
                     textField.layer.borderWidth = 2.0
@@ -120,9 +133,15 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.packageTF.delegate = self
         self.specialInstructions.delegate = self
         
-        Customer.getStripeCustomerInfo() { customer in
-            self.customer = customer
-            self.customerLoaded = true
+        Customer.getStripeCustomerInfo() { customer, error in
+            if let customer = customer {
+                self.customer = customer
+                self.customerLoaded = true
+            }
+            if let error = error {
+                print(error.localizedDescription)
+                print(error.localizedFailureReason)
+            }
         }
         
     }
@@ -301,6 +320,17 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    
+    func validateUserInfo() -> Bool {
+        let user = PFUser.currentUser()!
+        let keys = user.allKeys
+        for key in keys {
+            if user[key] == nil {
+                return false
+            }
+        }
+        return true
+    }
     
     func getPackageOptions(completionHandler: (success: Bool) -> ()) {
         let query = PFQuery(className: "Package")

@@ -43,14 +43,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if PFUser.currentUser() != nil {
             let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
-            self.window?.rootViewController = mainVC
+            //self.window?.rootViewController = mainVC
+            let root = self.window?.rootViewController as! RootViewController
+            root.mainVC = mainVC
+            root.addChildViewController(mainVC)
+            //???
+            root.view.addSubview(mainVC.view)
+            //root.presentViewController(requestsVC, animated: true, completion: {
+            //  nav.dismissViewControllerAnimated(true, completion: nil)
+            //})
+            //root.pageControl.hidden = true
+            root.mainVC!.didMoveToParentViewController(root)
+            //root.pageVC!.removeFromParentViewController()
+            //root.pageVC = nil
         } else {
-            let mainVC = storyboard.instantiateViewControllerWithIdentifier("RootViewController") as! RootViewController
-            self.window?.rootViewController = mainVC
+            //let mainVC = storyboard.instantiateViewControllerWithIdentifier("RootViewController") as! RootViewController
+            //self.window?.rootViewController = mainVC
         }
+        */
+
         
         return true
     }

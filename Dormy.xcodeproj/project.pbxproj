@@ -25,6 +25,7 @@
 		D089BD501C347379002298DD /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; };
 		D089BD511C34768C002298DD /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; };
 		D089BD521C34768C002298DD /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D089BD551C34A210002298DD /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089BD541C34A210002298DD /* CreditCardView.swift */; };
 		D095E2E41C33143800240BD6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2E31C33143800240BD6 /* LogInViewController.swift */; };
 		D095E2EE1C33341400240BD6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */; };
 		D095E2EF1C33341400240BD6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */; };
@@ -114,6 +115,7 @@
 		D0349C6D1C05395700759577 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		D0349C6F1C056CF600759577 /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		D089BD4F1C347378002298DD /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
+		D089BD541C34A210002298DD /* CreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		D095E2E31C33143800240BD6 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				D0A02B991C05728F0033D20C /* CompletedTableViewCell.swift */,
 				D0A02BB41C058D0C0033D20C /* Job.swift */,
 				D095E2F71C33BB7800240BD6 /* Customer.swift */,
+				D089BD541C34A210002298DD /* CreditCardView.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */,
 				D0BACD741BFEA30F004C792C /* Rule.swift in Sources */,
 				D0A02BBA1C05946D0033D20C /* NewCleanViewController.swift in Sources */,
+				D089BD551C34A210002298DD /* CreditCardView.swift in Sources */,
 				D095E2F81C33BB7800240BD6 /* Customer.swift in Sources */,
 				D0BACD6A1BFEA30F004C792C /* ConfirmRule.swift in Sources */,
 				D0BACD681BFEA30F004C792C /* Validator.swift in Sources */,

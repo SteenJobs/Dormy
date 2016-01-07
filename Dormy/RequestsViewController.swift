@@ -10,6 +10,8 @@ import UIKit
 
 class RequestsViewController: UIViewController {
 
+    @IBOutlet weak var getCleanButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

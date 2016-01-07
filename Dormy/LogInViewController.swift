@@ -69,13 +69,17 @@ class LogInViewController: UIViewController, UINavigationBarDelegate {
         
         let root = self.parentDelegate as! RootViewController
         root.mainVC = requestsVC
+        //root.presentViewController(requestsVC, animated: true, completion: {
+          //  self.dismissViewControllerAnimated(true, completion: nil)
+        //})
         root.addChildViewController(requestsVC)
         //???
         root.view.addSubview(requestsVC.view)
         root.pageControl.hidden = true
         root.mainVC!.didMoveToParentViewController(root)
         self.dismissViewControllerAnimated(true, completion: nil)
-        root.pageVC.removeFromParentViewController()
+        root.pageVC!.removeFromParentViewController()
+        root.pageVC = nil
     }
     
     override func viewDidLoad() {

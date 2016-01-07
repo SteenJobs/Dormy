@@ -36,6 +36,8 @@
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
+            <string>LucidaGrande</string>
+            <string>LucidaGrande</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -349,6 +351,9 @@
                     <navigationItem key="navigationItem" id="890-PW-wbL"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="getCleanButton" destination="4Bf-63-km4" id="pb2-Qf-ZVI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ma-PV-tft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -363,17 +368,17 @@
                         <viewControllerLayoutGuide type="bottom" id="Yuu-6X-dZG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rJG-XT-LDr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBz-hr-MJv">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="780"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DW8-0h-26O">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="780"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9FX-y2-Cho">
-                                                <rect key="frame" x="20" y="128.5" width="560" height="30"/>
+                                                <rect key="frame" x="20" y="138" width="560" height="30"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.90588235294117647" blue="0.10980392156862745" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -384,29 +389,28 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVg-FQ-kes">
-                                                <rect key="frame" x="20" y="99" width="77.5" height="29.5"/>
+                                                <rect key="frame" x="20" y="109" width="77.5" height="29.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="25"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRy-HZ-2zD">
-                                                <rect key="frame" x="20" y="406" width="560" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRy-HZ-2zD">
+                                                <rect key="frame" x="20" y="508.5" width="560" height="30"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.97254901959999995" green="0.90588235289999997" blue="0.10980392160000001" alpha="0.5" colorSpace="calibratedRGB"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cT0-pd-nKF">
-                                                <rect key="frame" x="20" y="376.5" width="179.5" height="29.5"/>
+                                                <rect key="frame" x="20" y="478.5" width="179.5" height="29.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="25"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxO-iZ-g2D">
-                                                <rect key="frame" x="20" y="498.5" width="560" height="30"/>
+                                                <rect key="frame" x="20" y="600.5" width="560" height="30"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.97254901959999995" green="0.90588235289999997" blue="0.10980392160000001" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -414,29 +418,29 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofn-7x-8aD">
-                                                <rect key="frame" x="20" y="469" width="187.5" height="29.5"/>
+                                                <rect key="frame" x="20" y="571.5" width="187.5" height="29.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="25"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9T-Ld-dge">
-                                                <rect key="frame" x="20" y="591" width="560" height="30"/>
+                                                <rect key="frame" x="20" y="693.5" width="560" height="30"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.97254901959999995" green="0.90588235289999997" blue="0.10980392160000001" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHH-Ci-kku">
-                                                <rect key="frame" x="20" y="561.5" width="147" height="29.5"/>
+                                                <rect key="frame" x="20" y="663.5" width="147" height="29.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="25"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxU-yF-rOj">
-                                                <rect key="frame" x="20" y="221" width="560" height="30"/>
+                                                <rect key="frame" x="20" y="323.5" width="560" height="30"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.97254901959999995" green="0.90588235289999997" blue="0.10980392160000001" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -444,48 +448,111 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dorm Building:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-m1-n2a">
-                                                <rect key="frame" x="20" y="191.5" width="182" height="29.5"/>
+                                                <rect key="frame" x="20" y="293.5" width="182" height="29.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="25"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahe-u3-jbB">
-                                                <rect key="frame" x="20" y="284" width="183" height="29.5"/>
+                                                <rect key="frame" x="20" y="386.5" width="183" height="29.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="25"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efg-Ly-XSc">
-                                                <rect key="frame" x="20" y="313.5" width="560" height="30"/>
+                                                <rect key="frame" x="20" y="415.5" width="560" height="30"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.97254901959999995" green="0.90588235289999997" blue="0.10980392160000001" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODC-UD-AZk">
+                                                <rect key="frame" x="553" y="695.5" width="26" height="26"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ODC-UD-AZk" secondAttribute="height" multiplier="1:1" id="6tf-Bw-TXa"/>
+                                                    <constraint firstAttribute="width" secondItem="ODC-UD-AZk" secondAttribute="height" multiplier="61:70" constant="12.857142857142858" id="r2v-RE-xvz"/>
+                                                </constraints>
+                                                <state key="normal" title="" image="change-cc"/>
+                                                <state key="selected" image="change-cc-selected"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="r2v-RE-xvz"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="changeButtonTapped:" destination="x5p-GC-QF0" eventType="touchUpInside" id="mR2-Oe-fS5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcX-0T-CJB">
+                                                <rect key="frame" x="186" y="54" width="228" height="40"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="lcX-0T-CJB" secondAttribute="height" multiplier="57:10" id="1XY-Tc-jGg"/>
+                                                </constraints>
+                                                <state key="normal" image="logout-button"/>
+                                                <connections>
+                                                    <action selector="logoutButtonTapped:" destination="x5p-GC-QF0" eventType="touchUpInside" id="e6e-ET-cjv"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Db9-QZ-MrH">
+                                                <rect key="frame" x="20" y="230.5" width="560" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.97254901959999995" green="0.90588235289999997" blue="0.10980392160000001" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="pBo-RA-oXJ"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="30"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="pBo-RA-oXJ"/>
+                                                    </mask>
+                                                </variation>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="College:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebB-dB-BIi">
+                                                <rect key="frame" x="20" y="201" width="98.5" height="29.5"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="25"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="eRy-HZ-2zD" firstAttribute="top" secondItem="cT0-pd-nKF" secondAttribute="bottom" id="0wQ-Pr-RBd"/>
                                             <constraint firstItem="eRy-HZ-2zD" firstAttribute="trailing" secondItem="9FX-y2-Cho" secondAttribute="trailing" id="1Mc-KN-VIl"/>
+                                            <constraint firstItem="ODC-UD-AZk" firstAttribute="trailing" secondItem="p9T-Ld-dge" secondAttribute="trailing" constant="-1" id="1j4-rq-nah"/>
+                                            <constraint firstItem="Db9-QZ-MrH" firstAttribute="leading" secondItem="ebB-dB-BIi" secondAttribute="leading" id="268-eG-nz9"/>
                                             <constraint firstItem="MxO-iZ-g2D" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="3qq-EF-7UY"/>
                                             <constraint firstItem="efg-Ly-XSc" firstAttribute="height" secondItem="9FX-y2-Cho" secondAttribute="height" id="7kx-ij-eFA"/>
                                             <constraint firstItem="eRy-HZ-2zD" firstAttribute="leading" secondItem="cT0-pd-nKF" secondAttribute="leading" id="8KG-Vo-UG2"/>
                                             <constraint firstItem="PVg-FQ-kes" firstAttribute="leading" secondItem="DW8-0h-26O" secondAttribute="leading" constant="20" id="8b0-Ls-coj"/>
                                             <constraint firstItem="MxO-iZ-g2D" firstAttribute="top" secondItem="Ofn-7x-8aD" secondAttribute="bottom" id="8nR-tg-G4Y"/>
                                             <constraint firstItem="MxO-iZ-g2D" firstAttribute="leading" secondItem="Ofn-7x-8aD" secondAttribute="leading" id="8uo-8n-VQK"/>
+                                            <constraint firstItem="Db9-QZ-MrH" firstAttribute="trailing" secondItem="9FX-y2-Cho" secondAttribute="trailing" id="B8h-NA-CWZ"/>
                                             <constraint firstAttribute="trailing" secondItem="9FX-y2-Cho" secondAttribute="trailing" constant="20" id="FgS-ip-GFl"/>
+                                            <constraint firstItem="ODC-UD-AZk" firstAttribute="bottom" secondItem="p9T-Ld-dge" secondAttribute="bottom" constant="-2" id="Ge5-wP-goN"/>
                                             <constraint firstItem="Ahe-u3-jbB" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="HJ6-8T-qJq"/>
                                             <constraint firstItem="bHH-Ci-kku" firstAttribute="top" secondItem="MxO-iZ-g2D" secondAttribute="bottom" constant="33" id="Hi8-Tn-rlP"/>
+                                            <constraint firstItem="ebB-dB-BIi" firstAttribute="top" secondItem="9FX-y2-Cho" secondAttribute="bottom" constant="33" id="I0v-sT-3z5"/>
+                                            <constraint firstItem="Lhu-m1-n2a" firstAttribute="top" secondItem="Db9-QZ-MrH" secondAttribute="bottom" constant="33" id="KaV-g9-O38"/>
                                             <constraint firstItem="9FX-y2-Cho" firstAttribute="leading" secondItem="DW8-0h-26O" secondAttribute="leading" constant="20" id="LEC-tB-q95"/>
                                             <constraint firstItem="eRy-HZ-2zD" firstAttribute="height" secondItem="9FX-y2-Cho" secondAttribute="height" id="M3V-5k-DYv"/>
                                             <constraint firstItem="p9T-Ld-dge" firstAttribute="width" secondItem="9FX-y2-Cho" secondAttribute="width" id="MMV-Xx-EaL"/>
+                                            <constraint firstItem="lcX-0T-CJB" firstAttribute="top" secondItem="DW8-0h-26O" secondAttribute="top" constant="54" id="MXo-zR-BXj"/>
                                             <constraint firstItem="uxU-yF-rOj" firstAttribute="width" secondItem="9FX-y2-Cho" secondAttribute="width" id="N7F-cl-rp3"/>
+                                            <constraint firstItem="PVg-FQ-kes" firstAttribute="top" secondItem="lcX-0T-CJB" secondAttribute="bottom" constant="15" id="O4U-bg-nth"/>
                                             <constraint firstItem="MxO-iZ-g2D" firstAttribute="height" secondItem="9FX-y2-Cho" secondAttribute="height" id="P0C-Xr-Jbw"/>
+                                            <constraint firstItem="Db9-QZ-MrH" firstAttribute="height" secondItem="9FX-y2-Cho" secondAttribute="height" id="PoF-Gn-rP1"/>
                                             <constraint firstItem="cT0-pd-nKF" firstAttribute="top" secondItem="efg-Ly-XSc" secondAttribute="bottom" constant="33" id="SjT-TI-86f"/>
+                                            <constraint firstItem="lcX-0T-CJB" firstAttribute="centerX" secondItem="DW8-0h-26O" secondAttribute="centerX" id="Srx-n0-NXS"/>
                                             <constraint firstItem="p9T-Ld-dge" firstAttribute="height" secondItem="9FX-y2-Cho" secondAttribute="height" id="TJz-9h-sVi"/>
                                             <constraint firstAttribute="height" constant="744" id="TPE-np-bd6"/>
                                             <constraint firstItem="efg-Ly-XSc" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="VhP-np-Mf2"/>
@@ -494,6 +561,7 @@
                                             <constraint firstItem="efg-Ly-XSc" firstAttribute="trailing" secondItem="9FX-y2-Cho" secondAttribute="trailing" id="WYx-VF-3Hi"/>
                                             <constraint firstItem="p9T-Ld-dge" firstAttribute="top" secondItem="bHH-Ci-kku" secondAttribute="bottom" id="Wtj-AY-IF8"/>
                                             <constraint firstItem="9FX-y2-Cho" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="Y1A-3Z-bZO"/>
+                                            <constraint firstItem="ODC-UD-AZk" firstAttribute="leading" secondItem="p9T-Ld-dge" secondAttribute="trailing" constant="-27" id="YwA-aY-n8g"/>
                                             <constraint firstItem="efg-Ly-XSc" firstAttribute="width" secondItem="9FX-y2-Cho" secondAttribute="width" id="bDb-km-4fJ"/>
                                             <constraint firstItem="efg-Ly-XSc" firstAttribute="top" secondItem="Ahe-u3-jbB" secondAttribute="bottom" id="bz3-JH-RaS"/>
                                             <constraint firstItem="MxO-iZ-g2D" firstAttribute="top" secondItem="Ofn-7x-8aD" secondAttribute="bottom" id="cOg-ek-Chg"/>
@@ -503,16 +571,19 @@
                                             <constraint firstItem="Lhu-m1-n2a" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="d52-1s-5Tw"/>
                                             <constraint firstItem="cT0-pd-nKF" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="dLH-gB-J2u"/>
                                             <constraint firstItem="9FX-y2-Cho" firstAttribute="top" secondItem="PVg-FQ-kes" secondAttribute="bottom" id="dxl-EL-4sk"/>
-                                            <constraint firstItem="PVg-FQ-kes" firstAttribute="top" secondItem="DW8-0h-26O" secondAttribute="top" constant="99" id="e8n-RY-YJE"/>
                                             <constraint firstItem="p9T-Ld-dge" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="fLF-mL-Zmz"/>
                                             <constraint firstItem="eRy-HZ-2zD" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="fo0-3z-xSe"/>
                                             <constraint firstItem="eRy-HZ-2zD" firstAttribute="top" secondItem="cT0-pd-nKF" secondAttribute="bottom" id="gW9-XP-rOJ"/>
                                             <constraint firstItem="Ofn-7x-8aD" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="hoZ-n5-sVx"/>
+                                            <constraint firstItem="Db9-QZ-MrH" firstAttribute="top" secondItem="ebB-dB-BIi" secondAttribute="bottom" id="i84-Ak-EXV"/>
                                             <constraint firstItem="bHH-Ci-kku" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="iZa-Qc-i0o"/>
                                             <constraint firstItem="uxU-yF-rOj" firstAttribute="height" secondItem="9FX-y2-Cho" secondAttribute="height" id="jeq-wW-Ynw"/>
+                                            <constraint firstItem="ODC-UD-AZk" firstAttribute="top" secondItem="p9T-Ld-dge" secondAttribute="top" constant="2" id="joG-bC-TDR"/>
                                             <constraint firstItem="p9T-Ld-dge" firstAttribute="trailing" secondItem="9FX-y2-Cho" secondAttribute="trailing" id="kde-dY-xC9"/>
                                             <constraint firstItem="uxU-yF-rOj" firstAttribute="leading" secondItem="PVg-FQ-kes" secondAttribute="leading" id="oZD-2N-cO1"/>
+                                            <constraint firstItem="Db9-QZ-MrH" firstAttribute="leading" secondItem="9FX-y2-Cho" secondAttribute="leading" id="pNE-SD-jhk"/>
                                             <constraint firstItem="p9T-Ld-dge" firstAttribute="leading" secondItem="bHH-Ci-kku" secondAttribute="leading" id="sM8-D4-iO1"/>
+                                            <constraint firstItem="Db9-QZ-MrH" firstAttribute="width" secondItem="9FX-y2-Cho" secondAttribute="width" id="sqQ-X2-aAh"/>
                                             <constraint firstItem="Lhu-m1-n2a" firstAttribute="top" secondItem="9FX-y2-Cho" secondAttribute="bottom" constant="33" id="tQg-dW-5ti"/>
                                             <constraint firstItem="uxU-yF-rOj" firstAttribute="top" secondItem="Lhu-m1-n2a" secondAttribute="bottom" id="uhN-tH-vHU"/>
                                             <constraint firstAttribute="bottom" secondItem="p9T-Ld-dge" secondAttribute="bottom" constant="13.5" id="vOe-HQ-f3v"/>
@@ -527,6 +598,7 @@
                                                 <exclude reference="TPE-np-bd6"/>
                                                 <exclude reference="8b0-Ls-coj"/>
                                                 <exclude reference="w2y-oZ-U5f"/>
+                                                <exclude reference="tQg-dW-5ti"/>
                                                 <exclude reference="W1w-82-h66"/>
                                                 <exclude reference="uhN-tH-vHU"/>
                                                 <exclude reference="8KG-Vo-UG2"/>
@@ -536,6 +608,7 @@
                                                 <exclude reference="Wtj-AY-IF8"/>
                                                 <exclude reference="sM8-D4-iO1"/>
                                                 <exclude reference="vOe-HQ-f3v"/>
+                                                <exclude reference="YwA-aY-n8g"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -602,8 +675,12 @@
                             </mask>
                         </variation>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="TFHeight" destination="YY2-hz-ySY" id="PV1-8S-Drx"/>
+                        <outlet property="changeButton" destination="ODC-UD-AZk" id="FBf-Tv-rvs"/>
+                        <outlet property="collegeTF" destination="Db9-QZ-MrH" id="TP8-ZI-d8h"/>
                         <outlet property="contentView" destination="DW8-0h-26O" id="Ugb-6D-5ev"/>
                         <outlet property="creditCardTF" destination="p9T-Ld-dge" id="U5i-z6-97T"/>
                         <outlet property="dormBuildingTF" destination="uxU-yF-rOj" id="kBa-3g-Pda"/>
@@ -1098,10 +1175,13 @@ you want your dorm cleaning.</string>
     </scenes>
     <resources>
         <image name="book-logo" width="114" height="103"/>
+        <image name="change-cc" width="56" height="56"/>
+        <image name="change-cc-selected" width="52" height="52"/>
         <image name="dormy-main-logo" width="688" height="253"/>
         <image name="facebook-login-button" width="621" height="91"/>
         <image name="get-clean-button" width="750" height="186"/>
         <image name="login-button" width="375" height="110"/>
+        <image name="logout-button" width="228" height="40"/>
         <image name="new-clean-title" width="750" height="73"/>
         <image name="request-now-button" width="479" height="86"/>
         <image name="requests-title" width="750" height="73"/>

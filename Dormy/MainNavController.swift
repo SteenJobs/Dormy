@@ -10,6 +10,10 @@ import UIKit
 
 class MainNavController: UINavigationController {
 
+    deinit {
+        print("MNC is deallocated")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

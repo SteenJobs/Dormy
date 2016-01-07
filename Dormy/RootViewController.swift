@@ -13,7 +13,7 @@ class RootViewController: UIViewController {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var buttonView: UIView!
-    var pageVC: WelcomePageViewController!
+    var pageVC: WelcomePageViewController?
     var mainVC: MainNavController?
     
     @IBAction func signupButton(sender: AnyObject) {
@@ -27,23 +27,39 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
-        pageVC.pageControl = self.pageControl
-        self.addChildViewController(pageVC)
-        //???
-        self.view.addSubview(pageVC.view)
-        self.pageVC.didMoveToParentViewController(self)
+        if PFUser.currentUser() == nil {
+            pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
+            pageVC?.pageControl = self.pageControl
+            self.addChildViewController(pageVC!)
+            //???
+            self.view.addSubview(pageVC!.view)
+            self.pageVC!.didMoveToParentViewController(self)
+        } else {
+            mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
+            //self.window?.rootViewController = mainVC
+            self.addChildViewController(mainVC!)
+            //???
+            self.view.addSubview(mainVC!.view)
+            //root.presentViewController(requestsVC, animated: true, completion: {
+            //  nav.dismissViewControllerAnimated(true, completion: nil)
+            //})
+            //root.pageControl.hidden = true
+            self.mainVC!.didMoveToParentViewController(self)
+            //root.pageVC!.removeFromParentViewController()
+            //root.pageVC = nil
+        }
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //pageVC.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - self.buttonView.frame.height)
+        
+        pageVC?.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - self.buttonView.frame.height)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        pageVC.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - self.buttonView.frame.height)
+        pageVC?.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - self.buttonView.frame.height)
         self.view.bringSubviewToFront(self.pageControl)
     }
     

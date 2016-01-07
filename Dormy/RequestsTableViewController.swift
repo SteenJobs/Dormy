@@ -39,6 +39,8 @@ class RequestsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        loadNewestUserData()
+        
         refreshControl?.tintColor = UIColor.whiteColor()
         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl!.frame.size.height)
         
@@ -55,9 +57,82 @@ class RequestsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    func setEmailVerificationAlert(user: PFUser) {
+        if user["emailVerified"]?.boolValue != true {
+            let imageView = UIImageView(image: UIImage(named: "verification-alert"))
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
+            //imageView.backgroundColor = UIColor(rgba: "#F8F8F8")
+            //if self.header != nil {
+                //imageView.frame = CGRectMake(0, self.header!.frame.maxY, collectionView.frame.size.width, imageView.image!.size.height)
+            //} else {
+            var imageHeight: CGFloat?
+            if imageView.image!.size.height < tableView.frame.size.height {
+                imageHeight = imageView.image!.size.height
+            } else {
+                imageHeight = tableView.frame.size.height - 10
+            }
+            
+            imageView.frame = CGRectMake(0, 20, tableView.frame.size.width, imageHeight!)
+            //}
+            tableView.scrollEnabled = false
+            let requestsVC = self.parentViewController as! RequestsViewController
+            requestsVC.getCleanButton.enabled = false
+            tableView.backgroundView = UIView()
+            //collectionView.backgroundView?.backgroundColor = UIColor(rgba: "#F8F8F8")
+            tableView.backgroundView?.addSubview(imageView)
+        } else {
+            let requestsVC = self.parentViewController as! RequestsViewController
+            requestsVC.getCleanButton.enabled = true
+            tableView.scrollEnabled = true
+            tableView.backgroundView = nil
+        }
+        self.tableView.reloadData()
+    }
+    
+    func loadNewestUserData() {
+        let user = PFUser.currentUser()!
+        if !user.dataAvailable || user["emailVerified"]?.boolValue != true {
+            user.fetchInBackgroundWithBlock() { success, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    print(error.localizedFailureReason)
+                }
+                if let success = success {
+                    let updatedUser = success as! PFUser
+                    self.setEmailVerificationAlert(updatedUser)
+                }
+            }
+        } else {
+            self.setEmailVerificationAlert(user)
+        }
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.jobs.count
+        let user = PFUser.currentUser()!
+        if user["emailVerified"]?.boolValue != true {
+            return 0
+        } else {
+            if self.jobs.count == 0 {
+                let imageView = UIImageView(image: UIImage(named: "empty-alert"))
+                imageView.contentMode = UIViewContentMode.ScaleAspectFit
+                var imageHeight: CGFloat?
+                if imageView.image!.size.height < tableView.frame.size.height {
+                    imageHeight = imageView.image!.size.height
+                } else {
+                    imageHeight = tableView.frame.size.height - 10
+                }
+                imageView.frame = CGRectMake(0, 20, tableView.frame.size.width, imageHeight!)
+                tableView.scrollEnabled = false
+                let requestsVC = self.parentViewController as! RequestsViewController
+                tableView.backgroundView = UIView()
+                tableView.backgroundView?.addSubview(imageView)
+            } else {
+                tableView.scrollEnabled = true
+                tableView.backgroundView = nil
+            }
+            return self.jobs.count
+        }
     }
 
     

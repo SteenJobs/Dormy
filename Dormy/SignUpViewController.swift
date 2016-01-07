@@ -91,12 +91,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         root.addChildViewController(requestsVC)
                         //???
                         root.view.addSubview(requestsVC.view)
-                        
+                        //root.presentViewController(requestsVC, animated: true, completion: {
+                          //  nav.dismissViewControllerAnimated(true, completion: nil)
+                        //})
                         root.pageControl.hidden = true
                         root.mainVC!.didMoveToParentViewController(root)
                         nav.dismissViewControllerAnimated(true, completion: nil)
-                        root.pageVC.removeFromParentViewController()
-                        //self.dismissViewControllerAnimated(false, completion: nil)
+                        root.pageVC!.removeFromParentViewController()
+                        
                         //self.presentViewController(requestsVC, animated: true, completion: nil)
                     }))
                     
