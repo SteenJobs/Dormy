@@ -16,7 +16,6 @@
 		D00833A81BF409AD00BB81D9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A71BF409AD00BB81D9 /* CoreLocation.framework */; };
 		D00833AA1BF409B200BB81D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A91BF409B200BB81D9 /* QuartzCore.framework */; };
 		D00833AC1BF409C300BB81D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833AB1BF409C300BB81D9 /* Security.framework */; };
-		D00833AE1BF409F000BB81D9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833AD1BF409F000BB81D9 /* StoreKit.framework */; };
 		D00833B01BF409F700BB81D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */; };
 		D00833B21BF40A0100BB81D9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B11BF40A0100BB81D9 /* libz.tbd */; };
 		D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */; };
@@ -108,7 +107,6 @@
 		D00833A71BF409AD00BB81D9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D00833A91BF409B200BB81D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D00833AB1BF409C300BB81D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		D00833AD1BF409F000BB81D9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D00833B11BF40A0100BB81D9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -191,7 +189,6 @@
 				D095E2EF1C33341400240BD6 /* FBSDKLoginKit.framework in Frameworks */,
 				D00833B21BF40A0100BB81D9 /* libz.tbd in Frameworks */,
 				D00833B01BF409F700BB81D9 /* SystemConfiguration.framework in Frameworks */,
-				D00833AE1BF409F000BB81D9 /* StoreKit.framework in Frameworks */,
 				D095E2F61C33B4D100240BD6 /* Parse.framework in Frameworks */,
 				D00833AC1BF409C300BB81D9 /* Security.framework in Frameworks */,
 				D00833AA1BF409B200BB81D9 /* QuartzCore.framework in Frameworks */,
@@ -221,7 +218,6 @@
 				D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */,
 				D00299A41C012209001A6D00 /* Stripe.framework */,
 				D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */,
-				D00833AD1BF409F000BB81D9 /* StoreKit.framework */,
 				D00833AB1BF409C300BB81D9 /* Security.framework */,
 				D00833A91BF409B200BB81D9 /* QuartzCore.framework */,
 				D00833A71BF409AD00BB81D9 /* CoreLocation.framework */,
@@ -513,6 +509,12 @@
 				TargetAttributes = {
 					D0D144F41BEFFFD5002DEBF9 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = HS7PR5FH22;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -646,7 +648,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: aron harkham (WBBX266M83)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -692,7 +694,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aron harkham (HS7PR5FH22)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -718,6 +720,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: aron harkham (WBBX266M83)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dormy",
@@ -729,6 +733,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dormy.Dormy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -736,6 +741,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aron harkham (HS7PR5FH22)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dormy",
@@ -747,6 +754,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dormy.Dormy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
