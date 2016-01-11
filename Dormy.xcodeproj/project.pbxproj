@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00299A61C014FF9001A6D00 /* Expiration.swift */; };
-		D008339E1BF4095800BB81D9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D008339C1BF4095800BB81D9 /* Bolts.framework */; };
 		D00833A21BF4099800BB81D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A11BF4099800BB81D9 /* AudioToolbox.framework */; };
 		D00833A41BF409A000BB81D9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A31BF409A000BB81D9 /* CFNetwork.framework */; };
 		D00833A61BF409A600BB81D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A51BF409A600BB81D9 /* CoreGraphics.framework */; };
@@ -25,12 +24,7 @@
 		D089BD521C34768C002298DD /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D089BD551C34A210002298DD /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089BD541C34A210002298DD /* CreditCardView.swift */; };
 		D095E2E41C33143800240BD6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2E31C33143800240BD6 /* LogInViewController.swift */; };
-		D095E2EE1C33341400240BD6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */; };
-		D095E2EF1C33341400240BD6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */; };
-		D095E2F01C33341400240BD6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */; };
-		D095E2F21C3335CA00240BD6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2F11C3335CA00240BD6 /* ParseFacebookUtilsV4.framework */; };
 		D095E2F41C33586E00240BD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2F31C33586E00240BD6 /* ProfileViewController.swift */; };
-		D095E2F61C33B4D100240BD6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095E2F51C33B4D100240BD6 /* Parse.framework */; };
 		D095E2F81C33BB7800240BD6 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2F71C33BB7800240BD6 /* Customer.swift */; };
 		D095F8951BF11F5E0068B58C /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095F8941BF11F5E0068B58C /* WelcomePageViewController.swift */; };
 		D095F8971BF11F7F0068B58C /* WelcomeContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095F8961BF11F7F0068B58C /* WelcomeContentViewController.swift */; };
@@ -74,6 +68,12 @@
 		D0BACD761BFEA30F004C792C /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD5C1BFEA30F004C792C /* ZipCodeRule.swift */; };
 		D0BB4F1E1C41D5FA00E5E72D /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */; };
 		D0BB4F1F1C41DD6900E5E72D /* Stripe.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D0BB4F2C1C44764200E5E72D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F261C44764200E5E72D /* Bolts.framework */; };
+		D0BB4F2D1C44764200E5E72D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F271C44764200E5E72D /* FBSDKCoreKit.framework */; };
+		D0BB4F2E1C44764200E5E72D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F281C44764200E5E72D /* FBSDKLoginKit.framework */; };
+		D0BB4F2F1C44764200E5E72D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F291C44764200E5E72D /* FBSDKShareKit.framework */; };
+		D0BB4F301C44764200E5E72D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F2A1C44764200E5E72D /* Parse.framework */; };
+		D0BB4F311C44764200E5E72D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F2B1C44764200E5E72D /* ParseFacebookUtilsV4.framework */; };
 		D0D144F91BEFFFD5002DEBF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */; };
 		D0D144FE1BEFFFD5002DEBF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */; };
 		D0D145011BEFFFD5002DEBF9 /* Dormy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0D144FF1BEFFFD5002DEBF9 /* Dormy.xcdatamodeld */; };
@@ -101,7 +101,6 @@
 
 /* Begin PBXFileReference section */
 		D00299A61C014FF9001A6D00 /* Expiration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expiration.swift; sourceTree = "<group>"; };
-		D008339C1BF4095800BB81D9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Dormy/Bolts.framework; sourceTree = "<group>"; };
 		D00833A11BF4099800BB81D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D00833A31BF409A000BB81D9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D00833A51BF409A600BB81D9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,12 +115,7 @@
 		D089BD4F1C347378002298DD /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		D089BD541C34A210002298DD /* CreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		D095E2E31C33143800240BD6 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		D095E2F11C3335CA00240BD6 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		D095E2F31C33586E00240BD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		D095E2F51C33B4D100240BD6 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D095E2F71C33BB7800240BD6 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		D095F8941BF11F5E0068B58C /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		D095F8961BF11F7F0068B58C /* WelcomeContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeContentViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +164,12 @@
 		D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		D0BB4F211C41E6B700E5E72D /* Stripe.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Stripe.framework.dSYM; path = Carthage/Build/iOS/Stripe.framework.dSYM; sourceTree = "<group>"; };
 		D0BB4F221C41E6B700E5E72D /* MBProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MBProgressHUD.framework.dSYM; path = Carthage/Build/iOS/MBProgressHUD.framework.dSYM; sourceTree = "<group>"; };
+		D0BB4F261C44764200E5E72D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		D0BB4F271C44764200E5E72D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D0BB4F281C44764200E5E72D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		D0BB4F291C44764200E5E72D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Carthage/Build/iOS/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		D0BB4F2A1C44764200E5E72D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
+		D0BB4F2B1C44764200E5E72D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = Carthage/Build/iOS/ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		D0D144F51BEFFFD5002DEBF9 /* Dormy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dormy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D144FD1BEFFFD5002DEBF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -189,21 +189,21 @@
 			files = (
 				D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */,
 				D089BD501C347379002298DD /* MBProgressHUD.framework in Frameworks */,
-				D095E2EF1C33341400240BD6 /* FBSDKLoginKit.framework in Frameworks */,
 				D00833B21BF40A0100BB81D9 /* libz.tbd in Frameworks */,
+				D0BB4F2C1C44764200E5E72D /* Bolts.framework in Frameworks */,
+				D0BB4F2D1C44764200E5E72D /* FBSDKCoreKit.framework in Frameworks */,
+				D0BB4F2E1C44764200E5E72D /* FBSDKLoginKit.framework in Frameworks */,
+				D0BB4F2F1C44764200E5E72D /* FBSDKShareKit.framework in Frameworks */,
+				D0BB4F301C44764200E5E72D /* Parse.framework in Frameworks */,
+				D0BB4F311C44764200E5E72D /* ParseFacebookUtilsV4.framework in Frameworks */,
 				D00833B01BF409F700BB81D9 /* SystemConfiguration.framework in Frameworks */,
-				D095E2F61C33B4D100240BD6 /* Parse.framework in Frameworks */,
 				D00833AC1BF409C300BB81D9 /* Security.framework in Frameworks */,
 				D00833AA1BF409B200BB81D9 /* QuartzCore.framework in Frameworks */,
-				D095E2F01C33341400240BD6 /* FBSDKShareKit.framework in Frameworks */,
 				D089BD511C34768C002298DD /* MBProgressHUD.framework in Frameworks */,
 				D00833A81BF409AD00BB81D9 /* CoreLocation.framework in Frameworks */,
 				D00833A61BF409A600BB81D9 /* CoreGraphics.framework in Frameworks */,
 				D00833A41BF409A000BB81D9 /* CFNetwork.framework in Frameworks */,
 				D00833A21BF4099800BB81D9 /* AudioToolbox.framework in Frameworks */,
-				D095E2EE1C33341400240BD6 /* FBSDKCoreKit.framework in Frameworks */,
-				D095E2F21C3335CA00240BD6 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				D008339E1BF4095800BB81D9 /* Bolts.framework in Frameworks */,
 				D0BB4F1E1C41D5FA00E5E72D /* Stripe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,13 +214,14 @@
 		D00833A01BF4097100BB81D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0BB4F261C44764200E5E72D /* Bolts.framework */,
+				D0BB4F271C44764200E5E72D /* FBSDKCoreKit.framework */,
+				D0BB4F281C44764200E5E72D /* FBSDKLoginKit.framework */,
+				D0BB4F291C44764200E5E72D /* FBSDKShareKit.framework */,
+				D0BB4F2A1C44764200E5E72D /* Parse.framework */,
+				D0BB4F2B1C44764200E5E72D /* ParseFacebookUtilsV4.framework */,
 				D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */,
 				D089BD4F1C347378002298DD /* MBProgressHUD.framework */,
-				D095E2F51C33B4D100240BD6 /* Parse.framework */,
-				D095E2F11C3335CA00240BD6 /* ParseFacebookUtilsV4.framework */,
-				D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */,
-				D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */,
-				D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */,
 				D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */,
 				D00833AB1BF409C300BB81D9 /* Security.framework */,
 				D00833A91BF409B200BB81D9 /* QuartzCore.framework */,
@@ -228,7 +229,6 @@
 				D00833A51BF409A600BB81D9 /* CoreGraphics.framework */,
 				D00833A31BF409A000BB81D9 /* CFNetwork.framework */,
 				D00833A11BF4099800BB81D9 /* AudioToolbox.framework */,
-				D008339C1BF4095800BB81D9 /* Bolts.framework */,
 				D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */,
 				D00833B11BF40A0100BB81D9 /* libz.tbd */,
 			);
@@ -575,6 +575,12 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKShareKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Parse.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ParseFacebookUtilsV4.framework",
 			);
 			outputPaths = (
 			);
@@ -680,6 +686,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -727,6 +737,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
