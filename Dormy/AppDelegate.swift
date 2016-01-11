@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 import Parse
 import Bolts
+import Stripe
+import FBSDKCoreKit
+import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,14 +28,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         // Initialize Parse.
+        Job.registerSubclass()
         //TODO: Store in 'Settings' file, which should be added to .gitignore
         Parse.setApplicationId("egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8",
             clientKey: "OERocQgPTWXBYP81XgUqOv9R1mqGtiQumVa03w02")
         
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // Initialize Stripe CC payments
+        Stripe.setDefaultPublishableKey("pk_test_gUqDwP7kxpk4ygGsLmkPaau2")
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        /*
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if PFUser.currentUser() != nil {
+            let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
+            //self.window?.rootViewController = mainVC
+            let root = self.window?.rootViewController as! RootViewController
+            root.mainVC = mainVC
+            root.addChildViewController(mainVC)
+            //???
+            root.view.addSubview(mainVC.view)
+            //root.presentViewController(requestsVC, animated: true, completion: {
+            //  nav.dismissViewControllerAnimated(true, completion: nil)
+            //})
+            //root.pageControl.hidden = true
+            root.mainVC!.didMoveToParentViewController(root)
+            //root.pageVC!.removeFromParentViewController()
+            //root.pageVC = nil
+        } else {
+            //let mainVC = storyboard.instantiateViewControllerWithIdentifier("RootViewController") as! RootViewController
+            //self.window?.rootViewController = mainVC
+        }
+        */
+
+        
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -51,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
