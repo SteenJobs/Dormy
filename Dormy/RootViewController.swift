@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class RootViewController: UIViewController {
 
@@ -14,8 +15,22 @@ class RootViewController: UIViewController {
     @IBOutlet weak var buttonView: UIView!
     var pageVC: WelcomePageViewController!
     
+    @IBAction func signupButton(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func loginButton(sender: AnyObject) {
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            print("Object has been saved.")
+        }
 
         pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
         pageVC.pageControl = self.pageControl
