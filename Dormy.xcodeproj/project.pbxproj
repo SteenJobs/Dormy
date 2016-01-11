@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D00299A51C012209001A6D00 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00299A41C012209001A6D00 /* Stripe.framework */; };
 		D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00299A61C014FF9001A6D00 /* Expiration.swift */; };
 		D008339E1BF4095800BB81D9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D008339C1BF4095800BB81D9 /* Bolts.framework */; };
 		D00833A21BF4099800BB81D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A11BF4099800BB81D9 /* AudioToolbox.framework */; };
@@ -73,6 +72,8 @@
 		D0BACD741BFEA30F004C792C /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD5A1BFEA30F004C792C /* Rule.swift */; };
 		D0BACD751BFEA30F004C792C /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD5B1BFEA30F004C792C /* ValidationRule.swift */; };
 		D0BACD761BFEA30F004C792C /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD5C1BFEA30F004C792C /* ZipCodeRule.swift */; };
+		D0BB4F1E1C41D5FA00E5E72D /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */; };
+		D0BB4F1F1C41DD6900E5E72D /* Stripe.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0D144F91BEFFFD5002DEBF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */; };
 		D0D144FE1BEFFFD5002DEBF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */; };
 		D0D145011BEFFFD5002DEBF9 /* Dormy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0D144FF1BEFFFD5002DEBF9 /* Dormy.xcdatamodeld */; };
@@ -90,6 +91,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D0BB4F1F1C41DD6900E5E72D /* Stripe.framework in Embed Frameworks */,
 				D089BD521C34768C002298DD /* MBProgressHUD.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -98,7 +100,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D00299A41C012209001A6D00 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Dormy/Stripe.framework; sourceTree = "<group>"; };
 		D00299A61C014FF9001A6D00 /* Expiration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expiration.swift; sourceTree = "<group>"; };
 		D008339C1BF4095800BB81D9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Dormy/Bolts.framework; sourceTree = "<group>"; };
 		D00833A11BF4099800BB81D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -166,6 +167,9 @@
 		D0BACD5B1BFEA30F004C792C /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
 		D0BACD5C1BFEA30F004C792C /* ZipCodeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
 		D0BACD5D1BFEA30F004C792C /* SwiftValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
+		D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		D0BB4F211C41E6B700E5E72D /* Stripe.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Stripe.framework.dSYM; path = Carthage/Build/iOS/Stripe.framework.dSYM; sourceTree = "<group>"; };
+		D0BB4F221C41E6B700E5E72D /* MBProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MBProgressHUD.framework.dSYM; path = Carthage/Build/iOS/MBProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		D0D144F51BEFFFD5002DEBF9 /* Dormy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dormy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D144FD1BEFFFD5002DEBF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -184,7 +188,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */,
-				D00299A51C012209001A6D00 /* Stripe.framework in Frameworks */,
 				D089BD501C347379002298DD /* MBProgressHUD.framework in Frameworks */,
 				D095E2EF1C33341400240BD6 /* FBSDKLoginKit.framework in Frameworks */,
 				D00833B21BF40A0100BB81D9 /* libz.tbd in Frameworks */,
@@ -201,6 +204,7 @@
 				D095E2EE1C33341400240BD6 /* FBSDKCoreKit.framework in Frameworks */,
 				D095E2F21C3335CA00240BD6 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				D008339E1BF4095800BB81D9 /* Bolts.framework in Frameworks */,
+				D0BB4F1E1C41D5FA00E5E72D /* Stripe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,13 +214,13 @@
 		D00833A01BF4097100BB81D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0BB4F1D1C41D5FA00E5E72D /* Stripe.framework */,
 				D089BD4F1C347378002298DD /* MBProgressHUD.framework */,
 				D095E2F51C33B4D100240BD6 /* Parse.framework */,
 				D095E2F11C3335CA00240BD6 /* ParseFacebookUtilsV4.framework */,
 				D095E2EB1C33341400240BD6 /* FBSDKCoreKit.framework */,
 				D095E2EC1C33341400240BD6 /* FBSDKLoginKit.framework */,
 				D095E2ED1C33341400240BD6 /* FBSDKShareKit.framework */,
-				D00299A41C012209001A6D00 /* Stripe.framework */,
 				D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */,
 				D00833AB1BF409C300BB81D9 /* Security.framework */,
 				D00833A91BF409B200BB81D9 /* QuartzCore.framework */,
@@ -434,6 +438,8 @@
 		D0D144EC1BEFFFD5002DEBF9 = {
 			isa = PBXGroup;
 			children = (
+				D0BB4F211C41E6B700E5E72D /* Stripe.framework.dSYM */,
+				D0BB4F221C41E6B700E5E72D /* MBProgressHUD.framework.dSYM */,
 				D00833A01BF4097100BB81D9 /* Frameworks */,
 				D0D144F71BEFFFD5002DEBF9 /* Dormy */,
 				D0D144F61BEFFFD5002DEBF9 /* Products */,
@@ -487,6 +493,7 @@
 				D0D144F21BEFFFD5002DEBF9 /* Frameworks */,
 				D0D144F31BEFFFD5002DEBF9 /* Resources */,
 				D089BD531C34768C002298DD /* Embed Frameworks */,
+				D0BB4F251C41F35900E5E72D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -559,6 +566,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D0BB4F251C41F35900E5E72D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0D144F11BEFFFD5002DEBF9 /* Sources */ = {
@@ -648,6 +673,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: aron harkham (WBBX266M83)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: aron harkham (WBBX266M83)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -694,6 +720,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aron harkham (HS7PR5FH22)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aron harkham (HS7PR5FH22)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -721,7 +748,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: aron harkham (WBBX266M83)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: aron harkham (WBBX266M83)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dormy",
@@ -733,7 +760,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dormy.Dormy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8eb6e397-a2df-4fb5-b296-d67f65508202";
 			};
 			name = Debug;
 		};
@@ -742,7 +769,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: aron harkham (HS7PR5FH22)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aron harkham (HS7PR5FH22)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dormy",
@@ -754,7 +781,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dormy.Dormy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8eb6e397-a2df-4fb5-b296-d67f65508202";
 			};
 			name = Release;
 		};
