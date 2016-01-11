@@ -240,7 +240,7 @@
 			children = (
 				D095F89C1BF15FF50068B58C /* UIColorExtensions.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D095F89F1BF176760068B58C /* Fonts */ = {
@@ -249,26 +249,26 @@
 				D0A02BB61C0591680033D20C /* Abadi.ttf */,
 				D095F8981BF12B650068B58C /* LucidaGrande.ttc */,
 			);
-			name = Fonts;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D095F8A01BF176860068B58C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D0A02B9B1C0585C20033D20C /* Vendors */,
 				D095F89F1BF176760068B58C /* Fonts */,
+				D0A02B9B1C0585C20033D20C /* Vendors */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D095F8A11BF176950068B58C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D0A02BB11C05892A0033D20C /* Onboarding */,
 				D0A02BB01C0588EE0033D20C /* Main */,
+				D0A02BB11C05892A0033D20C /* Onboarding */,
 				D0BACD471BFE7E56004C792C /* SignUp */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		D095F8A21BF176B10068B58C /* Models */ = {
@@ -276,7 +276,7 @@
 			children = (
 				D0D144FF1BEFFFD5002DEBF9 /* Dormy.xcdatamodeld */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D0A02B9B1C0585C20033D20C /* Vendors */ = {
@@ -285,62 +285,62 @@
 				D0A02BBB1C0595260033D20C /* DownPicker */,
 				D0BACD4A1BFEA30F004C792C /* SwiftValidator */,
 			);
-			name = Vendors;
+			path = Vendors;
 			sourceTree = "<group>";
 		};
 		D0A02BAF1C0588CF0033D20C /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				D0A02B951C0572620033D20C /* CompletedCell.xib */,
 				D0A02B8D1C056E2F0033D20C /* InProgressCell.xib */,
 				D0A02B931C0572570033D20C /* WaitingCell.xib */,
-				D0A02B951C0572620033D20C /* CompletedCell.xib */,
 			);
-			name = Nibs;
+			path = Nibs;
 			sourceTree = "<group>";
 		};
 		D0A02BB01C0588EE0033D20C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D0349C6D1C05395700759577 /* RequestsViewController.swift */,
 				D0349C6F1C056CF600759577 /* MainNavController.swift */,
-				D0A02B8F1C056F0A0033D20C /* RequestsTableViewController.swift */,
 				D0A02BB91C05946D0033D20C /* NewCleanViewController.swift */,
 				D095E2F31C33586E00240BD6 /* ProfileViewController.swift */,
+				D0A02B8F1C056F0A0033D20C /* RequestsTableViewController.swift */,
+				D0349C6D1C05395700759577 /* RequestsViewController.swift */,
 			);
-			name = Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		D0A02BB11C05892A0033D20C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				D095F89A1BF14F0C0068B58C /* RootViewController.swift */,
-				D095F8941BF11F5E0068B58C /* WelcomePageViewController.swift */,
 				D095F8961BF11F7F0068B58C /* WelcomeContentViewController.swift */,
+				D095F8941BF11F5E0068B58C /* WelcomePageViewController.swift */,
 			);
-			name = Onboarding;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		D0A02BB21C05893E0033D20C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D0A02B911C056F3D0033D20C /* InProgressTableViewCell.swift */,
-				D0A02B971C0572890033D20C /* WaitingTableViewCell.swift */,
 				D0A02B991C05728F0033D20C /* CompletedTableViewCell.swift */,
-				D0A02BB41C058D0C0033D20C /* Job.swift */,
-				D095E2F71C33BB7800240BD6 /* Customer.swift */,
 				D089BD541C34A210002298DD /* CreditCardView.swift */,
+				D095E2F71C33BB7800240BD6 /* Customer.swift */,
+				D0A02B911C056F3D0033D20C /* InProgressTableViewCell.swift */,
+				D0A02BB41C058D0C0033D20C /* Job.swift */,
+				D0A02B971C0572890033D20C /* WaitingTableViewCell.swift */,
 			);
-			name = Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		D0A02BB31C0589450033D20C /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				D00299A61C014FF9001A6D00 /* Expiration.swift */,
-				D0D1959C1BFD401700BE804D /* RegistrationInfo.swift */,
 				D0BACD481BFE9332004C792C /* RegistrationFields.swift */,
+				D0D1959C1BFD401700BE804D /* RegistrationInfo.swift */,
 			);
-			name = SignUp;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		D0A02BBB1C0595260033D20C /* DownPicker */ = {
@@ -349,8 +349,7 @@
 				D0A02C111C0595260033D20C /* Pod */,
 				D0A02C1D1C0595260033D20C /* README.md */,
 			);
-			name = DownPicker;
-			path = "DownPicker-master-2";
+			path = DownPicker;
 			sourceTree = "<group>";
 		};
 		D0A02C111C0595260033D20C /* Pod */ = {
@@ -388,19 +387,19 @@
 		D0BACD471BFE7E56004C792C /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				D095E2E31C33143800240BD6 /* LogInViewController.swift */,
 				D0D195981BFD199C00BE804D /* RootNavController.swift */,
 				D0D1959A1BFD19BF00BE804D /* SignUpViewController.swift */,
-				D095E2E31C33143800240BD6 /* LogInViewController.swift */,
 			);
-			name = SignUp;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		D0BACD4A1BFEA30F004C792C /* SwiftValidator */ = {
 			isa = PBXGroup;
 			children = (
 				D0BACD4B1BFEA30F004C792C /* Core */,
-				D0BACD4E1BFEA30F004C792C /* Info.plist */,
 				D0BACD4F1BFEA30F004C792C /* Rules */,
+				D0BACD4E1BFEA30F004C792C /* Info.plist */,
 				D0BACD5D1BFEA30F004C792C /* SwiftValidator.h */,
 			);
 			path = SwiftValidator;
@@ -438,11 +437,11 @@
 		D0D144EC1BEFFFD5002DEBF9 = {
 			isa = PBXGroup;
 			children = (
-				D0BB4F211C41E6B700E5E72D /* Stripe.framework.dSYM */,
-				D0BB4F221C41E6B700E5E72D /* MBProgressHUD.framework.dSYM */,
-				D00833A01BF4097100BB81D9 /* Frameworks */,
 				D0D144F71BEFFFD5002DEBF9 /* Dormy */,
+				D00833A01BF4097100BB81D9 /* Frameworks */,
 				D0D144F61BEFFFD5002DEBF9 /* Products */,
+				D0BB4F221C41E6B700E5E72D /* MBProgressHUD.framework.dSYM */,
+				D0BB4F211C41E6B700E5E72D /* Stripe.framework.dSYM */,
 			);
 			sourceTree = "<group>";
 		};
@@ -457,18 +456,18 @@
 		D0D144F71BEFFFD5002DEBF9 /* Dormy */ = {
 			isa = PBXGroup;
 			children = (
-				D0A02BB81C0592DD0033D20C /* Dormy-Bridging-Header.h */,
-				D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */,
-				D0D145071BEFFFD5002DEBF9 /* Info.plist */,
-				D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */,
-				D0D145021BEFFFD5002DEBF9 /* Assets.xcassets */,
-				D0D145041BEFFFD5002DEBF9 /* LaunchScreen.storyboard */,
 				D0D1959F1BFD402600BE804D /* Classes */,
 				D095F8A11BF176950068B58C /* Controllers */,
-				D0A02BAF1C0588CF0033D20C /* Nibs */,
-				D095F8A21BF176B10068B58C /* Models */,
 				D095F89E1BF1766A0068B58C /* Extensions */,
+				D095F8A21BF176B10068B58C /* Models */,
+				D0A02BAF1C0588CF0033D20C /* Nibs */,
 				D095F8A01BF176860068B58C /* Resources */,
+				D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */,
+				D0D145021BEFFFD5002DEBF9 /* Assets.xcassets */,
+				D0A02BB81C0592DD0033D20C /* Dormy-Bridging-Header.h */,
+				D0D145071BEFFFD5002DEBF9 /* Info.plist */,
+				D0D145041BEFFFD5002DEBF9 /* LaunchScreen.storyboard */,
+				D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */,
 			);
 			path = Dormy;
 			sourceTree = "<group>";
@@ -479,7 +478,7 @@
 				D0A02BB21C05893E0033D20C /* Main */,
 				D0A02BB31C0589450033D20C /* SignUp */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -643,6 +642,7 @@
 				D0D144FD1BEFFFD5002DEBF9 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		D0D145041BEFFFD5002DEBF9 /* LaunchScreen.storyboard */ = {
@@ -651,6 +651,7 @@
 				D0D145051BEFFFD5002DEBF9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
