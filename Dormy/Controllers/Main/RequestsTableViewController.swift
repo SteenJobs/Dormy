@@ -51,6 +51,14 @@ class RequestsTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.jobs.count == 0 {
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -109,29 +117,33 @@ class RequestsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let user = PFUser.currentUser()!
-        if user["emailVerified"]?.boolValue != true {
-            return 0
-        } else {
-            if self.jobs.count == 0 {
-                let imageView = UIImageView(image: UIImage(named: "empty-alert"))
-                imageView.contentMode = UIViewContentMode.ScaleAspectFit
-                var imageHeight: CGFloat?
-                if imageView.image!.size.height < tableView.frame.size.height {
-                    imageHeight = imageView.image!.size.height
-                } else {
-                    imageHeight = tableView.frame.size.height - 10
-                }
-                imageView.frame = CGRectMake(0, 20, tableView.frame.size.width, imageHeight!)
-                tableView.scrollEnabled = false
-                let requestsVC = self.parentViewController as! RequestsViewController
-                tableView.backgroundView = UIView()
-                tableView.backgroundView?.addSubview(imageView)
+        if let user = PFUser.currentUser() {
+            if user["emailVerified"]?.boolValue != true {
+                return 0
             } else {
-                tableView.scrollEnabled = true
-                tableView.backgroundView = nil
+                if self.jobs.count == 0 {
+                    let imageView = UIImageView(image: UIImage(named: "empty-alert"))
+                    imageView.contentMode = UIViewContentMode.ScaleAspectFit
+                    var imageHeight: CGFloat?
+                    if imageView.image!.size.height < tableView.frame.size.height {
+                        imageHeight = imageView.image!.size.height
+                    } else {
+                        imageHeight = tableView.frame.size.height - 10
+                    }
+                    imageView.frame = CGRectMake(0, 20, tableView.frame.size.width, imageHeight!)
+                    tableView.scrollEnabled = false
+                    let requestsVC = self.parentViewController as! RequestsViewController
+                    tableView.backgroundView = UIView()
+                    tableView.backgroundView?.addSubview(imageView)
+                } else {
+                    tableView.scrollEnabled = true
+                    tableView.backgroundView = nil
+                }
+                return self.jobs.count
             }
-            return self.jobs.count
+        } else {
+            self.showAlertView("Error", message: "Please ensure you have network connectivity.")
+            return 0
         }
     }
 
@@ -199,6 +211,9 @@ class RequestsTableViewController: UITableViewController {
                     for job in jobs! {
                         let localJob = job as! Job
                         self.jobs.append(localJob)
+                    }
+                    if self.jobs.count == 0 {
+                        self.refreshControl?.endRefreshing()
                     }
                     self.tableView.reloadData()
                     completionHandler()

@@ -124,6 +124,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = UIDatePickerMode.Time
+        timePicker.minuteInterval = 15
         timePicker.addTarget(self, action: Selector("dateTextField:"), forControlEvents: UIControlEvents.ValueChanged)
         self.timeField.inputAccessoryView = self.getKeyboardAccessoryWithTitle("Done", selector: Selector("hideKeyboard"))
         self.timeField.inputView = timePicker
@@ -131,6 +132,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.dateField.delegate = self
         self.timeField.delegate = self
         self.packageTF.delegate = self
+        //self.packageTF.
         self.specialInstructions.delegate = self
         
         Customer.getStripeCustomerInfo() { customer, error in
@@ -247,8 +249,12 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         if let activeFieldPresent = activeField {
             var toolbar = CGFloat(0.0)
             if activeFieldPresent == self.packageTF {
-                toolbar = self.packageTF.inputAccessoryView!.frame.size.height
-                aRect.size.height -= toolbar
+                if let downPicker = self.packageTF.inputAccessoryView {
+                    toolbar = downPicker.frame.size.height
+                    aRect.size.height -= toolbar
+                } else {
+                    self.showAlertView("Error", message: "Please check your network connection to ensure packages are properly loaded.")
+                }
             }
             if (!CGRectContainsPoint(aRect, activeField!.frame.origin)) {
                 self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
@@ -259,7 +265,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 self.scrollView.scrollRectToVisible(activeTV!.frame, animated: true)
             }
         }
-        self.scrollView.scrollEnabled = false
+        self.scrollView.scrollEnabled = true
         
     }
     
@@ -272,7 +278,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
         //self.view.endEditing(true)
-        self.scrollView.scrollEnabled = false
+        self.scrollView.scrollEnabled = true
         
     }
 
@@ -306,6 +312,11 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 textField.text = currentTime
             }
         }
+    }
+    
+    // Prevent user edit of picker enabled fields.
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        return false
     }
     
     func textFieldDidEndEditing(textField: UITextField) {

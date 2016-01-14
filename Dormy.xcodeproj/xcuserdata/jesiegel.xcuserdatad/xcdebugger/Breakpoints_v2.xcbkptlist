@@ -657,38 +657,6 @@
             endingLineNumber = "75"
             landmarkName = "requestJob(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.NewCleanViewController.(requestJob (Dormy.NewCleanViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/NewCleanViewController.swift"
-                  timestampString = "473897102.876197"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "461">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.NewCleanViewController.(requestJob (Dormy.NewCleanViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/NewCleanViewController.swift"
-                  timestampString = "473897102.876457"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "2920">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1121,38 +1089,6 @@
             endingLineNumber = "23"
             landmarkName = "valueChanges(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.CreditCardView.valueChanges (Dormy.CreditCardView)(__ObjC.UIButton) -&gt; ()"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/CreditCardView.swift"
-                  timestampString = "473897102.888245"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.CreditCardView.(valueChanges (Dormy.CreditCardView) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/CreditCardView.swift"
-                  timestampString = "473897102.888412"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1569,38 +1505,6 @@
             endingLineNumber = "72"
             landmarkName = "logoutButtonTapped(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.ProfileViewController.(logoutButtonTapped (Dormy.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/ProfileViewController.swift"
-                  timestampString = "473897102.892406"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "27">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.ProfileViewController.(logoutButtonTapped (Dormy.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/ProfileViewController.swift"
-                  timestampString = "473897102.89261"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1649,38 +1553,6 @@
             endingLineNumber = "71"
             landmarkName = "logoutButtonTapped(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.ProfileViewController.logoutButtonTapped (Dormy.ProfileViewController)(__ObjC.UIButton) -&gt; ()"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/ProfileViewController.swift"
-                  timestampString = "473897102.895008"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "1556">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.ProfileViewController.(logoutButtonTapped (Dormy.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/ProfileViewController.swift"
-                  timestampString = "473897102.89517"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1713,38 +1585,6 @@
             endingLineNumber = "75"
             landmarkName = "logoutButtonTapped(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.ProfileViewController.(logoutButtonTapped (Dormy.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/ProfileViewController.swift"
-                  timestampString = "473897102.896962"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "342">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dormy.ProfileViewController.(logoutButtonTapped (Dormy.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Dormy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jesiegel/Desktop/workspace/iOS/Dormy/Dormy/ProfileViewController.swift"
-                  timestampString = "473897102.897142"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "184">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1792,6 +1632,38 @@
             startingLineNumber = "330"
             endingLineNumber = "330"
             landmarkName = "populateTextFields()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dormy/Controllers/Main/NewCleanViewController.swift"
+            timestampString = "474352413.817578"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dormy/Controllers/Main/RequestsTableViewController.swift"
+            timestampString = "474351579.014337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "loadJobs(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

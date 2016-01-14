@@ -33,6 +33,7 @@ class RootViewController: UIViewController {
             self.addChildViewController(pageVC!)
             //???
             self.view.addSubview(pageVC!.view)
+            self.pageControl.hidden = false
             self.pageVC!.didMoveToParentViewController(self)
         } else {
             mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
@@ -43,7 +44,7 @@ class RootViewController: UIViewController {
             //root.presentViewController(requestsVC, animated: true, completion: {
             //  nav.dismissViewControllerAnimated(true, completion: nil)
             //})
-            //root.pageControl.hidden = true
+            self.pageControl.hidden = true
             self.mainVC!.didMoveToParentViewController(self)
             //root.pageVC!.removeFromParentViewController()
             //root.pageVC = nil

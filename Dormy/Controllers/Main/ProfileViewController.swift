@@ -64,6 +64,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         pageVC.pageControl = root.pageControl
         root.addChildViewController(pageVC)
         //???
+        root.pageControl.hidden = false
         root.view.addSubview(pageVC.view)
         root.pageVC!.didMoveToParentViewController(self)
         //root.mainVC!.presentViewController(root, animated: true, completion: nil)
