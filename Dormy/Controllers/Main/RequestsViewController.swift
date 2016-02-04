@@ -34,6 +34,10 @@ class RequestsViewController: UIViewController {
         navBar.translucent = true
         navBar.barTintColor = UIColor(rgba: "#0f386b")
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

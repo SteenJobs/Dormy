@@ -30,6 +30,8 @@ class Job: PFObject, PFSubclassing {
     @NSManaged var completedTime: String?
     @NSManaged var charge: PFObject?
     @NSManaged var college: PFObject?
+    @NSManaged var before_photo: PFFile?
+    @NSManaged var after_photo: PFFile?
     
     override class func initialize() {
         struct Static {

@@ -209,6 +209,13 @@ class RequestsTableViewController: UITableViewController {
                 if jobs != nil {
                     self.jobs = []
                     for job in jobs! {
+                        if job["status"] as! String == JobStatus.Completed.rawValue && job["reviewed"]?.boolValue != true {
+                            let reviewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ReviewViewController") as! ReviewViewController
+                            reviewVC.job = job as? Job
+                            self.presentViewController(reviewVC, animated: true, completion: nil)
+                            completionHandler()
+                            return
+                        }
                         let localJob = job as! Job
                         self.jobs.append(localJob)
                     }

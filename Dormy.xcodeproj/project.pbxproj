@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00299A61C014FF9001A6D00 /* Expiration.swift */; };
+		D00795AE1C4989A6001F8765 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00795AD1C4989A6001F8765 /* ReviewViewController.swift */; };
+		D00795B01C498C03001F8765 /* ContainerScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00795AF1C498C03001F8765 /* ContainerScrollViewController.swift */; };
+		D00795B21C498F78001F8765 /* ReviewFirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00795B11C498F78001F8765 /* ReviewFirstView.xib */; };
 		D00833A21BF4099800BB81D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A11BF4099800BB81D9 /* AudioToolbox.framework */; };
 		D00833A41BF409A000BB81D9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A31BF409A000BB81D9 /* CFNetwork.framework */; };
 		D00833A61BF409A600BB81D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833A51BF409A600BB81D9 /* CoreGraphics.framework */; };
@@ -19,10 +22,15 @@
 		D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */; };
 		D0349C6E1C05395700759577 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6D1C05395700759577 /* RequestsViewController.swift */; };
 		D0349C701C056CF600759577 /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6F1C056CF600759577 /* MainNavController.swift */; };
+		D06B609C1C52C6B0006F857D /* ReviewFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */; };
 		D089BD501C347379002298DD /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; };
 		D089BD511C34768C002298DD /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; };
 		D089BD521C34768C002298DD /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D089BD551C34A210002298DD /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089BD541C34A210002298DD /* CreditCardView.swift */; };
+		D0921A7D1C5FF338004D5A73 /* ImageReview.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0921A7C1C5FF338004D5A73 /* ImageReview.xib */; };
+		D0921A7F1C61248D004D5A73 /* ReviewViewControllerP1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A7E1C61248D004D5A73 /* ReviewViewControllerP1.swift */; };
+		D0921A811C61249B004D5A73 /* ReviewViewControllerP2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A801C61249B004D5A73 /* ReviewViewControllerP2.swift */; };
+		D0921A831C6307DC004D5A73 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A821C6307DC004D5A73 /* FloatRatingView.swift */; };
 		D095E2E41C33143800240BD6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2E31C33143800240BD6 /* LogInViewController.swift */; };
 		D095E2F41C33586E00240BD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2F31C33586E00240BD6 /* ProfileViewController.swift */; };
 		D095E2F81C33BB7800240BD6 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2F71C33BB7800240BD6 /* Customer.swift */; };
@@ -101,6 +109,9 @@
 
 /* Begin PBXFileReference section */
 		D00299A61C014FF9001A6D00 /* Expiration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expiration.swift; sourceTree = "<group>"; };
+		D00795AD1C4989A6001F8765 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		D00795AF1C498C03001F8765 /* ContainerScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerScrollViewController.swift; sourceTree = "<group>"; };
+		D00795B11C498F78001F8765 /* ReviewFirstView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewFirstView.xib; sourceTree = "<group>"; };
 		D00833A11BF4099800BB81D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D00833A31BF409A000BB81D9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D00833A51BF409A600BB81D9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,8 +123,13 @@
 		D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D0349C6D1C05395700759577 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		D0349C6F1C056CF600759577 /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
+		D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewFirstView.swift; sourceTree = "<group>"; };
 		D089BD4F1C347378002298DD /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		D089BD541C34A210002298DD /* CreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
+		D0921A7C1C5FF338004D5A73 /* ImageReview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageReview.xib; sourceTree = "<group>"; };
+		D0921A7E1C61248D004D5A73 /* ReviewViewControllerP1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewControllerP1.swift; sourceTree = "<group>"; };
+		D0921A801C61249B004D5A73 /* ReviewViewControllerP2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewControllerP2.swift; sourceTree = "<group>"; };
+		D0921A821C6307DC004D5A73 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		D095E2E31C33143800240BD6 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D095E2F31C33586E00240BD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D095E2F71C33BB7800240BD6 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -284,6 +300,7 @@
 			children = (
 				D0A02BBB1C0595260033D20C /* DownPicker */,
 				D0BACD4A1BFEA30F004C792C /* SwiftValidator */,
+				D0921A821C6307DC004D5A73 /* FloatRatingView.swift */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -294,6 +311,8 @@
 				D0A02B951C0572620033D20C /* CompletedCell.xib */,
 				D0A02B8D1C056E2F0033D20C /* InProgressCell.xib */,
 				D0A02B931C0572570033D20C /* WaitingCell.xib */,
+				D00795B11C498F78001F8765 /* ReviewFirstView.xib */,
+				D0921A7C1C5FF338004D5A73 /* ImageReview.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -306,6 +325,10 @@
 				D095E2F31C33586E00240BD6 /* ProfileViewController.swift */,
 				D0A02B8F1C056F0A0033D20C /* RequestsTableViewController.swift */,
 				D0349C6D1C05395700759577 /* RequestsViewController.swift */,
+				D00795AD1C4989A6001F8765 /* ReviewViewController.swift */,
+				D00795AF1C498C03001F8765 /* ContainerScrollViewController.swift */,
+				D0921A7E1C61248D004D5A73 /* ReviewViewControllerP1.swift */,
+				D0921A801C61249B004D5A73 /* ReviewViewControllerP2.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -324,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				D0A02B991C05728F0033D20C /* CompletedTableViewCell.swift */,
+				D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */,
 				D089BD541C34A210002298DD /* CreditCardView.swift */,
 				D095E2F71C33BB7800240BD6 /* Customer.swift */,
 				D0A02B911C056F3D0033D20C /* InProgressTableViewCell.swift */,
@@ -548,9 +572,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A02C4C1C0595260033D20C /* downArrow@2x.png in Resources */,
+				D00795B21C498F78001F8765 /* ReviewFirstView.xib in Resources */,
 				D0A02B941C0572570033D20C /* WaitingCell.xib in Resources */,
 				D095F8991BF12B650068B58C /* LucidaGrande.ttc in Resources */,
 				D0A02C4D1C0595260033D20C /* downArrow@3x.png in Resources */,
+				D0921A7D1C5FF338004D5A73 /* ImageReview.xib in Resources */,
 				D0D145061BEFFFD5002DEBF9 /* LaunchScreen.storyboard in Resources */,
 				D0A02C4B1C0595260033D20C /* downArrow.png in Resources */,
 				D0D145031BEFFFD5002DEBF9 /* Assets.xcassets in Resources */,
@@ -597,12 +623,15 @@
 			files = (
 				D0A02B981C0572890033D20C /* WaitingTableViewCell.swift in Sources */,
 				D0BACD6E1BFEA30F004C792C /* MaxLengthRule.swift in Sources */,
+				D00795AE1C4989A6001F8765 /* ReviewViewController.swift in Sources */,
 				D095F89B1BF14F0C0068B58C /* RootViewController.swift in Sources */,
 				D0BACD491BFE9332004C792C /* RegistrationFields.swift in Sources */,
 				D0A02C511C0595260033D20C /* README.md in Sources */,
 				D0D195991BFD199C00BE804D /* RootNavController.swift in Sources */,
 				D0349C6E1C05395700759577 /* RequestsViewController.swift in Sources */,
 				D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */,
+				D06B609C1C52C6B0006F857D /* ReviewFirstView.swift in Sources */,
+				D0921A811C61249B004D5A73 /* ReviewViewControllerP2.swift in Sources */,
 				D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */,
 				D0BACD741BFEA30F004C792C /* Rule.swift in Sources */,
 				D0A02BBA1C05946D0033D20C /* NewCleanViewController.swift in Sources */,
@@ -616,9 +645,11 @@
 				D0A02C501C0595260033D20C /* UIDownPicker.m in Sources */,
 				D095F8951BF11F5E0068B58C /* WelcomePageViewController.swift in Sources */,
 				D0BACD6F1BFEA30F004C792C /* MinLengthRule.swift in Sources */,
+				D00795B01C498C03001F8765 /* ContainerScrollViewController.swift in Sources */,
 				D0BACD6D1BFEA30F004C792C /* FullNameRule.swift in Sources */,
 				D0D1959D1BFD401700BE804D /* RegistrationInfo.swift in Sources */,
 				D0BACD671BFEA30F004C792C /* ValidationError.swift in Sources */,
+				D0921A831C6307DC004D5A73 /* FloatRatingView.swift in Sources */,
 				D0BACD761BFEA30F004C792C /* ZipCodeRule.swift in Sources */,
 				D0A02C4F1C0595260033D20C /* DownPicker.m in Sources */,
 				D0BACD731BFEA30F004C792C /* RequiredRule.swift in Sources */,
@@ -628,6 +659,7 @@
 				D0BACD721BFEA30F004C792C /* RegexRule.swift in Sources */,
 				D0BACD751BFEA30F004C792C /* ValidationRule.swift in Sources */,
 				D0BACD711BFEA30F004C792C /* PhoneNumberRule.swift in Sources */,
+				D0921A7F1C61248D004D5A73 /* ReviewViewControllerP1.swift in Sources */,
 				D095F89D1BF15FF50068B58C /* UIColorExtensions.swift in Sources */,
 				D0A02BB51C058D0C0033D20C /* Job.swift in Sources */,
 				D0349C701C056CF600759577 /* MainNavController.swift in Sources */,
