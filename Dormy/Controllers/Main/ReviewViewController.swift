@@ -71,9 +71,17 @@ class ReviewViewController: UIViewController, UINavigationBarDelegate {
     }
     
     func submitReview() {
+        let activityIndicator = MBProgressHUD(view: self.view)
+        activityIndicator.labelText = "Submitting..."
+        self.view.addSubview(activityIndicator)
+        
+        
         if let pageOne = self.pageOneVC {
             let currentRating = pageOne.starRatingView.rating
             if currentRating >= 1.0 && job != nil {
+                
+                activityIndicator.show(true)
+                
                 var review = PFObject(className: "Review")
                 review["reviewing_user"] = PFUser.currentUser()
                 review["reviewed_user"] = job!.cleaner
@@ -85,20 +93,22 @@ class ReviewViewController: UIViewController, UINavigationBarDelegate {
                         self.job!.review = review
                         self.job!.saveInBackgroundWithBlock() { (success: Bool, error: NSError?) -> Void in
                             if success {
+                                activityIndicator.hide(true)
                                 let alert = UIAlertController(title: "Success!", message: "Your review has been successfully recorded.", preferredStyle: UIAlertControllerStyle.Alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
                                     self.dismissViewControllerAnimated(true, completion: nil)
                                 }))
                                 self.presentViewController(alert, animated: true, completion: nil)
                             } else {
+                                activityIndicator.hide(true)
                                 review.deleteEventually()
                                 if let error = error {
                                     self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
                                 }
                             }
                         }
-                        
                     } else {
+                        activityIndicator.hide(true)
                         if let error = error {
                             self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
                         }

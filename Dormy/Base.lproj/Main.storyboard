@@ -332,18 +332,6 @@
                                     <constraint firstAttribute="width" secondItem="oWi-PH-MPv" secondAttribute="height" multiplier="10:1" id="Zwt-4z-hPf"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAe-lb-CG1">
-                                <rect key="frame" x="273" y="104" width="54" height="54"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="JAe-lb-CG1" secondAttribute="height" multiplier="1:1" id="M6r-zY-BYs"/>
-                                    <constraint firstAttribute="width" constant="54" id="UpN-0s-epb"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="gear-icon"/>
-                                <connections>
-                                    <segue destination="q0A-eq-0SK" kind="presentation" id="8lU-5n-usU"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.043137254901960784" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
@@ -355,14 +343,11 @@
                             <constraint firstItem="4Bf-63-km4" firstAttribute="top" secondItem="Brh-z2-BnS" secondAttribute="bottom" constant="8" id="3D7-EE-Yjm"/>
                             <constraint firstItem="5Qf-Ob-pvo" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" constant="20" id="7HD-rs-Y90"/>
                             <constraint firstItem="Brh-z2-BnS" firstAttribute="top" secondItem="oWi-PH-MPv" secondAttribute="bottom" constant="8" id="IUL-bV-m0U"/>
-                            <constraint firstItem="JAe-lb-CG1" firstAttribute="top" secondItem="u75-01-XVc" secondAttribute="bottom" constant="40" id="Jp1-31-tBE"/>
                             <constraint firstAttribute="trailing" secondItem="oWi-PH-MPv" secondAttribute="trailing" id="KxS-ps-Uaw"/>
                             <constraint firstItem="oWi-PH-MPv" firstAttribute="leading" secondItem="27F-sf-AkT" secondAttribute="leading" id="P8b-ia-Noz"/>
                             <constraint firstAttribute="trailing" secondItem="4Bf-63-km4" secondAttribute="trailing" id="Uhl-39-cEN"/>
                             <constraint firstItem="oWi-PH-MPv" firstAttribute="top" secondItem="5Qf-Ob-pvo" secondAttribute="bottom" constant="8" id="WAI-Eb-4Cr"/>
                             <constraint firstItem="5Qf-Ob-pvo" firstAttribute="width" secondItem="5Qf-Ob-pvo" secondAttribute="height" multiplier="172:63" id="WUg-eK-tjJ"/>
-                            <constraint firstItem="oWi-PH-MPv" firstAttribute="top" secondItem="JAe-lb-CG1" secondAttribute="bottom" constant="83" id="ai7-aH-E8J"/>
-                            <constraint firstItem="JAe-lb-CG1" firstAttribute="centerX" secondItem="27F-sf-AkT" secondAttribute="centerX" id="fEl-Or-09i"/>
                             <constraint firstAttribute="trailing" secondItem="5Qf-Ob-pvo" secondAttribute="trailing" constant="20" id="pjR-Hj-sQp"/>
                             <constraint firstItem="5Qf-Ob-pvo" firstAttribute="centerX" secondItem="27F-sf-AkT" secondAttribute="centerX" id="xhl-hQ-xPH"/>
                             <constraint firstItem="JUD-gP-D6v" firstAttribute="top" secondItem="4Bf-63-km4" secondAttribute="bottom" id="yc8-U9-yW4"/>
@@ -370,7 +355,6 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="WUg-eK-tjJ"/>
-                                <exclude reference="ai7-aH-E8J"/>
                             </mask>
                         </variation>
                     </view>
@@ -1666,7 +1650,6 @@ you want your dorm cleaning.</string>
         <image name="change-cc-selected" width="52" height="52"/>
         <image name="dormy-main-logo" width="688" height="253"/>
         <image name="facebook-login-button" width="621" height="91"/>
-        <image name="gear-icon" width="23" height="23"/>
         <image name="get-clean-button" width="750" height="186"/>
         <image name="login-button" width="375" height="110"/>
         <image name="logout-button" width="228" height="40"/>
