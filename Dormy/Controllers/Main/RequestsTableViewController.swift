@@ -199,6 +199,7 @@ class RequestsTableViewController: UITableViewController {
         query.includeKey("dormer")
         query.includeKey("package")
         query.includeKey("cleaner")
+        query.includeKey("review")
         query.whereKey("dormer", equalTo: currentUser)
         query.findObjectsInBackgroundWithBlock() { (jobs: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
@@ -209,7 +210,8 @@ class RequestsTableViewController: UITableViewController {
                 if jobs != nil {
                     self.jobs = []
                     for job in jobs! {
-                        if job["status"] as! String == JobStatus.Completed.rawValue && job["reviewed"]?.boolValue != true {
+                        if job["status"] as! String == JobStatus.Completed.rawValue && job.objectForKey("review") == nil {
+                            // Prompt review if job completed and not reviewed yet
                             let reviewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ReviewViewController") as! ReviewViewController
                             reviewVC.job = job as? Job
                             self.presentViewController(reviewVC, animated: true, completion: nil)

@@ -10,6 +10,9 @@ import UIKit
 
 class ReviewViewControllerP1: UIViewController {
 
+    @IBOutlet weak var starRatingView: FloatRatingView!
+    @IBOutlet weak var reviewTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

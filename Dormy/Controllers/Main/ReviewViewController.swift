@@ -7,17 +7,34 @@
 //
 
 import UIKit
+import Parse
 
-class ReviewViewController: UIViewController {
+class ReviewViewController: UIViewController, UINavigationBarDelegate {
     
     var job: Job?
+    var pageOneVC: ReviewViewControllerP1?
+    var pageTwoVC: ReviewViewControllerP2?
+    var pageThreeVC: ReviewViewControllerP2?
     
     @IBOutlet weak var cleanerLabel: UILabel!
     @IBOutlet weak var dateCleanedLabel: UILabel!
     @IBOutlet weak var packageLabel: UILabel!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navBar.delegate = self
+        
+        self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navBar.shadowImage = UIImage()
+        self.navBar.translucent = true
+        self.navBar.barTintColor = UIColor(rgba: "#0b376d")
+        let doneButton = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: Selector("submitReview"))
+        let navItem = UINavigationItem()
+        navItem.rightBarButtonItem = doneButton
+        navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        self.navBar.items = [navItem]
         
         if job == nil {
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -48,6 +65,55 @@ class ReviewViewController: UIViewController {
     }
     
 
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
+    }
+    
+    func submitReview() {
+        if let pageOne = self.pageOneVC {
+            let currentRating = pageOne.starRatingView.rating
+            if currentRating >= 1.0 && job != nil {
+                var review = PFObject(className: "Review")
+                review["reviewing_user"] = PFUser.currentUser()
+                review["reviewed_user"] = job!.cleaner
+                review["review"] = pageOne.reviewTextView.text
+                review["job"] = job!
+                review["rating"] = currentRating
+                review.saveInBackgroundWithBlock() { (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        self.job!.review = review
+                        self.job!.saveInBackgroundWithBlock() { (success: Bool, error: NSError?) -> Void in
+                            if success {
+                                let alert = UIAlertController(title: "Success!", message: "Your review has been successfully recorded.", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                }))
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            } else {
+                                review.deleteEventually()
+                                if let error = error {
+                                    self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
+                                }
+                            }
+                        }
+                        
+                    } else {
+                        if let error = error {
+                            self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func showAlertView(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

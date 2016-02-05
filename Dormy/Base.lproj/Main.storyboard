@@ -734,34 +734,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dormy-main-logo" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-I1-E8y">
-                                <rect key="frame" x="20" y="20" width="560" height="205"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="407" id="ZTA-dc-rb9"/>
-                                    <constraint firstAttribute="width" secondItem="uRh-I1-E8y" secondAttribute="height" multiplier="172:63" id="xSO-n8-Tla"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZTA-dc-rb9"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review-title" translatesAutoresizingMaskIntoConstraints="NO" id="83B-S8-Cb9">
-                                <rect key="frame" x="0.0" y="233" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="241" width="600" height="60"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="83B-S8-Cb9" secondAttribute="height" multiplier="10:1" id="3Ed-mk-9Im"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uM-pU-YGB">
-                                <rect key="frame" x="8" y="309" width="584" height="117"/>
+                                <rect key="frame" x="8" y="317" width="584" height="117"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETB-C3-npb">
                                         <rect key="frame" x="8" y="32" width="568" height="75"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date Cleaned:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-K3-ZRZ">
-                                                <rect key="frame" x="8" y="25.5" width="113.5" height="23.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Cleaned:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-K3-ZRZ">
+                                                <rect key="frame" x="8" y="26" width="113.5" height="22.5"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande-Bold" family="Lucida Grande" pointSize="16"/>
                                                 <color key="textColor" red="0.64313725489999995" green="0.75294117650000003" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -775,14 +762,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Package:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-I7-caE">
-                                                <rect key="frame" x="8" y="52.5" width="71.5" height="22.5"/>
+                                                <rect key="frame" x="8" y="52" width="71.5" height="23"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande-Bold" family="Lucida Grande" pointSize="16"/>
                                                 <color key="textColor" red="0.64313725489999995" green="0.75294117650000003" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cleaner:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="adI-I9-gd8">
-                                                <rect key="frame" x="8" y="0.0" width="66.5" height="22.5"/>
+                                                <rect key="frame" x="8" y="0.0" width="66.5" height="23"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="LucidaGrande-Bold" family="Lucida Grande" pointSize="16"/>
                                                 <color key="textColor" red="0.64313725489999995" green="0.75294117650000003" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -922,12 +909,29 @@
                                 </variation>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QH5-In-nq3">
-                                <rect key="frame" x="0.0" y="434" width="600" height="416"/>
+                                <rect key="frame" x="0.0" y="442" width="600" height="408"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="khl-5S-aj0" kind="embed" id="iFC-fW-1jg"/>
                                 </connections>
                             </containerView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPf-UB-gmd">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dormy-main-logo" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-I1-E8y">
+                                <rect key="frame" x="20" y="28" width="560" height="205"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="407" id="ZTA-dc-rb9"/>
+                                    <constraint firstAttribute="width" secondItem="uRh-I1-E8y" secondAttribute="height" multiplier="172:63" id="xSO-n8-Tla"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZTA-dc-rb9"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.043137254901960784" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
@@ -939,7 +943,10 @@
                             <constraint firstAttribute="trailing" secondItem="83B-S8-Cb9" secondAttribute="trailing" id="Ayn-g3-nfI"/>
                             <constraint firstItem="uRh-I1-E8y" firstAttribute="width" secondItem="uRh-I1-E8y" secondAttribute="height" multiplier="172:63" id="CQn-4N-Ymb"/>
                             <constraint firstItem="uRh-I1-E8y" firstAttribute="centerX" secondItem="5dc-12-kW1" secondAttribute="centerX" id="Ftv-g0-vku"/>
+                            <constraint firstItem="aPf-UB-gmd" firstAttribute="top" secondItem="36l-9x-Fuo" secondAttribute="bottom" id="HpX-39-7XG"/>
                             <constraint firstItem="2uM-pU-YGB" firstAttribute="leading" secondItem="5dc-12-kW1" secondAttribute="leading" constant="8" id="ICe-4W-YOw"/>
+                            <constraint firstItem="uRh-I1-E8y" firstAttribute="top" secondItem="36l-9x-Fuo" secondAttribute="bottom" constant="8" id="PTc-Bz-jfQ"/>
+                            <constraint firstAttribute="trailing" secondItem="aPf-UB-gmd" secondAttribute="trailing" id="QB0-yY-voW"/>
                             <constraint firstItem="QtN-xB-nDQ" firstAttribute="top" secondItem="QH5-In-nq3" secondAttribute="bottom" id="S8w-b4-vLS"/>
                             <constraint firstAttribute="trailing" secondItem="uRh-I1-E8y" secondAttribute="trailing" constant="20" id="Sb3-ci-O5Y"/>
                             <constraint firstItem="QH5-In-nq3" firstAttribute="leading" secondItem="5dc-12-kW1" secondAttribute="leading" id="Udj-Cu-Cv4"/>
@@ -948,10 +955,12 @@
                             <constraint firstItem="83B-S8-Cb9" firstAttribute="width" secondItem="83B-S8-Cb9" secondAttribute="height" multiplier="10:1" id="hp3-rt-Oac"/>
                             <constraint firstAttribute="trailing" secondItem="QH5-In-nq3" secondAttribute="trailing" id="vBQ-Mr-90B"/>
                             <constraint firstItem="uRh-I1-E8y" firstAttribute="top" secondItem="36l-9x-Fuo" secondAttribute="bottom" id="xUP-w7-Vsq"/>
+                            <constraint firstItem="aPf-UB-gmd" firstAttribute="leading" secondItem="5dc-12-kW1" secondAttribute="leading" id="y7w-sh-Lcq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="CQn-4N-Ymb"/>
+                                <exclude reference="xUP-w7-Vsq"/>
                                 <exclude reference="hp3-rt-Oac"/>
                             </mask>
                         </variation>
@@ -961,6 +970,7 @@
                     <connections>
                         <outlet property="cleanerLabel" destination="dSm-Kc-BEQ" id="3ho-bj-sfo"/>
                         <outlet property="dateCleanedLabel" destination="4DW-vK-ufR" id="wVy-c2-MnO"/>
+                        <outlet property="navBar" destination="aPf-UB-gmd" id="O5x-Q2-RpN"/>
                         <outlet property="packageLabel" destination="hCK-ku-glp" id="8Av-YH-Ehk"/>
                     </connections>
                 </viewController>
@@ -1039,7 +1049,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8P-4X-aV7" customClass="FloatRatingView" customModule="Dormy" customModuleProvider="target">
                                 <rect key="frame" x="35" y="79" width="530" height="192"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.043137254899999998" green="0.2156862745" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star-empty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="star-full"/>
@@ -1050,7 +1060,7 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="floatRatings" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="halfRatings" value="NO"/>
@@ -1073,10 +1083,11 @@
                             <constraint firstItem="Q8P-4X-aV7" firstAttribute="centerX" secondItem="CA8-Zm-hAH" secondAttribute="centerX" id="vQX-9q-u4v"/>
                             <constraint firstItem="Q8P-4X-aV7" firstAttribute="leading" secondItem="CA8-Zm-hAH" secondAttribute="leading" constant="35" id="zuV-Iu-wni"/>
                         </constraints>
-                        <connections>
-                            <outlet property="textView" destination="ouw-WD-69b" id="4nc-Ql-34J"/>
-                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="reviewTextView" destination="ouw-WD-69b" id="0sY-ze-X4R"/>
+                        <outlet property="starRatingView" destination="Q8P-4X-aV7" id="jMg-Lf-k9d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VV-6S-tS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1616,15 +1627,15 @@ you want your dorm cleaning.</string>
                         <viewControllerLayoutGuide type="bottom" id="giZ-0x-cdq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xip-A3-vWp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="408"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHE-b2-Ybd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="408"/>
                                 <animations/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="47g-gS-Ut8">
-                                <rect key="frame" x="280.5" y="371" width="39" height="37"/>
+                                <rect key="frame" x="280" y="363" width="39" height="37"/>
                                 <animations/>
                             </pageControl>
                         </subviews>

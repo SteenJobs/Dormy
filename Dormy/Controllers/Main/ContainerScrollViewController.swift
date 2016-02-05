@@ -54,7 +54,10 @@ class ContainerScrollViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
         let parentVC = self.parentViewController as! ReviewViewController
+        parentVC.pageOneVC = self.pageOneVC
+        
         self.job = parentVC.job
+        
         
         self.loadReviewImages()
         self.setPageControlProperties(0)
