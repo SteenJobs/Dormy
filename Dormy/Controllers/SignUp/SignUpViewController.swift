@@ -25,12 +25,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var numberOfTextFields: Int?
     var textFields: [RegistrationFields]?
     // Change placeholders to type attribute so still works even if remove placeholders
-    var placeHolderDict = [["E-mail Address", "Phone Number", "Password", "Confirm Password"], ["Full Name", "Choose Your College", "Dorm Building", "Room Number"], ["Card Number", "Expiration Date", "CCV", "Zip Code"]]
+    var placeHolderDict = [["E-mail Address (.edu)", "Phone Number", "Password", "Confirm Password"], ["Full Name", "Choose Your College", "Dorm Building", "Room Number"], ["Card Number", "Expiration Date", "CCV", "Zip Code"]]
     var navBarTitle = ["SIGN UP", "CREATE PROFILE", "CREATE PROFILE"]
     var buttons = ["signup-next", "signup-next", "signup-done"]
     
     // Placeholder for Parse data - set with single value of "--"
-    var colleges = ["--"] //["YU", "Columbia", "NYU", "BU"]
+    var colleges: [String] = [] //["YU", "Columbia", "NYU", "BU"]
     var PFColleges: [PFObject]? = []
     
     let validator = Validator()
@@ -262,6 +262,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 } else {
                     self.validateCardField(STPCardValidationState.Invalid, textField: textFields![2])
                 }
+            case "Zip Code":
+                let registrationField = textField as! RegistrationFields
+                
+                let letters = NSCharacterSet.letterCharacterSet()
+                let phrase = textField.text!
+                let range = phrase.rangeOfCharacterFromSet(letters)
+                
+                // range will be nil if no letters is found
+                if let test = range {
+                    print("letters found")
+                    registrationField.markCardField(false)
+                } else {
+                    print("letters not found")
+                    if textField.text!.characters.count != 5 {
+                        registrationField.markCardField(false)
+                    } else {
+                        registrationField.markCardField(true)
+                    }
+                }
             default:
                 print("Not a CC Field")
             }
@@ -438,7 +457,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         let order2 = college2["order"] as! Int
                         return order1 < order2
                     })
-                    self.colleges = ["--"]
+                    //self.colleges = ["--"]
                     self.PFColleges = orderedColleges
                     for college in orderedColleges {
                         self.colleges.append(college["name"] as! String)
