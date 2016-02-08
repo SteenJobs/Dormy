@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseFacebookUtilsV4
 
 class RequestsTableViewController: UITableViewController {
 
@@ -89,6 +90,9 @@ class RequestsTableViewController: UITableViewController {
             tableView.backgroundView = UIView()
             //collectionView.backgroundView?.backgroundColor = UIColor(rgba: "#F8F8F8")
             tableView.backgroundView?.addSubview(imageView)
+            if PFFacebookUtils.isLinkedWithUser(user) {
+                self.showAlertView("Logged in with Facebook?", message: "Tap the gear icon at the top of the page in order to ensure that you have properly filled out your profile information in order to schedule a cleaning.")
+            }
         } else {
             let requestsVC = self.parentViewController as! RequestsViewController
             requestsVC.getCleanButton.enabled = true

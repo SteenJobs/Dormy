@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import ParseFacebookUtilsV4
 import FBSDKCoreKit
+import MBProgressHUD
 
 class LogInViewController: UIViewController, UINavigationBarDelegate {
 

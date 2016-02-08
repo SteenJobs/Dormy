@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationBarDelegate {
 

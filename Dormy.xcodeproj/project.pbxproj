@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA304113A0E7917884115685 /* Pods_Dormy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134ECA7BCDE9C2B7F4DFC12E /* Pods_Dormy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00299A61C014FF9001A6D00 /* Expiration.swift */; };
 		D00795AE1C4989A6001F8765 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00795AD1C4989A6001F8765 /* ReviewViewController.swift */; };
 		D00795B01C498C03001F8765 /* ContainerScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00795AF1C498C03001F8765 /* ContainerScrollViewController.swift */; };
@@ -96,6 +97,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		134ECA7BCDE9C2B7F4DFC12E /* Pods_Dormy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dormy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73829B3CA382B8925419EB84 /* Pods-Dormy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dormy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dormy/Pods-Dormy.release.xcconfig"; sourceTree = "<group>"; };
+		828295DE073B690B32592D5E /* Pods-Dormy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dormy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dormy/Pods-Dormy.debug.xcconfig"; sourceTree = "<group>"; };
 		D00299A61C014FF9001A6D00 /* Expiration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expiration.swift; sourceTree = "<group>"; };
 		D00795AD1C4989A6001F8765 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		D00795AF1C498C03001F8765 /* ContainerScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerScrollViewController.swift; sourceTree = "<group>"; };
@@ -192,12 +196,22 @@
 				D00833A61BF409A600BB81D9 /* CoreGraphics.framework in Frameworks */,
 				D00833A41BF409A000BB81D9 /* CFNetwork.framework in Frameworks */,
 				D00833A21BF4099800BB81D9 /* AudioToolbox.framework in Frameworks */,
+				BA304113A0E7917884115685 /* Pods_Dormy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A198DD6068138C18095619C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				828295DE073B690B32592D5E /* Pods-Dormy.debug.xcconfig */,
+				73829B3CA382B8925419EB84 /* Pods-Dormy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D00833A01BF4097100BB81D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +224,7 @@
 				D00833A11BF4099800BB81D9 /* AudioToolbox.framework */,
 				D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */,
 				D00833B11BF40A0100BB81D9 /* libz.tbd */,
+				134ECA7BCDE9C2B7F4DFC12E /* Pods_Dormy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -427,6 +442,7 @@
 				D0D144F71BEFFFD5002DEBF9 /* Dormy */,
 				D00833A01BF4097100BB81D9 /* Frameworks */,
 				D0D144F61BEFFFD5002DEBF9 /* Products */,
+				0A198DD6068138C18095619C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -443,8 +459,8 @@
 			children = (
 				D0D1959F1BFD402600BE804D /* Classes */,
 				D095F8A11BF176950068B58C /* Controllers */,
-				D095F89E1BF1766A0068B58C /* Extensions */,
 				D095F8A21BF176B10068B58C /* Models */,
+				D095F89E1BF1766A0068B58C /* Extensions */,
 				D0A02BAF1C0588CF0033D20C /* Nibs */,
 				D095F8A01BF176860068B58C /* Resources */,
 				D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */,
@@ -473,11 +489,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0D1450A1BEFFFD5002DEBF9 /* Build configuration list for PBXNativeTarget "Dormy" */;
 			buildPhases = (
+				0224CBBCA56173F76C8D032A /* Check Pods Manifest.lock */,
 				D0D144F11BEFFFD5002DEBF9 /* Sources */,
 				D0D144F21BEFFFD5002DEBF9 /* Frameworks */,
 				D0D144F31BEFFFD5002DEBF9 /* Resources */,
 				D089BD531C34768C002298DD /* Embed Frameworks */,
 				D0BB4F251C41F35900E5E72D /* ShellScript */,
+				939B24B08780E6C5DD261424 /* Embed Pods Frameworks */,
+				8106778ACCB77620347CE0C8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -554,6 +573,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0224CBBCA56173F76C8D032A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8106778ACCB77620347CE0C8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dormy/Pods-Dormy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		939B24B08780E6C5DD261424 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dormy/Pods-Dormy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D0BB4F251C41F35900E5E72D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -753,6 +817,7 @@
 		};
 		D0D1450B1BEFFFD5002DEBF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 828295DE073B690B32592D5E /* Pods-Dormy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: aron harkham (WBBX266M83)";
@@ -775,6 +840,7 @@
 		};
 		D0D1450C1BEFFFD5002DEBF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73829B3CA382B8925419EB84 /* Pods-Dormy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: aron harkham (HS7PR5FH22)";
