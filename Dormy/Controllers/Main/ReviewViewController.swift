@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import MBProgressHUD
 
-class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBarDelegate {
+class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBarDelegate, FloatRatingViewDelegate {
     
     var job: Job?
     var pageOneVC: ReviewViewControllerP1?
@@ -23,6 +23,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
     var activeTV: UITextView?
+    var rightBarButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,13 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
         self.navBar.shadowImage = UIImage()
         self.navBar.translucent = true
         self.navBar.barTintColor = UIColor(rgba: "#0b376d")
-        let doneButton = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: Selector("submitReview"))
+        let submitButton = UIBarButtonItem(title: "Submit", style: .Done, target: self, action: Selector("submitReview"))
         let navItem = UINavigationItem()
-        navItem.rightBarButtonItem = doneButton
-        navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        navItem.rightBarButtonItem = submitButton
+        self.rightBarButton = navItem.rightBarButtonItem
+        navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Normal)
+        navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.grayColor()], forState: UIControlState.Disabled)
+        navItem.rightBarButtonItem!.enabled = false
         self.navBar.items = [navItem]
         
         if job == nil {
@@ -196,6 +200,12 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func floatRatingView(ratingView: FloatRatingView, didUpdate rating: Float) {
+        if rating != 0.0 {
+            self.rightBarButton!.enabled = true
+        }
     }
     
     /*
