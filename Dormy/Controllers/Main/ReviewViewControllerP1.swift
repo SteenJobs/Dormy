@@ -12,6 +12,7 @@ class ReviewViewControllerP1: UIViewController {
 
     @IBOutlet weak var starRatingView: FloatRatingView!
     @IBOutlet weak var reviewTextView: UITextView!
+    var delegate: ReviewViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()

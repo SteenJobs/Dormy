@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import MBProgressHUD
 
-class ReviewViewController: UIViewController, UINavigationBarDelegate {
+class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBarDelegate {
     
     var job: Job?
     var pageOneVC: ReviewViewControllerP1?
@@ -21,6 +21,8 @@ class ReviewViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var dateCleanedLabel: UILabel!
     @IBOutlet weak var packageLabel: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var scrollView: UIScrollView!
+    var activeTV: UITextView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +42,22 @@ class ReviewViewController: UIViewController, UINavigationBarDelegate {
         if job == nil {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
+        
         // Do any additional setup after loading the view.
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = false
+        
+        scrollView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //self.pageOneVC?.reviewTextView.delegate = self
+        
+        self.registerForKeyboardNotifications()
         
         if let job = job {
             let package = job.package!
@@ -59,13 +72,18 @@ class ReviewViewController: UIViewController, UINavigationBarDelegate {
             self.packageLabel.text = package["name"] as! String + " - $\(package["price"] as! Int)"
         }
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
@@ -118,6 +136,61 @@ class ReviewViewController: UIViewController, UINavigationBarDelegate {
             }
         }
     }
+    
+    func registerForKeyboardNotifications() {
+        //Adding notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func hideKeyboard() {
+        self.pageOneVC?.reviewTextView.resignFirstResponder()
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.scrollEnabled = true
+        var info : NSDictionary = notification.userInfo!
+        var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        var contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height + 15, 0.0)
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let activeTextViewPresent = activeTV {
+            let relativeOrigin = pageOneVC!.view.convertPoint(activeTV!.frame.origin, toView: self.view)
+            if (!CGRectContainsPoint(aRect, relativeOrigin)) {
+                let relativeFrame = pageOneVC!.view.convertRect(activeTV!.frame, toView: self.view)
+                self.scrollView.scrollRectToVisible(relativeFrame, animated: true)
+            }
+        }
+        //self.scrollView.scrollEnabled = false
+    }
+    
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        //Once keyboard disappears, restore original positions
+        var info : NSDictionary = notification.userInfo!
+        var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        var contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        //self.view.endEditing(true)
+        self.scrollView.scrollEnabled = false
+        
+    }
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        activeTV = textView
+        return true
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        activeTV = nil
+    }
+    
     
     func showAlertView(title: String, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)

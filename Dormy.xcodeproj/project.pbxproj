@@ -494,9 +494,9 @@
 				D0D144F21BEFFFD5002DEBF9 /* Frameworks */,
 				D0D144F31BEFFFD5002DEBF9 /* Resources */,
 				D089BD531C34768C002298DD /* Embed Frameworks */,
-				D0BB4F251C41F35900E5E72D /* ShellScript */,
 				939B24B08780E6C5DD261424 /* Embed Pods Frameworks */,
 				8106778ACCB77620347CE0C8 /* Copy Pods Resources */,
+				D0406B221C693DCA00313DBF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -618,26 +618,18 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dormy/Pods-Dormy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0BB4F251C41F35900E5E72D /* ShellScript */ = {
+		D0406B221C693DCA00313DBF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Parse.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FBSDKShareKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ParseFacebookUtilsV4.framework",
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 

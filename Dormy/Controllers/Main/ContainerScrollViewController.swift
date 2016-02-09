@@ -56,6 +56,7 @@ class ContainerScrollViewController: UIViewController, UIScrollViewDelegate {
         
         let parentVC = self.parentViewController as! ReviewViewController
         parentVC.pageOneVC = self.pageOneVC
+        parentVC.pageOneVC?.reviewTextView.delegate = parentVC
         
         self.job = parentVC.job
         
