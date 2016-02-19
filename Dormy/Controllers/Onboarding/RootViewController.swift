@@ -31,25 +31,16 @@ class RootViewController: UIViewController {
             pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
             pageVC?.pageControl = self.pageControl
             self.addChildViewController(pageVC!)
-            //???
             self.view.addSubview(pageVC!.view)
             self.pageControl.hidden = false
             self.pageVC!.didMoveToParentViewController(self)
         } else {
             mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
-            //self.window?.rootViewController = mainVC
             self.addChildViewController(mainVC!)
-            //???
             self.view.addSubview(mainVC!.view)
-            //root.presentViewController(requestsVC, animated: true, completion: {
-            //  nav.dismissViewControllerAnimated(true, completion: nil)
-            //})
             self.pageControl.hidden = true
             self.mainVC!.didMoveToParentViewController(self)
-            //root.pageVC!.removeFromParentViewController()
-            //root.pageVC = nil
         }
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -73,7 +64,6 @@ class RootViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "RootNavSegue" {
@@ -84,9 +74,7 @@ class RootViewController: UIViewController {
             let loginVC = segue.destinationViewController as! LogInViewController
             loginVC.parentDelegate = self
         }
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
     }
 
 

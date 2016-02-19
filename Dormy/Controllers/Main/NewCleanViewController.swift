@@ -23,8 +23,8 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var packageDict = [String: PFObject]()
     var activeField: UITextField?
     var activeTV: UITextView?
+    
     var customer: Customer?
-    // ???
     var customerLoaded: Bool = false
     
     @IBAction func requestJob(sender: AnyObject) {
@@ -366,14 +366,5 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

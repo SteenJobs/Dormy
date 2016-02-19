@@ -35,19 +35,19 @@
             <string>LucidaGrande-Bold</string>
             <string>LucidaGrande-Bold</string>
             <string>LucidaGrande-Bold</string>
+            <string>LucidaGrande-Bold</string>
+            <string>LucidaGrande-Bold</string>
+            <string>LucidaGrande-Bold</string>
+            <string>LucidaGrande-Bold</string>
+            <string>LucidaGrande-Bold</string>
+            <string>LucidaGrande-Bold</string>
+            <string>LucidaGrande-Bold</string>
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
             <string>LucidaGrande</string>
-            <string>LucidaGrande-Bold</string>
-            <string>LucidaGrande-Bold</string>
-            <string>LucidaGrande-Bold</string>
-            <string>LucidaGrande-Bold</string>
-            <string>LucidaGrande-Bold</string>
-            <string>LucidaGrande-Bold</string>
-            <string>LucidaGrande-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -145,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56w-8k-NWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="376"/>
+            <point key="canvasLocation" x="0.0" y="1049"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="R1K-rd-e13">
@@ -263,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5V-D8-oYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-749" y="1049"/>
+            <point key="canvasLocation" x="-701" y="1770"/>
         </scene>
         <!--Root Nav Controller-->
         <scene sceneID="PkS-bn-ORn">
@@ -704,7 +704,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXV-PZ-frb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="819" y="3513"/>
+            <point key="canvasLocation" x="2115" y="2538"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="5mv-0h-2og">
@@ -991,7 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pP4-cv-uJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="3368"/>
+            <point key="canvasLocation" x="1139" y="3538"/>
         </scene>
         <!--Review View ControllerP1-->
         <scene sceneID="M7C-RX-8T2">
@@ -1106,7 +1106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VV-6S-tS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="3243"/>
+            <point key="canvasLocation" x="1921" y="4413"/>
         </scene>
         <!--Review View ControllerP2-->
         <scene sceneID="UEM-LQ-qaT">
@@ -1156,7 +1156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snc-dw-4F6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2845" y="3243"/>
+            <point key="canvasLocation" x="2669" y="4413"/>
         </scene>
         <!--New Clean View Controller-->
         <scene sceneID="kb2-6N-Nfy">
@@ -1672,7 +1672,7 @@ you want your dorm cleaning.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oF7-gb-7SE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="4101"/>
+            <point key="canvasLocation" x="1139" y="4317"/>
         </scene>
     </scenes>
     <resources>

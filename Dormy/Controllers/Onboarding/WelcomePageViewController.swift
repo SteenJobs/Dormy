@@ -27,7 +27,6 @@ class WelcomePageViewController: UIPageViewController, UIPageViewControllerDataS
         delegate = self
         
         self.setViewControllers([self.getFirstVC()], direction: .Forward, animated: true, completion: nil)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,9 +85,7 @@ class WelcomePageViewController: UIPageViewController, UIPageViewControllerDataS
             return nil
         }
         index--
-        
-        
-        
+   
         return self.viewControllerAtIndex(index)
     }
     
@@ -114,15 +111,5 @@ class WelcomePageViewController: UIPageViewController, UIPageViewControllerDataS
         pageContentViewController.currentTextColor = self.textColors[index]
         return pageContentViewController
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

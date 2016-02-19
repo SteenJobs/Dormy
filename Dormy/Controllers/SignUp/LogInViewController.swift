@@ -70,11 +70,7 @@ class LogInViewController: UIViewController, UINavigationBarDelegate {
         
         let root = self.parentDelegate as! RootViewController
         root.mainVC = requestsVC
-        //root.presentViewController(requestsVC, animated: true, completion: {
-          //  self.dismissViewControllerAnimated(true, completion: nil)
-        //})
         root.addChildViewController(requestsVC)
-        //???
         root.view.addSubview(requestsVC.view)
         root.pageControl.hidden = true
         root.mainVC!.didMoveToParentViewController(root)
@@ -91,7 +87,6 @@ class LogInViewController: UIViewController, UINavigationBarDelegate {
         let x = NSString(string: "HELLO").sizeWithAttributes([NSFontAttributeName: UIFont(name: "Lucida Grande", size: 30.0)!])
         let adjustedSize = CGSizeMake(ceil(x.width), ceil(x.height))
         TFHeight.constant = adjustedSize.height + 15.0
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -123,14 +118,5 @@ class LogInViewController: UIViewController, UINavigationBarDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

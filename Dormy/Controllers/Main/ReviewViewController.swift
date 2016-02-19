@@ -47,19 +47,13 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         
-        // Do any additional setup after loading the view.
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
-        
-        // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = false
-        
         scrollView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //self.pageOneVC?.reviewTextView.delegate = self
         
         self.registerForKeyboardNotifications()
         
@@ -142,7 +136,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
     }
     
     func registerForKeyboardNotifications() {
-        //Adding notifies on keyboard appearing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -152,7 +145,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
     }
     
     func keyboardWasShown(notification: NSNotification) {
-        //Need to calculate keyboard exact size due to Apple suggestions
+        //Need to calculate keyboard exact size
         self.scrollView.scrollEnabled = true
         var info : NSDictionary = notification.userInfo!
         var keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
@@ -170,7 +163,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
                 self.scrollView.scrollRectToVisible(relativeFrame, animated: true)
             }
         }
-        //self.scrollView.scrollEnabled = false
     }
     
     
@@ -181,7 +173,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
         var contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
-        //self.view.endEditing(true)
         self.scrollView.scrollEnabled = false
         
     }
@@ -207,15 +198,5 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UINavigationBa
             self.rightBarButton!.enabled = true
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

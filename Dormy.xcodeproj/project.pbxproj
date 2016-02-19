@@ -25,7 +25,6 @@
 		D0349C701C056CF600759577 /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6F1C056CF600759577 /* MainNavController.swift */; };
 		D06B609C1C52C6B0006F857D /* ReviewFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */; };
 		D089BD501C347379002298DD /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D089BD4F1C347378002298DD /* MBProgressHUD.framework */; };
-		D089BD551C34A210002298DD /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089BD541C34A210002298DD /* CreditCardView.swift */; };
 		D0921A7D1C5FF338004D5A73 /* ImageReview.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0921A7C1C5FF338004D5A73 /* ImageReview.xib */; };
 		D0921A7F1C61248D004D5A73 /* ReviewViewControllerP1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A7E1C61248D004D5A73 /* ReviewViewControllerP1.swift */; };
 		D0921A811C61249B004D5A73 /* ReviewViewControllerP2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A801C61249B004D5A73 /* ReviewViewControllerP2.swift */; };
@@ -57,22 +56,6 @@
 		D0A02C501C0595260033D20C /* UIDownPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A02C1C1C0595260033D20C /* UIDownPicker.m */; };
 		D0A02C511C0595260033D20C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D0A02C1D1C0595260033D20C /* README.md */; };
 		D0BACD491BFE9332004C792C /* RegistrationFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD481BFE9332004C792C /* RegistrationFields.swift */; };
-		D0BACD671BFEA30F004C792C /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD4C1BFEA30F004C792C /* ValidationError.swift */; };
-		D0BACD681BFEA30F004C792C /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD4D1BFEA30F004C792C /* Validator.swift */; };
-		D0BACD691BFEA30F004C792C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BACD4E1BFEA30F004C792C /* Info.plist */; };
-		D0BACD6A1BFEA30F004C792C /* ConfirmRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD501BFEA30F004C792C /* ConfirmRule.swift */; };
-		D0BACD6B1BFEA30F004C792C /* EmailRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD511BFEA30F004C792C /* EmailRule.swift */; };
-		D0BACD6C1BFEA30F004C792C /* FloatRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD521BFEA30F004C792C /* FloatRule.swift */; };
-		D0BACD6D1BFEA30F004C792C /* FullNameRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD531BFEA30F004C792C /* FullNameRule.swift */; };
-		D0BACD6E1BFEA30F004C792C /* MaxLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD541BFEA30F004C792C /* MaxLengthRule.swift */; };
-		D0BACD6F1BFEA30F004C792C /* MinLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD551BFEA30F004C792C /* MinLengthRule.swift */; };
-		D0BACD701BFEA30F004C792C /* PasswordRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD561BFEA30F004C792C /* PasswordRule.swift */; };
-		D0BACD711BFEA30F004C792C /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD571BFEA30F004C792C /* PhoneNumberRule.swift */; };
-		D0BACD721BFEA30F004C792C /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD581BFEA30F004C792C /* RegexRule.swift */; };
-		D0BACD731BFEA30F004C792C /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD591BFEA30F004C792C /* RequiredRule.swift */; };
-		D0BACD741BFEA30F004C792C /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD5A1BFEA30F004C792C /* Rule.swift */; };
-		D0BACD751BFEA30F004C792C /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD5B1BFEA30F004C792C /* ValidationRule.swift */; };
-		D0BACD761BFEA30F004C792C /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BACD5C1BFEA30F004C792C /* ZipCodeRule.swift */; };
 		D0D144F91BEFFFD5002DEBF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */; };
 		D0D144FE1BEFFFD5002DEBF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */; };
 		D0D145011BEFFFD5002DEBF9 /* Dormy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0D144FF1BEFFFD5002DEBF9 /* Dormy.xcdatamodeld */; };
@@ -117,7 +100,6 @@
 		D0349C6F1C056CF600759577 /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewFirstView.swift; sourceTree = "<group>"; };
 		D089BD4F1C347378002298DD /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = /Users/jesiegel/Desktop/workspace/iOS/Dormy/Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<absolute>"; };
-		D089BD541C34A210002298DD /* CreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		D0921A7C1C5FF338004D5A73 /* ImageReview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageReview.xib; sourceTree = "<group>"; };
 		D0921A7E1C61248D004D5A73 /* ReviewViewControllerP1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewControllerP1.swift; sourceTree = "<group>"; };
 		D0921A801C61249B004D5A73 /* ReviewViewControllerP2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewControllerP2.swift; sourceTree = "<group>"; };
@@ -152,23 +134,6 @@
 		D0A02C1C1C0595260033D20C /* UIDownPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDownPicker.m; sourceTree = "<group>"; };
 		D0A02C1D1C0595260033D20C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D0BACD481BFE9332004C792C /* RegistrationFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFields.swift; sourceTree = "<group>"; };
-		D0BACD4C1BFEA30F004C792C /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
-		D0BACD4D1BFEA30F004C792C /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		D0BACD4E1BFEA30F004C792C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0BACD501BFEA30F004C792C /* ConfirmRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmRule.swift; sourceTree = "<group>"; };
-		D0BACD511BFEA30F004C792C /* EmailRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRule.swift; sourceTree = "<group>"; };
-		D0BACD521BFEA30F004C792C /* FloatRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRule.swift; sourceTree = "<group>"; };
-		D0BACD531BFEA30F004C792C /* FullNameRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullNameRule.swift; sourceTree = "<group>"; };
-		D0BACD541BFEA30F004C792C /* MaxLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxLengthRule.swift; sourceTree = "<group>"; };
-		D0BACD551BFEA30F004C792C /* MinLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinLengthRule.swift; sourceTree = "<group>"; };
-		D0BACD561BFEA30F004C792C /* PasswordRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRule.swift; sourceTree = "<group>"; };
-		D0BACD571BFEA30F004C792C /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
-		D0BACD581BFEA30F004C792C /* RegexRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexRule.swift; sourceTree = "<group>"; };
-		D0BACD591BFEA30F004C792C /* RequiredRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredRule.swift; sourceTree = "<group>"; };
-		D0BACD5A1BFEA30F004C792C /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
-		D0BACD5B1BFEA30F004C792C /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
-		D0BACD5C1BFEA30F004C792C /* ZipCodeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
-		D0BACD5D1BFEA30F004C792C /* SwiftValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
 		D0D144F51BEFFFD5002DEBF9 /* Dormy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dormy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D144FD1BEFFFD5002DEBF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -277,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				D0A02BBB1C0595260033D20C /* DownPicker */,
-				D0BACD4A1BFEA30F004C792C /* SwiftValidator */,
 				D0921A821C6307DC004D5A73 /* FloatRatingView.swift */,
 			);
 			path = Vendors;
@@ -326,7 +290,6 @@
 			children = (
 				D0A02B991C05728F0033D20C /* CompletedTableViewCell.swift */,
 				D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */,
-				D089BD541C34A210002298DD /* CreditCardView.swift */,
 				D095E2F71C33BB7800240BD6 /* Customer.swift */,
 				D0A02B911C056F3D0033D20C /* InProgressTableViewCell.swift */,
 				D0A02BB41C058D0C0033D20C /* Job.swift */,
@@ -394,46 +357,6 @@
 				D0D1959A1BFD19BF00BE804D /* SignUpViewController.swift */,
 			);
 			path = SignUp;
-			sourceTree = "<group>";
-		};
-		D0BACD4A1BFEA30F004C792C /* SwiftValidator */ = {
-			isa = PBXGroup;
-			children = (
-				D0BACD4B1BFEA30F004C792C /* Core */,
-				D0BACD4F1BFEA30F004C792C /* Rules */,
-				D0BACD4E1BFEA30F004C792C /* Info.plist */,
-				D0BACD5D1BFEA30F004C792C /* SwiftValidator.h */,
-			);
-			path = SwiftValidator;
-			sourceTree = "<group>";
-		};
-		D0BACD4B1BFEA30F004C792C /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				D0BACD4C1BFEA30F004C792C /* ValidationError.swift */,
-				D0BACD4D1BFEA30F004C792C /* Validator.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		D0BACD4F1BFEA30F004C792C /* Rules */ = {
-			isa = PBXGroup;
-			children = (
-				D0BACD501BFEA30F004C792C /* ConfirmRule.swift */,
-				D0BACD511BFEA30F004C792C /* EmailRule.swift */,
-				D0BACD521BFEA30F004C792C /* FloatRule.swift */,
-				D0BACD531BFEA30F004C792C /* FullNameRule.swift */,
-				D0BACD541BFEA30F004C792C /* MaxLengthRule.swift */,
-				D0BACD551BFEA30F004C792C /* MinLengthRule.swift */,
-				D0BACD561BFEA30F004C792C /* PasswordRule.swift */,
-				D0BACD571BFEA30F004C792C /* PhoneNumberRule.swift */,
-				D0BACD581BFEA30F004C792C /* RegexRule.swift */,
-				D0BACD591BFEA30F004C792C /* RequiredRule.swift */,
-				D0BACD5A1BFEA30F004C792C /* Rule.swift */,
-				D0BACD5B1BFEA30F004C792C /* ValidationRule.swift */,
-				D0BACD5C1BFEA30F004C792C /* ZipCodeRule.swift */,
-			);
-			path = Rules;
 			sourceTree = "<group>";
 		};
 		D0D144EC1BEFFFD5002DEBF9 = {
@@ -561,7 +484,6 @@
 				D0A02C4B1C0595260033D20C /* downArrow.png in Resources */,
 				D0D145031BEFFFD5002DEBF9 /* Assets.xcassets in Resources */,
 				D0A02BB71C0591680033D20C /* Abadi.ttf in Resources */,
-				D0BACD691BFEA30F004C792C /* Info.plist in Resources */,
 				D0A02C4A1C0595260033D20C /* .gitkeep in Resources */,
 				D0D144FE1BEFFFD5002DEBF9 /* Main.storyboard in Resources */,
 				D0A02B8E1C056E2F0033D20C /* InProgressCell.xib in Resources */,
@@ -639,7 +561,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A02B981C0572890033D20C /* WaitingTableViewCell.swift in Sources */,
-				D0BACD6E1BFEA30F004C792C /* MaxLengthRule.swift in Sources */,
 				D00795AE1C4989A6001F8765 /* ReviewViewController.swift in Sources */,
 				D095F89B1BF14F0C0068B58C /* RootViewController.swift in Sources */,
 				D0BACD491BFE9332004C792C /* RegistrationFields.swift in Sources */,
@@ -650,38 +571,23 @@
 				D06B609C1C52C6B0006F857D /* ReviewFirstView.swift in Sources */,
 				D0921A811C61249B004D5A73 /* ReviewViewControllerP2.swift in Sources */,
 				D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */,
-				D0BACD741BFEA30F004C792C /* Rule.swift in Sources */,
 				D0A02BBA1C05946D0033D20C /* NewCleanViewController.swift in Sources */,
-				D089BD551C34A210002298DD /* CreditCardView.swift in Sources */,
 				D095E2F81C33BB7800240BD6 /* Customer.swift in Sources */,
-				D0BACD6A1BFEA30F004C792C /* ConfirmRule.swift in Sources */,
-				D0BACD681BFEA30F004C792C /* Validator.swift in Sources */,
 				D0D145011BEFFFD5002DEBF9 /* Dormy.xcdatamodeld in Sources */,
 				D0A02B921C056F3D0033D20C /* InProgressTableViewCell.swift in Sources */,
-				D0BACD6C1BFEA30F004C792C /* FloatRule.swift in Sources */,
 				D0A02C501C0595260033D20C /* UIDownPicker.m in Sources */,
 				D095F8951BF11F5E0068B58C /* WelcomePageViewController.swift in Sources */,
-				D0BACD6F1BFEA30F004C792C /* MinLengthRule.swift in Sources */,
 				D00795B01C498C03001F8765 /* ContainerScrollViewController.swift in Sources */,
-				D0BACD6D1BFEA30F004C792C /* FullNameRule.swift in Sources */,
 				D0D1959D1BFD401700BE804D /* RegistrationInfo.swift in Sources */,
-				D0BACD671BFEA30F004C792C /* ValidationError.swift in Sources */,
 				D0921A831C6307DC004D5A73 /* FloatRatingView.swift in Sources */,
-				D0BACD761BFEA30F004C792C /* ZipCodeRule.swift in Sources */,
 				D0A02C4F1C0595260033D20C /* DownPicker.m in Sources */,
-				D0BACD731BFEA30F004C792C /* RequiredRule.swift in Sources */,
-				D0BACD701BFEA30F004C792C /* PasswordRule.swift in Sources */,
 				D0A02B901C056F0A0033D20C /* RequestsTableViewController.swift in Sources */,
 				D0A02B9A1C05728F0033D20C /* CompletedTableViewCell.swift in Sources */,
-				D0BACD721BFEA30F004C792C /* RegexRule.swift in Sources */,
-				D0BACD751BFEA30F004C792C /* ValidationRule.swift in Sources */,
-				D0BACD711BFEA30F004C792C /* PhoneNumberRule.swift in Sources */,
 				D0921A7F1C61248D004D5A73 /* ReviewViewControllerP1.swift in Sources */,
 				D095F89D1BF15FF50068B58C /* UIColorExtensions.swift in Sources */,
 				D0A02BB51C058D0C0033D20C /* Job.swift in Sources */,
 				D0349C701C056CF600759577 /* MainNavController.swift in Sources */,
 				D0D144F91BEFFFD5002DEBF9 /* AppDelegate.swift in Sources */,
-				D0BACD6B1BFEA30F004C792C /* EmailRule.swift in Sources */,
 				D095E2F41C33586E00240BD6 /* ProfileViewController.swift in Sources */,
 				D095E2E41C33143800240BD6 /* LogInViewController.swift in Sources */,
 				D095F8971BF11F7F0068B58C /* WelcomeContentViewController.swift in Sources */,

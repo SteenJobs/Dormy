@@ -20,6 +20,8 @@ class RegistrationFields: UITextField {
         }
         if let type = self.type {
             switch type {
+            case "Full Name":
+                return self.markField(self.validateFullName())
             case "E-mail Address":
                 return self.markField(self.validateEmailAddress())
             case "Phone Number":
@@ -82,6 +84,11 @@ class RegistrationFields: UITextField {
         return isValidated
     }
     
+    func validateFullName() -> Bool {
+        let nameArray: [String] = self.text!.characters.split { $0 == " " }.map { String($0) }
+        return nameArray.count >= 2
+    }
+    
     func validateEmailAddress() -> Bool {
         let email = self.text
         let isEdu = email!.hasSuffix(".edu")
@@ -90,7 +97,14 @@ class RegistrationFields: UITextField {
     }
     
     func validateCollege() -> Bool {
-        let didChoose = (self.text != "--")
+        var isOnlyWhitespace: Bool?
+        let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+        if self.text!.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
+            isOnlyWhitespace = false
+        } else {
+            isOnlyWhitespace = true
+        }
+        let didChoose = self.text != "--" && !isOnlyWhitespace!
         return didChoose
     }
     

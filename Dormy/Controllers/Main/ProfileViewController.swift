@@ -19,7 +19,6 @@ extension Int {
 
 class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFieldDelegate, STPPaymentCardTextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    //@IBOutlet weak var creditCardView: UIView!
 
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var nameTF: UITextField!
@@ -34,7 +33,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var changeButton: UIButton!
-    //@IBOutlet weak var newCardTF: STPPaymentCardTextField!
+
     var newCardTF: STPPaymentCardTextField?
     var check: UIImageView?
     var newCardValid: Bool = false
@@ -56,19 +55,14 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         
         
         
-        //root.dismissViewControllerAnimated(false, completion: nil)
-        
-        
         let pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
         let root = UIApplication.sharedApplication().keyWindow?.rootViewController as! RootViewController
         root.pageVC = pageVC
         pageVC.pageControl = root.pageControl
         root.addChildViewController(pageVC)
-        //???
         root.pageControl.hidden = false
         root.view.addSubview(pageVC.view)
         root.pageVC!.didMoveToParentViewController(self)
-        //root.mainVC!.presentViewController(root, animated: true, completion: nil)
         
         root.transitionFromViewController(root.mainVC!, toViewController: root.pageVC!, duration: 1.0, options: UIViewAnimationOptions.TransitionNone, animations: nil, completion: { bool in
             self.dismissViewControllerAnimated(true, completion: {
@@ -101,7 +95,6 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     }
     
     func layoutStack() {
-        
         newCardTF!.layer.anchorPoint = CGPointMake(0.5, 0.0)
         newCardTF!.layer.doubleSided = false
         let margin: CGFloat = 10
@@ -110,14 +103,6 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-        var perspectiveTransform = CATransform3DIdentity
-        perspectiveTransform.m34 = 1 / -900
-        self.view.layer.sublayerTransform = perspectiveTransform
-        self.newCardTF.layer.anchorPoint = CGPointMake(0.5, 0.0)
-        self.newCardTF.layer.doubleSided = false
-        */
         
         getCollegeOptions()
         
@@ -131,16 +116,9 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         
         self.newCardTF = STPPaymentCardTextField(frame: foldFrame(withTop: CGRectGetMaxY(creditCardTF!.frame)))
         self.contentView.addSubview(newCardTF!)
-        //self.newCardTF?.backgroundColor = UIColor(rgba: "#F8E71C50")
-        self.newCardTF?.layer.backgroundColor = self.phoneTF.backgroundColor?.CGColor //UIColor(rgba: "#F8E71C50").CGColor
+        self.newCardTF?.layer.backgroundColor = self.phoneTF.backgroundColor?.CGColor
         self.newCardTF?.textColor = UIColor.whiteColor()
-        //self.newCardTF?.tin
-
         
-        self.check = UIImageView(frame: CGRectMake(CGRectGetMaxX(newCardTF!.frame), newCardTF!.frame.origin.y, newCardTF!.frame.height * 1.3, newCardTF!.frame.height))
-        check!.image = UIImage(named: "checkmark")
-        self.contentView.addSubview(check!)
-        check!.hidden = true
         
         var perspectiveTransform = CATransform3DIdentity
         perspectiveTransform.m34 = 1 / -900
@@ -158,7 +136,6 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         
         self.changeButton.layer.cornerRadius = 5
         self.changeButton.layer.borderColor = self.creditCardTF.layer.borderColor
-        //self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         let x = NSString(string: "HELLO").sizeWithAttributes([NSFontAttributeName: UIFont(name: "Lucida Grande", size: 30.0)!])
         let adjustedSize = CGSizeMake(ceil(x.width), ceil(x.height))
@@ -166,7 +143,6 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         
         self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.Interactive
         
-        //self.scrollView.contentSize = CGSize(width: self.scrollView.bounds.width, height: 800)
         self.navBar.barTintColor = UIColor(rgba: "#0B376D")
         self.navItem.title = "PROFILE"
         self.navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -191,8 +167,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         self.checkEmail()
         
         self.registerForKeyboardNotifications()
-        //self.creditCardView.bringSubviewToFront(self.changeButton)
-        //animateNewCard(self.changeButton)
+
     }
     
     func getKeyboardAccessoryWithTitle(title: String, selector: Selector) -> UIToolbar {
@@ -276,8 +251,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         super.viewDidLayoutSubviews()
         
         layoutStack()
-        
-        //self.scrollView.contentSize = CGSize(width: self.contentView.frame.size.width, height: 800)
+
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -292,7 +266,6 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     }
     
     func closeProfileView() {
-        print("yo")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -547,15 +520,6 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     func textFieldDidBeginEditing(textField: UITextField) {
         self.activeField = textField
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

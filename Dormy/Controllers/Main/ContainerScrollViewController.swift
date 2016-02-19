@@ -39,8 +39,6 @@ class ContainerScrollViewController: UIViewController, UIScrollViewDelegate {
         
         var idx: Int = 0
         for viewController in viewControllers {
-            // index is the index within the array
-            // participant is the real object contained in the array
             addChildViewController(viewController);
             let originX:CGFloat = CGFloat(idx) * width;
             viewController.view.frame = CGRectMake(originX, 0, scrollView.bounds.size.width, scrollView.bounds.size.height);
@@ -146,15 +144,5 @@ class ContainerScrollViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

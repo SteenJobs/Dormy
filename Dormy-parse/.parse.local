@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Dormy": {
+      "applicationId": "egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8"
+    },
+    "_default": {
+      "link": "Dormy"
+    }
+  }
+}

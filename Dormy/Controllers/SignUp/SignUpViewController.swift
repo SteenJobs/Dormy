@@ -24,7 +24,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var index: Int = 0
     var numberOfTextFields: Int?
     var textFields: [RegistrationFields]?
-    // Change placeholders to type attribute so still works even if remove placeholders
     var placeHolderDict = [["E-mail Address (.edu)", "Phone Number", "Password", "Confirm Password"], ["Full Name", "Choose Your College", "Dorm Building", "Room Number"], ["Card Number", "Expiration Date", "CCV", "Zip Code"]]
     var navBarTitle = ["SIGN UP", "CREATE PROFILE", "CREATE PROFILE"]
     var buttons = ["signup-next", "signup-next", "signup-done"]
@@ -32,8 +31,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     // Placeholder for Parse data - set with single value of "--"
     var colleges: [String] = [] //["YU", "Columbia", "NYU", "BU"]
     var PFColleges: [PFObject]? = []
-    
-    let validator = Validator()
     
     @IBAction func completeButtonTapped(sender: AnyObject) {
         switch self.index {
@@ -61,7 +58,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         hideKeyboard()
         
         if !self.validateSubmission() {
-            //self.showAlertView("Error", message: "Please fix any errors before continuing.")
+            self.showAlertView("Error", message: "Please fix any errors before continuing.")
             return
         }
         
@@ -70,16 +67,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SignUpViewController") as! SignUpViewController
             let currentVC = self.navigationController!.visibleViewController as! SignUpViewController
             let currentIndex = currentVC.index
-            //let nextVC = segue.destinationViewController as! SignUpViewController
             nextVC.index = currentIndex + 1
             self.navigationController!.pushViewController(nextVC, animated: true)
         } else {
-            //TODO: Save user to parse
             self.signUp() { saved in
                 if saved {
                     self.saveCC()
-                    
-                    //TODO: Notify user that email verification has been sent
+
                     let alert = UIAlertController(title: "Thank you for registering with Dormy!", message: "A verification email will be sent to the address you provided. Once you've verified your account you will be able to start booking jobs.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: { void in
                         let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
@@ -89,17 +83,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         let root = nav.parentDelegate as! RootViewController
                         root.mainVC = requestsVC
                         root.addChildViewController(requestsVC)
-                        //???
                         root.view.addSubview(requestsVC.view)
-                        //root.presentViewController(requestsVC, animated: true, completion: {
-                          //  nav.dismissViewControllerAnimated(true, completion: nil)
-                        //})
                         root.pageControl.hidden = true
                         root.mainVC!.didMoveToParentViewController(root)
                         nav.dismissViewControllerAnimated(true, completion: nil)
                         root.pageVC!.removeFromParentViewController()
-                        
-                        //self.presentViewController(requestsVC, animated: true, completion: nil)
                     }))
                     
                     self.presentViewController(alert, animated: true, completion: nil)
@@ -178,8 +166,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         let adjustedSize = CGSizeMake(ceil(x.width), ceil(x.height))
         TFHeight.constant = adjustedSize.height + 15.0
         
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -364,7 +350,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         if filter?.count > 0 {
             let collegeTF = filter!.first!
             collegeTF.text = self.colleges[row]
-            //collegeTF.resignFirstResponder()
         }
     }
     
@@ -431,14 +416,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                     self.showAlertView("Error", message: errorString)
                 }
             } else {
-                
-                //TODO: Present user with login screen
-                // Remove values from RegistrationInfo instance
-                
                 completionHandler(saved: true)
-                
-                
-                //RegistrationInfo.sharedInstance.resetRegistrationInfo()
+
+                RegistrationInfo.sharedInstance.resetRegistrationInfo()
             }
         }
     }
@@ -457,7 +437,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                         let order2 = college2["order"] as! Int
                         return order1 < order2
                     })
-                    //self.colleges = ["--"]
                     self.PFColleges = orderedColleges
                     for college in orderedColleges {
                         self.colleges.append(college["name"] as! String)

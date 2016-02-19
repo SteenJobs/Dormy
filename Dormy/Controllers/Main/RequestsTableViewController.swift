@@ -17,11 +17,8 @@ class RequestsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set up a refresh control, call reload to start things up
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: "reload", forControlEvents: .ValueChanged)
-        
-        //self.loadJobs()
         
         let nibName = UINib(nibName: "InProgressCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "InProgressTableViewCell")
@@ -71,10 +68,7 @@ class RequestsTableViewController: UITableViewController {
         if user["emailVerified"]?.boolValue != true {
             let imageView = UIImageView(image: UIImage(named: "verification-alert"))
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
-            //imageView.backgroundColor = UIColor(rgba: "#F8F8F8")
-            //if self.header != nil {
-                //imageView.frame = CGRectMake(0, self.header!.frame.maxY, collectionView.frame.size.width, imageView.image!.size.height)
-            //} else {
+
             var imageHeight: CGFloat?
             if imageView.image!.size.height < tableView.frame.size.height {
                 imageHeight = imageView.image!.size.height
@@ -83,12 +77,11 @@ class RequestsTableViewController: UITableViewController {
             }
             
             imageView.frame = CGRectMake(0, 20, tableView.frame.size.width, imageHeight!)
-            //}
+
             tableView.scrollEnabled = false
             let requestsVC = self.parentViewController as! RequestsViewController
             requestsVC.getCleanButton.enabled = false
             tableView.backgroundView = UIView()
-            //collectionView.backgroundView?.backgroundColor = UIColor(rgba: "#F8F8F8")
             tableView.backgroundView?.addSubview(imageView)
             if PFFacebookUtils.isLinkedWithUser(user) {
                 self.showAlertView("Logged in with Facebook?", message: "Tap the gear icon at the top of the page in order to ensure that you have properly filled out your profile information in order to schedule a cleaning.")
@@ -210,7 +203,6 @@ class RequestsTableViewController: UITableViewController {
                 self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
                 completionHandler()
             } else {
-                // remove and use 'include'
                 if jobs != nil {
                     self.jobs = []
                     for job in jobs! {
@@ -231,40 +223,10 @@ class RequestsTableViewController: UITableViewController {
                     self.tableView.reloadData()
                     completionHandler()
                 }
-                
-                /*
-                self.loadPackages(jobs!) { bool in
-                    if bool {
-                        self.tableView.reloadData()
-                    }
-                }
-                */
             }
         }
     }
     
-    
-    /*
-    func loadPackages(jobs: [PFObject], completionHandler: (finished: Bool) -> ()) {
-        self.jobs = []
-        for job in jobs {
-            let localJob = job as! Job
-            self.jobs.append(localJob)
-            let query = PFQuery(className: "Package")
-            query.whereKey("objectId", equalTo: localJob.package!.objectId!)
-            query.findObjectsInBackgroundWithBlock() { (packages: [PFObject]?, error: NSError?) -> Void in
-                if packages != nil {
-                    let package = packages!.first!
-                    localJob.package = package
-                    if localJob == jobs.last {
-                        completionHandler(finished: true)
-                    }
-                }
-            }
-        }
-        
-    }
-    */
     
         
     func showAlertView(title: String?, message: String?) {
@@ -273,49 +235,5 @@ class RequestsTableViewController: UITableViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
         
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
