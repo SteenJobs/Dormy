@@ -24,7 +24,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     var index: Int = 0
     var numberOfTextFields: Int?
     var textFields: [RegistrationFields]?
-    var placeHolderDict = [["E-mail Address (.edu)", "Phone Number", "Password", "Confirm Password"], ["Full Name", "Choose Your College", "Dorm Building", "Room Number"], ["Card Number", "Expiration Date", "CCV", "Zip Code"]]
+    var placeHolderDict: [[FieldType]] = [[FieldType.Email, FieldType.Phone, FieldType.Password, FieldType.PasswordConfirmation], [FieldType.FullName, FieldType.College, FieldType.DormBuilding, FieldType.RoomNumber], [FieldType.CardNumber, FieldType.Expiration, FieldType.CCV, FieldType.Zip]]
     var navBarTitle = ["SIGN UP", "CREATE PROFILE", "CREATE PROFILE"]
     var buttons = ["signup-next", "signup-next", "signup-done"]
     
@@ -124,31 +124,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         let z = zip(textFields!, placeHolders)
         for (textField, placeHolder) in z {
             textField.delegate = self
-            textField.placeholder = placeHolder
+            textField.placeholder = placeHolder.rawValue
             textField.type = placeHolder
             textField.clearButtonMode = UITextFieldViewMode.WhileEditing
             textField.addTarget(self, action: Selector("checkTextField:"), forControlEvents: UIControlEvents.EditingChanged)
 
             switch placeHolder {
-            case "E-mail Address":
+            case FieldType.Email:
                 textField.keyboardType = UIKeyboardType.EmailAddress
-            case "Phone Number":
+            case FieldType.Phone:
                 textField.keyboardType = UIKeyboardType.PhonePad
                 //validator.registerField(textField, rules: [RequiredRule(), PhoneNumberRule()])
-            case "Card Number":
+            case FieldType.CardNumber:
                 textField.keyboardType = UIKeyboardType.NumberPad
-            case "Expiration Date":
+            case FieldType.Expiration:
                 textField.keyboardType = UIKeyboardType.NumberPad
-            case "CCV":
+            case FieldType.CCV:
                 textField.keyboardType = UIKeyboardType.NumberPad
                 textField.secureTextEntry = true
-            case "Zip Code":
+            case FieldType.Zip:
                 textField.keyboardType = UIKeyboardType.NumberPad
-            case "Password":
+            case FieldType.Password:
                 textField.secureTextEntry = true
-            case "Confirm Password":
+            case FieldType.PasswordConfirmation:
                 textField.secureTextEntry = true
-            case "Choose Your College":
+            case FieldType.College:
                 pickerView = UIPickerView()
                 pickerView?.dataSource = self
                 pickerView?.delegate = self
@@ -206,7 +206,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             }
         }
         if let field = registrationField {
-            if field.type == "Password" {
+            if field.type == FieldType.Password {
                 RegistrationInfo.sharedInstance.password = field.text
             }
             if field.error == true {
@@ -216,7 +216,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        let filter = self.textFields?.filter({(tf: RegistrationFields) -> Bool in return tf.type == "Choose Your College"})
+        let filter = self.textFields?.filter({(tf: RegistrationFields) -> Bool in return tf.type == FieldType.College})
         if filter?.count > 0 {
             let collegeTF = filter!.first!
             if textField == collegeTF {
@@ -346,7 +346,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let filter = self.textFields?.filter({(tf: RegistrationFields) -> Bool in return tf.type == "Choose Your College"})
+        let filter = self.textFields?.filter({(tf: RegistrationFields) -> Bool in return tf.type == FieldType.College})
         if filter?.count > 0 {
             let collegeTF = filter!.first!
             collegeTF.text = self.colleges[row]

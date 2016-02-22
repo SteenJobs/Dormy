@@ -9,9 +9,25 @@
 import UIKit
 import Stripe
 
+
+enum FieldType: String {
+    case FullName = "Full Name"
+    case Email = "E-mail Address (.edu)"
+    case Phone = "Phone Number"
+    case Password = "Password"
+    case PasswordConfirmation = "Confirm Password"
+    case College = "Choose Your College"
+    case DormBuilding = "Dorm Building"
+    case RoomNumber = "Room Number"
+    case CardNumber = "Card Number"
+    case Expiration = "Expiration Date"
+    case CCV = "CCV"
+    case Zip = "Zip Code"
+}
+
 class RegistrationFields: UITextField {
     
-    var type: String?
+    var type: FieldType?
     var error: Bool?
     
     func validate() -> Bool {
@@ -20,17 +36,17 @@ class RegistrationFields: UITextField {
         }
         if let type = self.type {
             switch type {
-            case "Full Name":
+            case FieldType.FullName:
                 return self.markField(self.validateFullName())
-            case "E-mail Address":
+            case FieldType.Email:
                 return self.markField(self.validateEmailAddress())
-            case "Phone Number":
+            case FieldType.Phone:
                 return self.markField(self.validatePhoneNumber())
-            case "Password":
+            case FieldType.Password:
                 return self.markField(self.validatePassword())
-            case "Confirm Password":
+            case FieldType.PasswordConfirmation:
                 return self.markField(self.validateConfirmPassword())
-            case "Choose Your College":
+            case FieldType.College:
                 return self.markField(self.validateCollege())
             default:
                 return true
