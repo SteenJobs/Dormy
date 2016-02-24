@@ -21,6 +21,7 @@
 		D00833B01BF409F700BB81D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */; };
 		D00833B21BF40A0100BB81D9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B11BF40A0100BB81D9 /* libz.tbd */; };
 		D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */; };
+		D02F1AC11C7DF5D200C4BD4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D02F1AC01C7DF5D200C4BD4C /* LaunchScreen.storyboard */; };
 		D0349C6E1C05395700759577 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6D1C05395700759577 /* RequestsViewController.swift */; };
 		D0349C701C056CF600759577 /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6F1C056CF600759577 /* MainNavController.swift */; };
 		D06B609C1C52C6B0006F857D /* ReviewFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */; };
@@ -60,7 +61,6 @@
 		D0D144FE1BEFFFD5002DEBF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */; };
 		D0D145011BEFFFD5002DEBF9 /* Dormy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0D144FF1BEFFFD5002DEBF9 /* Dormy.xcdatamodeld */; };
 		D0D145031BEFFFD5002DEBF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D145021BEFFFD5002DEBF9 /* Assets.xcassets */; };
-		D0D145061BEFFFD5002DEBF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D145041BEFFFD5002DEBF9 /* LaunchScreen.storyboard */; };
 		D0D195991BFD199C00BE804D /* RootNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D195981BFD199C00BE804D /* RootNavController.swift */; };
 		D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1959A1BFD19BF00BE804D /* SignUpViewController.swift */; };
 		D0D1959D1BFD401700BE804D /* RegistrationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1959C1BFD401700BE804D /* RegistrationInfo.swift */; };
@@ -96,6 +96,7 @@
 		D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D00833B11BF40A0100BB81D9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		D02F1AC01C7DF5D200C4BD4C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0349C6D1C05395700759577 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		D0349C6F1C056CF600759577 /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		D06B609B1C52C6B0006F857D /* ReviewFirstView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewFirstView.swift; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		D0D144FD1BEFFFD5002DEBF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0D145001BEFFFD5002DEBF9 /* Dormy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dormy.xcdatamodel; sourceTree = "<group>"; };
 		D0D145021BEFFFD5002DEBF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D0D145051BEFFFD5002DEBF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0D145071BEFFFD5002DEBF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0D195981BFD199C00BE804D /* RootNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavController.swift; sourceTree = "<group>"; };
 		D0D1959A1BFD19BF00BE804D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -390,7 +390,7 @@
 				D0D145021BEFFFD5002DEBF9 /* Assets.xcassets */,
 				D0A02BB81C0592DD0033D20C /* Dormy-Bridging-Header.h */,
 				D0D145071BEFFFD5002DEBF9 /* Info.plist */,
-				D0D145041BEFFFD5002DEBF9 /* LaunchScreen.storyboard */,
+				D02F1AC01C7DF5D200C4BD4C /* LaunchScreen.storyboard */,
 				D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */,
 			);
 			path = Dormy;
@@ -477,10 +477,10 @@
 				D0A02C4C1C0595260033D20C /* downArrow@2x.png in Resources */,
 				D00795B21C498F78001F8765 /* ReviewFirstView.xib in Resources */,
 				D0A02B941C0572570033D20C /* WaitingCell.xib in Resources */,
+				D02F1AC11C7DF5D200C4BD4C /* LaunchScreen.storyboard in Resources */,
 				D095F8991BF12B650068B58C /* LucidaGrande.ttc in Resources */,
 				D0A02C4D1C0595260033D20C /* downArrow@3x.png in Resources */,
 				D0921A7D1C5FF338004D5A73 /* ImageReview.xib in Resources */,
-				D0D145061BEFFFD5002DEBF9 /* LaunchScreen.storyboard in Resources */,
 				D0A02C4B1C0595260033D20C /* downArrow.png in Resources */,
 				D0D145031BEFFFD5002DEBF9 /* Assets.xcassets in Resources */,
 				D0A02BB71C0591680033D20C /* Abadi.ttf in Resources */,
@@ -603,15 +603,6 @@
 				D0D144FD1BEFFFD5002DEBF9 /* Base */,
 			);
 			name = Main.storyboard;
-			path = .;
-			sourceTree = "<group>";
-		};
-		D0D145041BEFFFD5002DEBF9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0D145051BEFFFD5002DEBF9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			path = .;
 			sourceTree = "<group>";
 		};

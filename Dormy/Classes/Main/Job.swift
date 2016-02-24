@@ -16,7 +16,6 @@ enum JobStatus: String {
 }
 
 
-
 class Job: PFObject, PFSubclassing {
     
     @NSManaged var dormer: PFUser?
