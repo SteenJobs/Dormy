@@ -12,16 +12,19 @@ var parseCustomer = Parse.Object.extend("Customer")
 
 Parse.Cloud.define("create_customer", function(request, response) {
 	var username = request.params.username
+	var email = request.params.email
 	console.log(request.params.user)
 	console.log(request.params.username)
 	Stripe.Customers.create({
 		description: username,
+		email: email,
 		source: request.params.token
 	}).then(function(customer) {
 		console.log(customer)
 		var newCustomer = new parseCustomer();
 		newCustomer.set("username", username);
 		newCustomer.set("user", request.user)
+		newCustomer.set("email", email)
 		newCustomer.set("stripe_id", customer.id);
 
 		console.log(newCustomer)

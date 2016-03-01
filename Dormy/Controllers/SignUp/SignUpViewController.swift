@@ -467,7 +467,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func createCustomer(token: STPToken) {
-        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!,"token": token.tokenId]) {
+        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!, "email": PFUser.currentUser()!.email!, "token": token.tokenId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             
             print(response)

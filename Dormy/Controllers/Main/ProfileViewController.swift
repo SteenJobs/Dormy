@@ -419,7 +419,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     }
     
     func createCustomer(token: STPToken, completionHandler: (success: Bool, error: NSError?) -> ()) {
-        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!,"token": token.tokenId]) {
+        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!, "email": PFUser.currentUser()!.email!, "token": token.tokenId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if let response = response {
                 completionHandler(success: true, error: nil)
