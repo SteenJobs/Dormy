@@ -29,10 +29,34 @@ Parse.Cloud.define("create_customer", function(request, response) {
 
 		console.log(newCustomer)
 
-		newCustomer.save();
-		request.user.save();
+		
 
-		response.success("Customer created successfully")
+		console.log(request.user)
+
+		Parse.Cloud.useMasterKey();
+		var user = Parse.Object.extend("User");
+		var query = new Parse.Query(user);
+		query.get(request.user.id, {
+  			success: function(user) {
+  				newCustomer.save(null, {
+  					success: function(newCustomer) {
+  						user.set("customer", newCustomer);
+						user.save();
+						response.success("Customer created successfully")
+  					},
+  					error: function(newCustomer, error) {
+  						response.error(error)
+  					}
+  				});
+  			},
+  			error: function(object, error) {
+  			  	response.error(error)
+  			}
+		});
+
+		
+
+		
 	}, function(err, customer) {
 		console.log(err);
 		response.error(err);
@@ -70,57 +94,117 @@ Parse.Cloud.define("get_customer", function(request, response) {
 	});
 });
 
+Parse.Cloud.define("check_charge", function(request, response) {
+	var charge = request.params.chargeID
+	Stripe.Charges.retrieve(charge, {
+		success: function(charge) {
+			var refunded = charge.refunded
+			var captured = charge.captured
+			response.success({"refunded": refunded, "captured": captured})
+		},
+		error: function(err, charge) {
+			console.log(err)
+			response.error(err)
+		}
+	});
+});
+
 Parse.Cloud.define("charge_customer", function(request, response) {
 	var user = request.user
-	var customerID = request.params.customerID
 	var source = request.params.source
 	var packageID = request.params.packageID
+	var angular = request.params.angular
+	if (angular == true) {
+		var jobID = request.params.customerID
+		var job = Parse.Object.extend("Job");
+		var query = new Parse.Query(job);
+		query.include("dormer")
+		query.include("dormer.customer")
+		query.get(jobID, {
+  			success: function(job) {
+  				var customer = job.get("dormer").get("customer")
+  				var customerID = customer.get("stripe_id")
+  				chargeCustomer({customerID: customerID, packageID: packageID, request: request, response: response, angular: angular, job: job})
+  			},
+  			error: function(object, error) {
+  				console.log(error)
+  			  	response.error(error)
+  			}
+		});
+	} else {
+		customerID = request.params.customerID
+		chargeCustomer({customerID: customerID, packageID: packageID, response: response, angular: angular})
+	}
 
+	
+
+	
+});
+
+function chargeCustomer(hash) {
 	var Package = Parse.Object.extend("Package")
 	var query = new Parse.Query(Package);
-	query.equalTo("objectId", packageID);
+	query.equalTo("objectId", hash.packageID);
 	query.find({
 		success: function(results) {
 			if (results.length > 0) {
 				var dormyPackage = results[0]
 				var cost = dormyPackage.get("price")
+
 				Stripe.Charges.create({
 					amount: cost*100,
 					currency: "usd",
 					capture: false,
-					customer: customerID,
-					source: source
+					customer: hash.customerID
+					//source: source
 				}, {
 					success: function(charge) {
 						var status = charge.status
-						response.success({"status": status, "charge": charge.id})
+						if (hash.angular == true) {
+							var charge = charge.id
+							var parseCharge = Parse.Object.extend("Charge")
+							var newCharge = new parseCharge();
+							newCharge.set("charge_id", charge);
+							newCharge.set("user", hash.request.user);
+							newCharge.set("job", hash.job);
+							newCharge.save();
+							newCharge.save(null, {
+  								success: function(newCharge) {
+  									var job = hash.job
+  									job.set("charge", newCharge);
+									job.save();
+									hash.response.success("Charge has been updated successfully.")
+  								},
+  								error: function(newCharge, error) {
+  									hash.response.error(error)
+  								}
+  							});
+						} else {
+							hash.response.success({"status": status, "charge": charge.id})
+						}
 					},
 					error: function(err, charge) {
 						console.log(err)
-						response.error(err)
+						hash.response.error(err)
 					}
 				})
 			}
 		},
 		error: function(error) {
 			console.log(error)
-			response.error(error)
+			hash.response.error(error)
 		}
 	});
-});
+}
 
 Parse.Cloud.define("capture_charge", function(request, response) {
 	var jobID = request.params.jobID
-	console.log("this is cloud code");
 	var Job = Parse.Object.extend("Job");
 	var query = new Parse.Query(Job);
 	query.equalTo("objectId", jobID);
 	query.include("charge");
 	query.find({
 		success: function(results) {
-			console.log("Results");
-			console.log(results.length > 0);
-			console.log(results);
 			if (results.length > 0) {
 				var job = results[0]
 				var charge = job.get('charge');
@@ -137,10 +221,13 @@ Parse.Cloud.define("capture_charge", function(request, response) {
                         response.success({data: data});
                     },
                     error: function(httpResponse) {
-                        console.log('Request failed with response code ' + httpResponse.status);
-                        console.log(httpResponse.text);
-                        var data = httpResponse.data
-                        response.error({data: data});
+                        //console.log('Request failed with response code ' + httpResponse.status);
+                        //console.log(httpResponse.text);
+                        //var data = httpResponse.data
+                        //console.log(charge)
+                        console.log(httpResponse.text)
+                        var error = httpResponse.text
+                        response.error(error);
                     }
                 });
 				/*

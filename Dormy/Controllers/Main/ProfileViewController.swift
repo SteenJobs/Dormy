@@ -328,6 +328,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         }
     }
     
+    // TODO: save user profile first, so stripe customer isn't created should user validations fail
     func saveProfileInfo() {
         self.activityIndicator!.labelText = "Saving..."
         self.activityIndicator!.show(true)
@@ -419,7 +420,11 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     }
     
     func createCustomer(token: STPToken, completionHandler: (success: Bool, error: NSError?) -> ()) {
-        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!, "email": PFUser.currentUser()!.email!, "token": token.tokenId]) {
+        var email = (PFUser.currentUser()!.email == nil) ? self.emailTF.text! : PFUser.currentUser()!.email!
+        if (email.characters.count < 1) {
+            email = PFUser.currentUser()!.username!
+        }
+        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!, "email": email, "token": token.tokenId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if let response = response {
                 completionHandler(success: true, error: nil)
