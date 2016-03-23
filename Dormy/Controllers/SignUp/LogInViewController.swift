@@ -17,8 +17,8 @@ class LogInViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var TFHeight: NSLayoutConstraint!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navItem: UINavigationItem!
-    @IBOutlet weak var emailTF: RegistrationFields!
-    @IBOutlet weak var passwordTF: RegistrationFields!
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
     
     var parentDelegate: UIViewController!
     

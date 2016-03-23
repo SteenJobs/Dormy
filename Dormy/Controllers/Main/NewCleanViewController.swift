@@ -54,7 +54,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         
         let isValidated = job.validate()
         if isValidated && self.customerLoaded {
-            Customer.chargeCustomer(self.customer!, job: job) { success in
+            self.customer!.chargeCustomer(job) { success in
                 if success {
                     job.saveInBackgroundWithBlock() { success, error in
                         if let error = error {
@@ -161,7 +161,6 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         self.view.endEditing(true)
     }
     
-    //self.expirationDateText.inputAccessoryView = [self getKeyboardAccessoryWithTitle:@“Done" andSelector:@selector(hideKeyboard)];
     
     func getKeyboardAccessoryWithTitle(title: String, selector: Selector) -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 50))
@@ -189,19 +188,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.getPackageOptions() { success in
-            if success == true {
-                var packageNames: [String] = []
-                for package in self.packages! {
-                    let display = package["name"] as! String + " - $\(package["price"] as! Int)"
-                    self.packageDict[display] = package
-                    packageNames.append(display)
-                }
-                self.downPicker = DownPicker(textField: self.packageTF, withData: packageNames)
-                self.downPicker!.setPlaceholder("")
-                self.downPicker!.addTarget(self, action: Selector("downPickerEditingBegan:"), forControlEvents: UIControlEvents.EditingDidBegin)
-            }
-        }
+        self.getPackageOptions()
         
     }
 
@@ -324,7 +311,7 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         activeField = nil
     }
 
-    func showAlertView(title: String, message: String) {
+    func showAlertView(title: String, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: { void in
             //self.dismissViewControllerAnimated(true, completion: nil)
@@ -344,24 +331,22 @@ class NewCleanViewController: UIViewController, UITextFieldDelegate, UITextViewD
         return true
     }
     
-    func getPackageOptions(completionHandler: (success: Bool) -> ()) {
-        let query = PFQuery(className: "Package")
-        query.findObjectsInBackgroundWithBlock() { (packages: [PFObject]?, error: NSError?) -> Void in
+    func getPackageOptions() {
+        ParseRequest.getPackageOptions() { data, error in
             if let error = error {
-                completionHandler(success: false)
-                if let errorString = error.userInfo["error"] as? String {
-                    self.showAlertView("Error", message: errorString)
-                }
+                self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
             } else {
-                if let packages = packages {
-                    let orderedPackages = packages.sort({ (package1, package2) in
-                        let order1 = package1["order"] as! Int
-                        let order2 = package2["order"] as! Int
-                        return order1 < order2
-                    })
-                    self.packages = orderedPackages
-                    
-                    completionHandler(success: true)
+                if let packages = data {
+                    self.packages = packages
+                    var packageNames: [String] = []
+                    for package in self.packages! {
+                        let display = package["name"] as! String + " - $\(package["price"] as! Int)"
+                        self.packageDict[display] = package
+                        packageNames.append(display)
+                    }
+                    self.downPicker = DownPicker(textField: self.packageTF, withData: packageNames)
+                    self.downPicker!.setPlaceholder("")
+                    self.downPicker!.addTarget(self, action: Selector("downPickerEditingBegan:"), forControlEvents: UIControlEvents.EditingDidBegin)
                 }
             }
         }

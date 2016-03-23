@@ -43,10 +43,7 @@ class RequestsTableViewController: UITableViewController {
         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl!.frame.size.height)
         
         self.refreshControl?.beginRefreshing()
-        self.loadJobs() { void in
-            self.refreshControl?.endRefreshing()
-            print("Jobs loaded")
-        }
+        self.loadJobs()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -184,34 +181,23 @@ class RequestsTableViewController: UITableViewController {
     }
     
     func reload() {
-        self.loadJobs() { void in
-            self.refreshControl?.endRefreshing()
-        }
+        self.loadJobs()
     }
     
-    func loadJobs(completionHandler: () -> ()) {
-        let currentUser = PFUser.currentUser()!
-        
-        let query = PFQuery(className: "Job")
-        query.includeKey("dormer")
-        query.includeKey("package")
-        query.includeKey("cleaner")
-        query.includeKey("review")
-        query.whereKey("dormer", equalTo: currentUser)
-        query.findObjectsInBackgroundWithBlock() { (jobs: [PFObject]?, error: NSError?) -> Void in
+    func loadJobs() {
+        ParseRequest.loadJobs() { data, error in
             if let error = error {
                 self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
-                completionHandler()
             } else {
-                if jobs != nil {
+                if let jobs = data {
                     self.jobs = []
-                    for job in jobs! {
+                    for job in jobs {
                         if job["status"] as! String == JobStatus.Completed.rawValue && job.objectForKey("review") == nil {
                             // Prompt review if job completed and not reviewed yet
                             let reviewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ReviewViewController") as! ReviewViewController
                             reviewVC.job = job as? Job
                             self.presentViewController(reviewVC, animated: true, completion: nil)
-                            completionHandler()
+                            self.refreshControl?.endRefreshing()
                             return
                         }
                         let localJob = job as! Job
@@ -221,7 +207,7 @@ class RequestsTableViewController: UITableViewController {
                         self.refreshControl?.endRefreshing()
                     }
                     self.tableView.reloadData()
-                    completionHandler()
+                    self.refreshControl?.endRefreshing()
                 }
             }
         }

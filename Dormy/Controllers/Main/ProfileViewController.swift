@@ -53,8 +53,6 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     @IBAction func logoutButtonTapped(sender: UIButton) {
         PFUser.logOut()
         
-        
-        
         let pageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
         let root = UIApplication.sharedApplication().keyWindow?.rootViewController as! RootViewController
         root.pageVC = pageVC
@@ -100,10 +98,20 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         let margin: CGFloat = 10
         newCardTF!.frame = foldFrame(withTop: CGRectGetMaxY(creditCardTF!.frame) - newCardTF!.layer.borderWidth)
     }
+    
+    func assignTags() {
+        self.collegeTF.tag = FieldType.College.rawValue
+        self.nameTF.tag = FieldType.FullName.rawValue
+        self.dormBuildingTF.tag = FieldType.DormBuilding.rawValue
+        self.roomNumberTF.tag = FieldType.RoomNumber.rawValue
+        self.emailTF.tag = FieldType.Email.rawValue
+        self.phoneTF.tag = FieldType.Phone.rawValue
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.assignTags()
         getCollegeOptions()
         
         pickerView = UIPickerView()
@@ -112,8 +120,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         self.collegeTF.inputAccessoryView = self.getKeyboardAccessoryWithTitle("Done", selector: Selector("hideKeyboard"))
         self.collegeTF.inputView = pickerView
         
-        
-        
+
         self.newCardTF = STPPaymentCardTextField(frame: foldFrame(withTop: CGRectGetMaxY(creditCardTF!.frame)))
         self.contentView.addSubview(newCardTF!)
         self.newCardTF?.layer.backgroundColor = self.phoneTF.backgroundColor?.CGColor
@@ -124,14 +131,15 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         perspectiveTransform.m34 = 1 / -900
         self.contentView.layer.sublayerTransform = perspectiveTransform
         
-        self.collegeTF.delegate = self
-        self.nameTF.delegate = self
-        self.dormBuildingTF.delegate = self
-        self.roomNumberTF.delegate = self
-        self.emailTF.delegate = self
-        self.phoneTF.delegate = self
-        self.creditCardTF.delegate = self
-        self.creditCardTF.enabled = false
+        let textFields = [self.collegeTF, self.nameTF, self.dormBuildingTF, self.roomNumberTF, self.emailTF, self.phoneTF, self.creditCardTF]
+        
+        for field in textFields {
+            field.delegate = self
+            if field == self.creditCardTF {
+                field.enabled = false
+            }
+        }
+        
         self.newCardTF!.delegate = self
         
         self.changeButton.layer.cornerRadius = 5
@@ -150,13 +158,12 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         self.navBar.translucent = false
         
         let saveButton = UIBarButtonItem(title: "Save", style: .Done, target: self, action: Selector("saveProfileInfo"))
-        self.navItem.leftBarButtonItem = saveButton
-        self.navItem.leftBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
+        self.navItem.rightBarButtonItem = saveButton
+        self.navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
         
         let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: Selector("closeProfileView"))
-        self.navItem.rightBarButtonItem = doneButton
-        self.navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
-        self.navItem.rightBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Highlighted)
+        self.navItem.leftBarButtonItem = doneButton
+        self.navItem.leftBarButtonItem!.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -181,26 +188,19 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
     }
     
     func getCollegeOptions() {
-        let query = PFQuery(className: "College")
-        query.findObjectsInBackgroundWithBlock() { (colleges: [PFObject]?, error: NSError?) -> Void in
+        ParseRequest.getCollegeOptions() { data, error in
             if let error = error {
                 self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
             } else {
-                if let colleges = colleges {
-                    let orderedColleges = colleges.sort({ (college1, college2) in
-                        let order1 = college1["order"] as! Int
-                        let order2 = college2["order"] as! Int
-                        return order1 < order2
-                    })
-                    self.colleges = ["--"]
-                    self.PFColleges = orderedColleges
+                if let colleges = data {
+                    self.PFColleges = colleges
+                    
                     let college = PFUser.currentUser()?["college"] as? PFObject
                     let collegeID = college?.objectId
-                    
-                    let userCollege = orderedColleges.filter({  (college: PFObject) -> Bool in return college.objectId == collegeID }).first
+                    let userCollege = colleges.filter({(college: PFObject) -> Bool in return college.objectId == collegeID }).first
                     self.collegeTF.text = userCollege?["name"] as? String
                     
-                    for college in orderedColleges {
+                    for college in colleges {
                         self.colleges.append(college["name"] as! String)
                     }
                 }
@@ -244,7 +244,7 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         super.viewDidAppear(animated)
         
         self.valueChanges(self.changeButton)
-        self.scrollView.contentSize = CGSize(width: self.scrollView.bounds.width, height: self.creditCardTF.frame.maxY + 400)
+        self.scrollView.contentSize = CGSize(width: self.scrollView.bounds.width, height: self.creditCardTF.frame.maxY + 100)
     }
 
     override func viewDidLayoutSubviews() {
@@ -334,74 +334,55 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         self.activityIndicator!.show(true)
         if self.newCardTF!.cardNumber != nil {
             // process card info along with profile info
-            saveCC() { success, error in
-                if let error = error {
-                    self.activityIndicator!.hide(true)
-                    self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
-                }
+            saveUserInfo() { success in
                 if success {
-                    self.saveUserInfo() { success, error in
-                        self.activityIndicator!.hide(true)
-                        if let error = error {
-                            self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
-                        }
-                        if success {
-                            let alert = UIAlertController(title: "Success", message: "Your profile has been saved.", preferredStyle: UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                            }))
-                            self.presentViewController(alert, animated: true, completion: nil)
-                        }
-                    }
+                    self.saveCC()
                 }
             }
         } else {
-            saveUserInfo() { success, error in
-                self.activityIndicator!.hide(true)
-                if success {
-                    let alert = UIAlertController(title: "Success", message: "Your profile has been saved.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    }))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }
-                if let error = error {
-                    self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
-                }
-            }
+            saveUserInfo()
         }
     }
     
-    func saveCC(completionHandler: (success: Bool, error: NSError?) -> ()) {
-        let card = self.newCardTF!.card
-        
-        STPAPIClient.sharedClient().createTokenWithCard(card!) { token, error in
+    func saveCC() {
+        Customer.saveCC(card: self.newCardTF!.card) { success, error in
             if let error = error {
+                self.activityIndicator!.hide(true)
                 self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
-            } else {
-                self.createCustomer(token!) { success, error in
-                    completionHandler(success: success, error: error)
-                }
             }
         }
     }
-    
-    func saveUserInfo(completionHandler: (success: Bool, error: NSError?) -> ()) {
-        let textFields = [self.phoneTF, self.nameTF, self.dormBuildingTF, self.roomNumberTF, self.emailTF, self.collegeTF]
-        var validations: [Bool] = []
-        for field in textFields {
-            validations.append(validateRequiredField(field))
-            if field == self.phoneTF {
-                validations.append(validatePhoneNumber(field))
-            }
-            if field == self.emailTF {
-                validations.append(validateEmailAddress(field))
-            }
-        }
+
+    func validateSubmission() -> Bool {
+        let currentTextFields = [self.phoneTF, self.nameTF, self.dormBuildingTF, self.roomNumberTF, self.emailTF, self.collegeTF]
         
+        var validations: [Bool] = []
+        for textField in currentTextFields {
+            let isValidated = Validations.validate(textField, required: true)
+            self.markField(textField, validated: isValidated)
+            validations.append(isValidated)
+        }
+        if validations.contains(false) {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func markField(textField: UITextField, validated: Bool) {
+        textField.layer.borderWidth = 2.0
+        if validated {
+            textField.layer.borderColor = UIColor.greenColor().CGColor
+        } else {
+            textField.layer.borderColor = UIColor.redColor().CGColor
+        }
+    }
+    
+    func saveUserInfo(completionHandler: ((success: Bool) -> ())?=nil) {
+        let isValidated = self.validateSubmission()
         let filter = self.PFColleges?.filter({(college: PFObject) -> Bool in return college["name"] as? String == self.collegeTF.text!})
         
-        if validations.contains(false) || filter?.count == 0 {
+        if !isValidated || filter?.count == 0 {
             self.activityIndicator?.hide(true)
             self.showAlertView("Error", message: "Please make sure all required fields are filled out properly.")
             return
@@ -415,72 +396,27 @@ class ProfileViewController: UIViewController, UINavigationBarDelegate, UITextFi
         user["dorm_building"] = self.dormBuildingTF.text!
         user["room_number"] = self.roomNumberTF.text!
         user.saveInBackgroundWithBlock() { success, error in
-            completionHandler(success: success, error: error)
-        }
-    }
-    
-    func createCustomer(token: STPToken, completionHandler: (success: Bool, error: NSError?) -> ()) {
-        var email = (PFUser.currentUser()!.email == nil) ? self.emailTF.text! : PFUser.currentUser()!.email!
-        if (email.characters.count < 1) {
-            email = PFUser.currentUser()!.username!
-        }
-        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!, "email": email, "token": token.tokenId]) {
-            (response: AnyObject?, error: NSError?) -> Void in
-            if let response = response {
-                completionHandler(success: true, error: nil)
+            if success {
+                completionHandler?(success: true)
+            } else {
+                completionHandler?(success: false)
             }
+            
+            self.activityIndicator!.hide(true)
             if let error = error {
-                completionHandler(success: false, error: error)
+                self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
+            } else {
+                if success {
+                    let alert = UIAlertController(title: "Success", message: "Your profile has been saved.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { void in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
             }
-            print(response)
-            print(error)
         }
     }
     
-    func markField(textField: UITextField, validated: Bool) {
-        if !validated {
-            textField.layer.borderWidth = 2.0
-            textField.layer.borderColor = UIColor.redColor().CGColor
-        }
-    }
-    
-    
-    func validateRequiredField(textField: UITextField) -> Bool {
-        var isValidated: Bool?
-        
-        if textField.text!.isEmpty {
-            isValidated = false
-            markField(textField, validated: false)
-        } else {
-            isValidated = true
-            markField(textField, validated: true)
-        }
-        
-        return isValidated!
-    }
-    
-    func validateEmailAddress(textField: UITextField) -> Bool {
-        let email = textField.text!
-        let isEdu = email.hasSuffix(".edu")
-        
-        if isEdu {
-            return true
-        } else {
-            markField(textField, validated: false)
-            return false
-        }
-    }
-    
-    func validatePhoneNumber(textField: UITextField) -> Bool {
-        let regex = "^\\d{10}$"
-        let regex2 = "^\\d{3}-\\d{3}-\\d{4}$"
-        if textField.text?.rangeOfString(regex, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil || textField.text?.rangeOfString(regex2, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil {
-            return true
-        } else {
-            markField(textField, validated: false)
-            return false
-        }
-    }
     
     func showAlertView(error: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)

@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import Stripe
 
 class Customer {
     
@@ -44,8 +45,8 @@ class Customer {
         }
     }
     
-    class func chargeCustomer(customer: Customer, job: Job, completionHandler: (succeeded: Bool) -> ()) {
-        PFCloud.callFunctionInBackground("charge_customer", withParameters: ["customerID": customer.customerID, "source": customer.defaultSource!, "packageID": job.package!.objectId!]) { (response: AnyObject?, error: NSError?) -> Void in
+    func chargeCustomer(job: Job, completionHandler: (succeeded: Bool) -> ()) {
+        PFCloud.callFunctionInBackground("charge_customer", withParameters: ["customerID": self.customerID, "source": self.defaultSource!, "packageID": job.package!.objectId!]) { (response: AnyObject?, error: NSError?) -> Void in
             if let error = error {
                 print(error)
                 completionHandler(succeeded: false)
@@ -71,6 +72,61 @@ class Customer {
                 }
             } else {
                 completionHandler(succeeded: false)
+            }
+        }
+    }
+    
+    static func saveCC(registrationInfo: RegistrationInfo?=nil, card: STPCardParams?=nil, completionHandler: (success: Bool, error: NSError?) -> ()) {
+        
+        var userCC: STPCardParams?
+        if card == nil {
+            if let info = registrationInfo {
+                userCC = STPCardParams()
+                userCC!.number = info.cardNumber
+                userCC!.expMonth = UInt(info.expirationDate!.month!)!
+                userCC!.expYear = UInt(info.expirationDate!.year!)!
+                userCC!.cvc = info.CCV
+                userCC!.addressZip = info.zip
+            }
+        } else {
+            userCC = card
+        }
+        
+        STPAPIClient.sharedClient().createTokenWithCard(userCC!) { token, error in
+            if let error = error {
+                print("token could not be created")
+                completionHandler(success: false, error: error)
+            } else {
+                if let token = token {
+                    self.createCustomer(token) { success, error in
+                        if let error = error {
+                            print("Stripe customer could not be created")
+                            completionHandler(success: false, error: error)
+                        } else {
+                            if success {
+                                print("Stripe customer successfully created")
+                                completionHandler(success: true, error: nil)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private static func createCustomer(token: STPToken, completionHandler: (success: Bool, error: NSError?) -> ()) {
+        var email = PFUser.currentUser()!.email!
+        if (email.characters.count < 1) {
+            email = PFUser.currentUser()!.username!
+        }
+        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!, "email": email, "token": token.tokenId]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if let error = error {
+                completionHandler(success: false, error: error)
+            } else {
+                if let response = response {
+                    completionHandler(success: true, error: nil)
+                }
             }
         }
     }

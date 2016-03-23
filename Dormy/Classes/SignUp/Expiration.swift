@@ -19,8 +19,14 @@ class Expiration {
         self.year = ""
     }
     
-    class func cardExpiryWithString(string: String) -> Expiration {
-        return Expiration.init().initWithString(string)
+    class func cardExpiryWithString(string: String?) -> Expiration {
+        var expiration: String?
+        if let string = string {
+            expiration = string
+        } else {
+            expiration = ""
+        }
+        return Expiration.init().initWithString(expiration)
     }
     
     func initWithString(string: String?) -> Expiration {

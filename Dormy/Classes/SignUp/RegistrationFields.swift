@@ -10,141 +10,80 @@ import UIKit
 import Stripe
 
 
-enum FieldType: String {
-    case FullName = "Full Name"
-    case Email = "E-mail Address (.edu)"
-    case Phone = "Phone Number"
-    case Password = "Password"
-    case PasswordConfirmation = "Confirm Password"
-    case College = "Choose Your College"
-    case DormBuilding = "Dorm Building"
-    case RoomNumber = "Room Number"
-    case CardNumber = "Card Number"
-    case Expiration = "Expiration Date"
-    case CCV = "CCV"
-    case Zip = "Zip Code"
+enum FieldType: Int {
+    case FullName = 0
+    case Email
+    case Phone
+    case Password
+    case PasswordConfirmation
+    case College
+    case DormBuilding
+    case RoomNumber
+    case CardNumber
+    case Expiration
+    case CCV
+    case Zip
+    
+    var description: String {
+        switch self {
+        case .FullName:
+            return "Full Name"
+        case .Email:
+            return "E-mail Address (.edu)"
+        case .Phone:
+            return "Phone Number"
+        case .Password:
+            return "Password"
+        case .PasswordConfirmation:
+            return "Confirm Password"
+        case .College:
+            return "Choose Your College"
+        case .DormBuilding:
+            return "Dorm Building"
+        case .RoomNumber:
+            return "Room Number"
+        case .CardNumber:
+            return "Card Number"
+        case .Expiration:
+            return "Expiration Date"
+        case .CCV:
+            return "CCV"
+        case .Zip:
+            return "Zip Code"
+        }
+    }
 }
 
-class RegistrationFields: UITextField {
+class RegistrationConfig {
     
-    var type: FieldType?
+    var index: Int
     var error: Bool?
-    
-    func validate() -> Bool {
-        if self.text!.isEmpty {
-            return self.markField(false)
-        }
-        if let type = self.type {
-            switch type {
-            case FieldType.FullName:
-                return self.markField(self.validateFullName())
-            case FieldType.Email:
-                return self.markField(self.validateEmailAddress())
-            case FieldType.Phone:
-                return self.markField(self.validatePhoneNumber())
-            case FieldType.Password:
-                return self.markField(self.validatePassword())
-            case FieldType.PasswordConfirmation:
-                return self.markField(self.validateConfirmPassword())
-            case FieldType.College:
-                return self.markField(self.validateCollege())
-            default:
-                return true
-            }
-        } else {
-            return true
-        }
+    var numberOfTextFields: Int {
+        return placeHolderDict[index].count
     }
-    
-    func markCardField(validated: Bool) {
-        self.layer.borderWidth = 2.0
-        if !validated {
-            self.layer.borderColor = UIColor.redColor().CGColor
-        } else {
-            self.layer.borderColor = UIColor.greenColor().CGColor
-        }
-    }
-    
-    func markField(validated: Bool) -> Bool {
-        if !validated {
-            self.layer.borderWidth = 2.0
-            self.layer.borderColor = UIColor.redColor().CGColor
-            self.error = true
-            return false
-        } else {
-            if self.error == true {
-                self.layer.borderColor = UIColor.greenColor().CGColor
-                self.error = false
-                return true
-            } else {
-                self.layer.borderWidth = 0.0
-                self.layer.borderColor = UIColor.blackColor().CGColor
-                return true
-            }
-        }
-    }
-    
-    
-    func validateRequiredField() -> Bool {
-        var isValidated: Bool = true
 
-        if self.text!.isEmpty {
-            isValidated = false
-            markField(true)
-        } else {
-            isValidated = true
-            markField(false)
-        }
-
-        
-        return isValidated
+    private var placeHolderDict: [[FieldType]] = [[FieldType.Email, FieldType.Phone, FieldType.Password, FieldType.PasswordConfirmation], [FieldType.FullName, FieldType.College, FieldType.DormBuilding, FieldType.RoomNumber], [FieldType.CardNumber, FieldType.Expiration, FieldType.CCV, FieldType.Zip]]
+    private var navBarTitles = ["SIGN UP", "CREATE PROFILE", "CREATE PROFILE"]
+    private var buttons = ["signup-next", "signup-next", "signup-done"]
+    
+    init(index: Int) {
+        self.index = index
     }
     
-    func validateFullName() -> Bool {
-        let nameArray: [String] = self.text!.characters.split { $0 == " " }.map { String($0) }
-        return nameArray.count >= 2
+    func isFinalButton() -> Bool {
+        return self.index == self.buttons.count - 1
     }
     
-    func validateEmailAddress() -> Bool {
-        let email = self.text
-        let isEdu = email!.hasSuffix(".edu")
-        
-        return isEdu
+    func fieldTypes() -> [FieldType] {
+        return self.placeHolderDict[index]
     }
     
-    func validateCollege() -> Bool {
-        var isOnlyWhitespace: Bool?
-        let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
-        if self.text!.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
-            isOnlyWhitespace = false
-        } else {
-            isOnlyWhitespace = true
-        }
-        let didChoose = self.text != "--" && !isOnlyWhitespace!
-        return didChoose
+    func navBarTitle() -> String {
+        return self.navBarTitles[index]
     }
     
-    func validatePhoneNumber() -> Bool {
-        let regex = "^\\d{10}$"
-        let regex2 = "^\\d{3}-\\d{3}-\\d{4}$"
-        if self.text?.rangeOfString(regex, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil || self.text?.rangeOfString(regex2, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil {
-            return true
-        } else {
-            return false
-        }
+    func button() -> String {
+        return self.buttons[index]
     }
-    
-    func validatePassword() -> Bool {
-        if let password = self.text {
-            return !password.isEmpty
-        } else {
-            return false
-        }
-    }
-    
-    func validateConfirmPassword() -> Bool {
-        return (RegistrationInfo.sharedInstance.password == self.text)
-    }
-    
-    
+ 
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import Stripe
 
 class RegistrationInfo {
     static let sharedInstance = RegistrationInfo()
@@ -21,9 +22,35 @@ class RegistrationInfo {
     var dormBuilding: String?
     var roomNumber: String?
     var cardNumber: String?
+    var cardBrand: STPCardBrand?
     var expirationDate: Expiration?
     var CCV: String?
     var zip: String?
+    
+    
+    
+    func signUp(completionHandler: (saved: Bool, error: NSError?) -> ()) {
+        var user = PFUser()
+        let userInfo = self
+        user.username = userInfo.email
+        user.password = userInfo.password
+        user.email = userInfo.email
+        user["phone"] = userInfo.phone
+        user["full_name"] = userInfo.fullName
+        user["college"] = userInfo.college
+        user["dorm_building"] = userInfo.dormBuilding
+        user["room_number"] = userInfo.roomNumber
+        
+        user.signUpInBackgroundWithBlock() { (succeeded: Bool, error: NSError?) -> Void in
+            if let error = error {
+                completionHandler(saved: false, error: error)
+            } else {
+                completionHandler(saved: true, error: nil)
+                self.resetRegistrationInfo()
+            }
+        }
+    }
+
     
     func getExistingTextFields(index: Int) -> [String?] {
         switch index {
@@ -55,7 +82,7 @@ class RegistrationInfo {
         }
     }
     
-    func resetRegistrationInfo() {
+    private func resetRegistrationInfo() {
         self.email = nil
         self.phone = nil
         self.password = nil

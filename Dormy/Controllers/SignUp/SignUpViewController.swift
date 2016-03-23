@@ -10,58 +10,38 @@ import UIKit
 import Parse
 import Stripe
 
-class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, STPPaymentCardTextFieldDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    @IBOutlet var textField1: RegistrationFields!
-    @IBOutlet var textField2: RegistrationFields!
-    @IBOutlet var textField3: RegistrationFields!
-    @IBOutlet var textField4: RegistrationFields!
-    var stripeField: STPPaymentCardTextField?
+    @IBOutlet var textField1: UITextField!
+    @IBOutlet var textField2: UITextField!
+    @IBOutlet var textField3: UITextField!
+    @IBOutlet var textField4: UITextField!
     @IBOutlet var completeButton: UIButton!
     @IBOutlet var TFHeight: NSLayoutConstraint!
     
     var pickerView: UIPickerView?
     var index: Int = 0
     var numberOfTextFields: Int?
-    var textFields: [RegistrationFields]?
-    var placeHolderDict: [[FieldType]] = [[FieldType.Email, FieldType.Phone, FieldType.Password, FieldType.PasswordConfirmation], [FieldType.FullName, FieldType.College, FieldType.DormBuilding, FieldType.RoomNumber], [FieldType.CardNumber, FieldType.Expiration, FieldType.CCV, FieldType.Zip]]
-    var navBarTitle = ["SIGN UP", "CREATE PROFILE", "CREATE PROFILE"]
-    var buttons = ["signup-next", "signup-next", "signup-done"]
+    var textFields: [UITextField]?
+    var registrationConfig: RegistrationConfig?
     
     // Placeholder for Parse data - set with single value of "--"
     var colleges: [String] = [] //["YU", "Columbia", "NYU", "BU"]
     var PFColleges: [PFObject]? = []
     
+    var submitAttemptFailed = false
+    
+    
     @IBAction func completeButtonTapped(sender: AnyObject) {
-        switch self.index {
-        case 0:
-            RegistrationInfo.sharedInstance.email = textField1.text?.lowercaseString
-            RegistrationInfo.sharedInstance.phone = textField2.text
-            RegistrationInfo.sharedInstance.password = textField3.text
-            RegistrationInfo.sharedInstance.confirmPassword = textField4.text
-        case 1:
-            RegistrationInfo.sharedInstance.fullName = textField1.text // TODO: Separate into two TF to ensure both are present
-            let filter = self.PFColleges?.filter({(college: PFObject) -> Bool in return college["name"] as? String == textField2.text!})
-            RegistrationInfo.sharedInstance.college = filter?.first
-            RegistrationInfo.sharedInstance.dormBuilding = textField3.text
-            RegistrationInfo.sharedInstance.roomNumber = textField4.text
-        case 2:
-            RegistrationInfo.sharedInstance.cardNumber = textField1.text
-            let date = Expiration.cardExpiryWithString(textField2.text!)
-            RegistrationInfo.sharedInstance.expirationDate = date
-            RegistrationInfo.sharedInstance.CCV = textField3.text
-            RegistrationInfo.sharedInstance.zip = textField4.text
-        default:
-            print("index out of range")
-        }
-        
+        self.preserveUserRegistrationInfo(self.index)
         hideKeyboard()
         
         if !self.validateSubmission() {
             self.showAlertView("Error", message: "Please fix any errors before continuing.")
             return
+        } else {
+            submitAttemptFailed = false
         }
-        
         
         if self.completeButton.tag == 0 {
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SignUpViewController") as! SignUpViewController
@@ -70,28 +50,24 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             nextVC.index = currentIndex + 1
             self.navigationController!.pushViewController(nextVC, animated: true)
         } else {
-            self.signUp() { saved in
+            RegistrationInfo.sharedInstance.signUp() { saved, error in
                 if saved {
-                    self.saveCC()
-
-                    let alert = UIAlertController(title: "Thank you for registering with Dormy!", message: "A verification email will be sent to the address you provided. Once you've verified your account you will be able to start booking jobs.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: { void in
-                        let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
-                       
-                        let nav = self.navigationController! as! RootNavController
-                        
-                        let root = nav.parentDelegate as! RootViewController
-                        root.mainVC = requestsVC
-                        root.addChildViewController(requestsVC)
-                        root.view.addSubview(requestsVC.view)
-                        root.pageControl.hidden = true
-                        root.mainVC!.didMoveToParentViewController(root)
-                        nav.dismissViewControllerAnimated(true, completion: nil)
-                        root.pageVC!.removeFromParentViewController()
-                    }))
-                    
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    Customer.saveCC(RegistrationInfo.sharedInstance) { success, error in
+                        var title: String?
+                        var message: String?
+                        if let error = error {
+                            title = error.localizedDescription
+                            message = error.localizedFailureReason
+                        } else {
+                            title = "Thank you for registering with Dormy!"
+                            message = "A verification email will be sent to the address you provided. Once you've verified your account you will be able to start booking jobs."
+                        }
+                        self.showSignUpAlertView(title!, message: message)
+                    }
                 } else {
+                    if let error = error {
+                        self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
+                    }
                     print("User could not be saved")
                 }
             }
@@ -101,67 +77,41 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        registrationConfig = RegistrationConfig(index: self.index)
+        
         self.getCollegeOptions()
         
-        self.completeButton.setBackgroundImage(UIImage(named: buttons[self.index]), forState: .Normal)
-        if buttons[self.index] == "signup-done" {
+        let button = registrationConfig!.button()
+        
+        self.completeButton.setBackgroundImage(UIImage(named: button), forState: .Normal)
+        if registrationConfig!.isFinalButton() {
             self.completeButton.tag = 1
         } else {
             self.completeButton.tag = 0
         }
         
         
-        numberOfTextFields = placeHolderDict[index].count
+        numberOfTextFields = registrationConfig!.numberOfTextFields
         textFields = [self.textField1, self.textField2, self.textField3, self.textField4]
-        
-        
+
         let slice = textFields![self.numberOfTextFields!..<textFields!.count]
         for textField in slice {
             textField.hidden = true
         }
         
-        let placeHolders = self.placeHolderDict[self.index]
-        let z = zip(textFields!, placeHolders)
-        for (textField, placeHolder) in z {
+        let fieldTypes = registrationConfig!.fieldTypes()
+        let z = zip(textFields!, fieldTypes)
+        for (textField, fieldType) in z {
             textField.delegate = self
-            textField.placeholder = placeHolder.rawValue
-            textField.type = placeHolder
+            textField.placeholder = fieldType.description
+            textField.tag = fieldType.rawValue
             textField.clearButtonMode = UITextFieldViewMode.WhileEditing
             textField.addTarget(self, action: Selector("checkTextField:"), forControlEvents: UIControlEvents.EditingChanged)
-
-            switch placeHolder {
-            case FieldType.Email:
-                textField.keyboardType = UIKeyboardType.EmailAddress
-            case FieldType.Phone:
-                textField.keyboardType = UIKeyboardType.PhonePad
-                //validator.registerField(textField, rules: [RequiredRule(), PhoneNumberRule()])
-            case FieldType.CardNumber:
-                textField.keyboardType = UIKeyboardType.NumberPad
-            case FieldType.Expiration:
-                textField.keyboardType = UIKeyboardType.NumberPad
-            case FieldType.CCV:
-                textField.keyboardType = UIKeyboardType.NumberPad
-                textField.secureTextEntry = true
-            case FieldType.Zip:
-                textField.keyboardType = UIKeyboardType.NumberPad
-            case FieldType.Password:
-                textField.secureTextEntry = true
-            case FieldType.PasswordConfirmation:
-                textField.secureTextEntry = true
-            case FieldType.College:
-                pickerView = UIPickerView()
-                pickerView?.dataSource = self
-                pickerView?.delegate = self
-                textField.inputAccessoryView = self.getKeyboardAccessoryWithTitle("Done", selector: Selector("hideKeyboard"))
-                textField.inputView = pickerView
-            default:
-                textField.keyboardType = UIKeyboardType.Default
-                textField.secureTextEntry = false
-            }
+            
+            configureTextFieldAttributes(textField)
         }
         
-    
-        
+        // Match TextField height to font size
         let x = NSString(string: "HELLO").sizeWithAttributes([NSFontAttributeName: UIFont(name: "Lucida Grande", size: 30.0)!])
         let adjustedSize = CGSizeMake(ceil(x.width), ceil(x.height))
         TFHeight.constant = adjustedSize.height + 15.0
@@ -181,12 +131,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         self.view.layer.borderColor = UIColor(rgba: "#979797").CGColor
         self.view.layer.borderWidth = 1.0
-        self.navigationItem.title = navBarTitle[self.index]
+        self.navigationItem.title = registrationConfig!.navBarTitle()
         let backButton = UIBarButtonItem(title: " ", style: .Plain, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: Selector("closeSignUpView"))
         self.navigationItem.backBarButtonItem = backButton
         self.navigationItem.rightBarButtonItem = doneButton
-        self.completeButton.setBackgroundImage(UIImage(named: buttons[self.index]), forState: .Normal)
+        self.completeButton.setBackgroundImage(UIImage(named: registrationConfig!.button()), forState: .Normal)
         
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: .Normal)
@@ -196,80 +146,27 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
 
     
-    // TextField Delegate
+    /* TextField Delegate */
     
     func textFieldDidEndEditing(textField: UITextField) {
-        var registrationField: RegistrationFields?
-        for field in self.textFields! {
-            if field == textField {
-                registrationField = field
-            }
-        }
-        if let field = registrationField {
-            if field.type == FieldType.Password {
-                RegistrationInfo.sharedInstance.password = field.text
-            }
-            if field.error == true {
-                field.validate()
-            }
+        // Save password to check against password confirmation
+        if textField.tag == FieldType.Password.rawValue {
+            RegistrationInfo.sharedInstance.password = textField.text
         }
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        let filter = self.textFields?.filter({(tf: RegistrationFields) -> Bool in return tf.type == FieldType.College})
-        if filter?.count > 0 {
-            let collegeTF = filter!.first!
-            if textField == collegeTF {
-                collegeTF.text = self.colleges[0]
-            }
+        if textField.tag == FieldType.College.rawValue {
+            textField.text = self.colleges[0]
         }
     }
     
-    var cardBrand: STPCardBrand?
     func checkTextField(sender: UITextField) {
         let textField = sender
-    
-        if self.index == 2 {
-            switch textField.placeholder! {
-            case "Card Number":
-                let validation = STPCardValidator.validationStateForNumber(textField.text!, validatingCardBrand: true)
-                let isValidated = self.validateCardField(validation, textField: textFields![0])
-                if isValidated {
-                    cardBrand = STPCardValidator.brandForNumber(textField.text!)
-                }
-            case "Expiration Date":
-                let date = Expiration.cardExpiryWithString(textField.text!)
-                let validation = STPCardValidator.validationStateForExpirationYear(date.year!, inMonth: date.month!)
-                self.validateCardField(validation, textField: textFields![1])
-            case "CCV":
-                if let brand = self.cardBrand {
-                    let validation = STPCardValidator.validationStateForCVC(textField.text!, cardBrand: brand)
-                    self.validateCardField(validation, textField: textFields![2])
-                } else {
-                    self.validateCardField(STPCardValidationState.Invalid, textField: textFields![2])
-                }
-            case "Zip Code":
-                let registrationField = textField as! RegistrationFields
-                
-                let letters = NSCharacterSet.letterCharacterSet()
-                let phrase = textField.text!
-                let range = phrase.rangeOfCharacterFromSet(letters)
-                
-                // range will be nil if no letters is found
-                if let test = range {
-                    print("letters found")
-                    registrationField.markCardField(false)
-                } else {
-                    print("letters not found")
-                    if textField.text!.characters.count != 5 {
-                        registrationField.markCardField(false)
-                    } else {
-                        registrationField.markCardField(true)
-                    }
-                }
-            default:
-                print("Not a CC Field")
-            }
+
+        if self.index == 2 || self.submitAttemptFailed {
+            let isValidated = Validations.validate(textField, required: true)
+            self.markField(textField, validated: isValidated)
         }
 
     }
@@ -278,60 +175,50 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         if textField.inputView != nil && textField.inputView!.isMemberOfClass(UIPickerView) {
             return false
         }
-        if textField.placeholder == "Expiration Date" {
+        if textField.tag == FieldType.Expiration.rawValue {
             let date = Expiration.cardExpiryWithString(textField.text! + string)
             let year = date.year!
             if string != "" {
                 if year.characters.count < 3 {
                     textField.text = date.formattedStringWithTrail()
-                    let validation = STPCardValidator.validationStateForExpirationYear(date.year!, inMonth: date.month!)
-                    self.validateCardField(validation, textField: textFields![1])
                 }
-                return false
+                self.checkTextField(textField) // returning false, so call manually.
+                return false // necessary because changing textField.text manually with formatted date.
             }
         }
-        var registrationField: RegistrationFields?
-        for field in self.textFields! {
-            if field == textField {
-                registrationField = field
-                
-            }
-        }
-        if let field = registrationField {
-            if CGColorEqualToColor(field.layer.borderColor, UIColor.redColor().CGColor) || CGColorEqualToColor(field.layer.borderColor, UIColor.greenColor().CGColor) {
-                let currentText = field.text!
-                if string == "" {
-                    field.text = field.text!.substringToIndex(field.text!.endIndex.predecessor())
-                    field.validate()
-                    field.text = currentText
-                } else {
-                    field.text = field.text! + string
-                    field.validate()
-                    field.text = currentText
-                }
-            }
-        }
-        
         return true
     }
     
-
-    func validateCardField(state: STPCardValidationState, textField: RegistrationFields) -> Bool {
-        if textField.text!.isEmpty {
-            textField.layer.borderColor = UIColor.blackColor().CGColor
-            textField.layer.borderWidth = 0.0
-            return false
+    /* Validations */
+    
+    func validateSubmission() -> Bool {
+        let currentTextFields = self.textFields![0..<self.numberOfTextFields!]
+        
+        var validations: [Bool] = []
+        for textField in currentTextFields {
+            let isValidated = Validations.validate(textField, required: true)
+            self.markField(textField, validated: isValidated)
+            validations.append(isValidated)
         }
-        if state == STPCardValidationState.Valid {
-            textField.markCardField(true)
-            return true
-        } else {
-            textField.markCardField(false)
+        if validations.contains(false) {
+            self.submitAttemptFailed = true
             return false
+        } else {
+            return true
         }
     }
     
-    // Picker data source
+    func markField(textField: UITextField, validated: Bool) {
+        textField.layer.borderWidth = 2.0
+        if validated {
+            textField.layer.borderColor = UIColor.greenColor().CGColor
+        } else {
+            textField.layer.borderColor = UIColor.redColor().CGColor
+        }
+    }
+
+    
+    /* Picker data source */
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.colleges.count
@@ -346,7 +233,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let filter = self.textFields?.filter({(tf: RegistrationFields) -> Bool in return tf.type == FieldType.College})
+        let filter = self.textFields?.filter({(tf: UITextField) -> Bool in return tf.tag == FieldType.College.rawValue})
         if filter?.count > 0 {
             let collegeTF = filter!.first!
             collegeTF.text = self.colleges[row]
@@ -363,22 +250,68 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return toolbar
     }
     
-    // Misc Functions
-
-    func validateSubmission() -> Bool {
-        let currentTextFields = self.textFields![0..<self.numberOfTextFields!]
-        
-        var validations: [Bool] = []
-        for textField in currentTextFields {
-            validations.append(textField.validate())
-        }
-        if validations.contains(false) {
-            return false
-        } else {
-            return true
+    /* Save User methods */
+    
+    func findTextFieldByFieldType(type: FieldType) -> String? {
+        return self.textFields?.filter({(tf: UITextField) -> Bool in return tf.tag == type.rawValue}).first?.text
+    }
+    
+    func preserveUserRegistrationInfo(index: Int) {
+        switch index {
+        case 0:
+            RegistrationInfo.sharedInstance.email = findTextFieldByFieldType(FieldType.Email)?.lowercaseString
+            RegistrationInfo.sharedInstance.phone = findTextFieldByFieldType(FieldType.Phone)
+            RegistrationInfo.sharedInstance.password = findTextFieldByFieldType(FieldType.Password)
+            RegistrationInfo.sharedInstance.confirmPassword = findTextFieldByFieldType(FieldType.PasswordConfirmation)
+        case 1:
+            RegistrationInfo.sharedInstance.fullName = findTextFieldByFieldType(FieldType.FullName)
+            RegistrationInfo.sharedInstance.college = self.PFColleges?.filter({(college: PFObject) -> Bool in return college["name"] as? String == findTextFieldByFieldType(FieldType.College)}).first
+            RegistrationInfo.sharedInstance.dormBuilding = findTextFieldByFieldType(FieldType.DormBuilding)
+            RegistrationInfo.sharedInstance.roomNumber = findTextFieldByFieldType(FieldType.RoomNumber)
+        case 2:
+            RegistrationInfo.sharedInstance.cardNumber = findTextFieldByFieldType(FieldType.CardNumber)
+            RegistrationInfo.sharedInstance.expirationDate = Expiration.cardExpiryWithString(findTextFieldByFieldType(FieldType.Expiration))
+            RegistrationInfo.sharedInstance.CCV = findTextFieldByFieldType(FieldType.CCV)
+            RegistrationInfo.sharedInstance.zip = findTextFieldByFieldType(FieldType.Zip)
+        default:
+            print("index out of range")
         }
     }
     
+    /* Misc Functions */
+    
+    func configureTextFieldAttributes(textField: UITextField) {
+        switch textField.tag {
+        case FieldType.Email.rawValue:
+            textField.autocapitalizationType = .None
+            textField.keyboardType = UIKeyboardType.EmailAddress
+        case FieldType.Phone.rawValue:
+            textField.keyboardType = UIKeyboardType.PhonePad
+        case FieldType.CardNumber.rawValue:
+            textField.keyboardType = UIKeyboardType.NumberPad
+        case FieldType.Expiration.rawValue:
+            textField.keyboardType = UIKeyboardType.NumberPad
+        case FieldType.CCV.rawValue:
+            textField.keyboardType = UIKeyboardType.NumberPad
+            textField.secureTextEntry = true
+        case FieldType.Zip.rawValue:
+            textField.keyboardType = UIKeyboardType.NumberPad
+        case FieldType.Password.rawValue:
+            textField.secureTextEntry = true
+        case FieldType.PasswordConfirmation.rawValue:
+            textField.secureTextEntry = true
+        case FieldType.College.rawValue:
+            pickerView = UIPickerView()
+            pickerView?.dataSource = self
+            pickerView?.delegate = self
+            textField.inputAccessoryView = self.getKeyboardAccessoryWithTitle("Done", selector: Selector("hideKeyboard"))
+            textField.inputView = pickerView
+        default:
+            textField.keyboardType = UIKeyboardType.Default
+            textField.secureTextEntry = false
+        }
+    }
+
     func closeSignUpView() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -387,58 +320,41 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         self.view.endEditing(true)
     }
     
-    func showAlertView(title: String, message: String) {
+    func showAlertView(title: String, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    // User Sign Up
-    
-    //??? Move to RegistrationInfo Class?
 
-    func signUp(completionHandler: (saved: Bool) -> ()) {
-        var user = PFUser()
-        let userInfo = RegistrationInfo.sharedInstance
-        user.username = userInfo.email
-        user.password = userInfo.password
-        user.email = userInfo.email
-        user["phone"] = userInfo.phone
-        user["full_name"] = userInfo.fullName
-        user["college"] = userInfo.college
-        user["dorm_building"] = userInfo.dormBuilding
-        user["room_number"] = userInfo.roomNumber
+    func showSignUpAlertView(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: { void in
+            let requestsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
+            
+            let nav = self.navigationController! as! RootNavController
+            let root = nav.parentDelegate as! RootViewController
+            root.mainVC = requestsVC
+            root.addChildViewController(requestsVC)
+            root.view.addSubview(requestsVC.view)
+            root.pageControl.hidden = true
+            root.mainVC!.didMoveToParentViewController(root)
+            nav.dismissViewControllerAnimated(true, completion: nil)
+            root.pageVC!.removeFromParentViewController()
+        }))
         
-        user.signUpInBackgroundWithBlock() { (succeeded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                completionHandler(saved: false)
-                if let errorString = error.userInfo["error"] as? String {
-                    self.showAlertView("Error", message: errorString)
-                }
-            } else {
-                completionHandler(saved: true)
-
-                RegistrationInfo.sharedInstance.resetRegistrationInfo()
-            }
-        }
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    
     func getCollegeOptions() {
-        let query = PFQuery(className: "College")
-        query.findObjectsInBackgroundWithBlock() { (colleges: [PFObject]?, error: NSError?) -> Void in
+        ParseRequest.getCollegeOptions() { data, error in
             if let error = error {
-                if let errorString = error.userInfo["error"] as? String {
-                    self.showAlertView("Error", message: errorString)
-                }
+                self.showAlertView(error.localizedDescription, message: error.localizedFailureReason)
             } else {
-                if let colleges = colleges {
-                    let orderedColleges = colleges.sort({ (college1, college2) in
-                        let order1 = college1["order"] as! Int
-                        let order2 = college2["order"] as! Int
-                        return order1 < order2
-                    })
-                    self.PFColleges = orderedColleges
-                    for college in orderedColleges {
+                if let colleges = data {
+                    self.PFColleges = colleges
+                    for college in colleges {
                         self.colleges.append(college["name"] as! String)
                     }
                 }
@@ -446,32 +362,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
-    func saveCC() {
-        let info = RegistrationInfo.sharedInstance
-        let card = STPCardParams()
-        card.number = info.cardNumber
-        card.expMonth = UInt(info.expirationDate!.month!)!
-        card.expYear = UInt(info.expirationDate!.year!)!
-        card.cvc = info.CCV
-        card.addressZip = info.zip
-        
-        STPAPIClient.sharedClient().createTokenWithCard(card) { token, error in
-            if let error = error {
-                if let errorString = error.userInfo["error"] as? String {
-                    self.showAlertView("Error", message: errorString)
-                }
-            } else {
-                self.createCustomer(token!)
-            }
-        }
-    }
-    
-    func createCustomer(token: STPToken) {
-        PFCloud.callFunctionInBackground("create_customer", withParameters: ["username": PFUser.currentUser()!.username!, "email": PFUser.currentUser()!.email!, "token": token.tokenId]) {
-            (response: AnyObject?, error: NSError?) -> Void in
-            
-            print(response)
-            print(error)
-        }
-    }
 }

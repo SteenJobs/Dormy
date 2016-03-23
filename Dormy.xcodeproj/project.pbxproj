@@ -30,6 +30,7 @@
 		D0921A7F1C61248D004D5A73 /* ReviewViewControllerP1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A7E1C61248D004D5A73 /* ReviewViewControllerP1.swift */; };
 		D0921A811C61249B004D5A73 /* ReviewViewControllerP2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A801C61249B004D5A73 /* ReviewViewControllerP2.swift */; };
 		D0921A831C6307DC004D5A73 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0921A821C6307DC004D5A73 /* FloatRatingView.swift */; };
+		D093A7DF1CA22F3A00ECE1AC /* ParseRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D093A7DE1CA22F3A00ECE1AC /* ParseRequests.swift */; };
 		D095E2E41C33143800240BD6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2E31C33143800240BD6 /* LogInViewController.swift */; };
 		D095E2F41C33586E00240BD6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2F31C33586E00240BD6 /* ProfileViewController.swift */; };
 		D095E2F81C33BB7800240BD6 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095E2F71C33BB7800240BD6 /* Customer.swift */; };
@@ -64,6 +65,7 @@
 		D0D195991BFD199C00BE804D /* RootNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D195981BFD199C00BE804D /* RootNavController.swift */; };
 		D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1959A1BFD19BF00BE804D /* SignUpViewController.swift */; };
 		D0D1959D1BFD401700BE804D /* RegistrationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1959C1BFD401700BE804D /* RegistrationInfo.swift */; };
+		D0DA9ED11CA1F41000D4F512 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA9ED01CA1F41000D4F512 /* Validations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -105,6 +107,7 @@
 		D0921A7E1C61248D004D5A73 /* ReviewViewControllerP1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewControllerP1.swift; sourceTree = "<group>"; };
 		D0921A801C61249B004D5A73 /* ReviewViewControllerP2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewControllerP2.swift; sourceTree = "<group>"; };
 		D0921A821C6307DC004D5A73 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		D093A7DE1CA22F3A00ECE1AC /* ParseRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseRequests.swift; sourceTree = "<group>"; };
 		D095E2E31C33143800240BD6 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D095E2F31C33586E00240BD6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D095E2F71C33BB7800240BD6 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		D0D195981BFD199C00BE804D /* RootNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavController.swift; sourceTree = "<group>"; };
 		D0D1959A1BFD19BF00BE804D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D0D1959C1BFD401700BE804D /* RegistrationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInfo.swift; sourceTree = "<group>"; };
+		D0DA9ED01CA1F41000D4F512 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +298,7 @@
 				D0A02B911C056F3D0033D20C /* InProgressTableViewCell.swift */,
 				D0A02BB41C058D0C0033D20C /* Job.swift */,
 				D0A02B971C0572890033D20C /* WaitingTableViewCell.swift */,
+				D093A7DE1CA22F3A00ECE1AC /* ParseRequests.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				D00299A61C014FF9001A6D00 /* Expiration.swift */,
 				D0BACD481BFE9332004C792C /* RegistrationFields.swift */,
 				D0D1959C1BFD401700BE804D /* RegistrationInfo.swift */,
+				D0DA9ED01CA1F41000D4F512 /* Validations.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -569,7 +575,9 @@
 				D0349C6E1C05395700759577 /* RequestsViewController.swift in Sources */,
 				D00299A71C014FF9001A6D00 /* Expiration.swift in Sources */,
 				D06B609C1C52C6B0006F857D /* ReviewFirstView.swift in Sources */,
+				D093A7DF1CA22F3A00ECE1AC /* ParseRequests.swift in Sources */,
 				D0921A811C61249B004D5A73 /* ReviewViewControllerP2.swift in Sources */,
+				D0DA9ED11CA1F41000D4F512 /* Validations.swift in Sources */,
 				D0D1959B1BFD19BF00BE804D /* SignUpViewController.swift in Sources */,
 				D0A02BBA1C05946D0033D20C /* NewCleanViewController.swift in Sources */,
 				D095E2F81C33BB7800240BD6 /* Customer.swift in Sources */,
