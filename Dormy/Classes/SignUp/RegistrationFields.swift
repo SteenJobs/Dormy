@@ -57,7 +57,6 @@ enum FieldType: Int {
 class RegistrationConfig {
     
     var index: Int
-    var error: Bool?
     var numberOfTextFields: Int {
         return placeHolderDict[index].count
     }

@@ -11,7 +11,7 @@ import Stripe
 
 class Validations {
     
-    static func validate(textField: UITextField, required: Bool=true) -> Bool {
+    class func validate(textField: UITextField, required: Bool=true) -> Bool {
         if textField.text!.isEmpty {
             if required {
                 return false
@@ -60,19 +60,19 @@ class Validations {
     }
     
     
-    private static func validateFullName(textField: UITextField) -> Bool {
+    private class func validateFullName(textField: UITextField) -> Bool {
         let nameArray: [String] = textField.text!.characters.split { $0 == " " }.map { String($0) }
         return nameArray.count >= 2
     }
     
-    private static func validateEmailAddress(textField: UITextField) -> Bool {
+    private class func validateEmailAddress(textField: UITextField) -> Bool {
         let email = textField.text
         let isEdu = email!.hasSuffix(".edu")
         
         return isEdu
     }
     
-    private static func validateCollege(textField: UITextField) -> Bool {
+    private class func validateCollege(textField: UITextField) -> Bool {
         var isOnlyWhitespace: Bool?
         let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
         if textField.text!.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
@@ -84,7 +84,7 @@ class Validations {
         return didChoose
     }
     
-    private static func validatePhoneNumber(textField: UITextField) -> Bool {
+    private class func validatePhoneNumber(textField: UITextField) -> Bool {
         let regex = "^\\d{10}$"
         let regex2 = "^\\d{3}-\\d{3}-\\d{4}$"
         if textField.text?.rangeOfString(regex, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil || textField.text?.rangeOfString(regex2, options: NSStringCompareOptions.RegularExpressionSearch, range: nil, locale: nil) != nil {
@@ -94,7 +94,7 @@ class Validations {
         }
     }
     
-    private static func validatePassword(textField: UITextField) -> Bool {
+    private class func validatePassword(textField: UITextField) -> Bool {
         if let password = textField.text {
             return !password.isEmpty
         } else {
@@ -102,11 +102,11 @@ class Validations {
         }
     }
     
-    private static func validateConfirmPassword(textField: UITextField) -> Bool {
+    private class func validateConfirmPassword(textField: UITextField) -> Bool {
         return (RegistrationInfo.sharedInstance.password == textField.text)
     }
     
-    private static func validateZip(textField: UITextField) -> Bool {
+    private class func validateZip(textField: UITextField) -> Bool {
         let letters = NSCharacterSet.letterCharacterSet()
         let phrase = textField.text!
         let range = phrase.rangeOfCharacterFromSet(letters)

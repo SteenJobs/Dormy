@@ -21,6 +21,7 @@ class Customer {
         self.customerID = customerID
     }
     
+    // Queries parse for customer object belonging to currentUser, and then requests that customer from Stripe
     class func getStripeCustomerInfo(completionHandler: (customer: Customer?, error: NSError?) -> ()) {
         PFCloud.callFunctionInBackground("get_customer", withParameters: nil) { (response: AnyObject?, error: NSError?) -> Void in
             if let dict = response as? NSDictionary {
@@ -76,7 +77,8 @@ class Customer {
         }
     }
     
-    static func saveCC(registrationInfo: RegistrationInfo?=nil, card: STPCardParams?=nil, completionHandler: (success: Bool, error: NSError?) -> ()) {
+    // Creates token from CC information, creates customer on Stripe using generated token, saves customer on Parse
+    class func saveCC(registrationInfo: RegistrationInfo?=nil, card: STPCardParams?=nil, completionHandler: (success: Bool, error: NSError?) -> ()) {
         
         var userCC: STPCardParams?
         if card == nil {
@@ -114,7 +116,7 @@ class Customer {
         }
     }
     
-    private static func createCustomer(token: STPToken, completionHandler: (success: Bool, error: NSError?) -> ()) {
+    private class func createCustomer(token: STPToken, completionHandler: (success: Bool, error: NSError?) -> ()) {
         var email = PFUser.currentUser()!.email!
         if (email.characters.count < 1) {
             email = PFUser.currentUser()!.username!
