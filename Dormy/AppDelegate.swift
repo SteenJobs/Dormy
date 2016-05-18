@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: Store in 'Settings' file, which should be added to .gitignore
         
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8"
-            $0.clientKey = "OERocQgPTWXBYP81XgUqOv9R1mqGtiQumVa03w02"
-            $0.server = "http://localhost:1337/parse"
+            $0.applicationId = valueForAPIKey(named: "PARSE_APP_ID")
+            $0.clientKey = valueForAPIKey(named: "PARSE_CLIENT_KEY")
+            $0.server = valueForAPIKey(named: "PARSE_SERVER_LOCAL")
         }
         Parse.initializeWithConfiguration(configuration)
         //Parse.setApplicationId("egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8",
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         // Initialize Stripe CC payments
-        Stripe.setDefaultPublishableKey("pk_test_gUqDwP7kxpk4ygGsLmkPaau2")
+        Stripe.setDefaultPublishableKey(valueForAPIKey(named: "STRIPE_TEST_KEY"))
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
        

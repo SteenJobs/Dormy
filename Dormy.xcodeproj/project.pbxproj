@@ -21,6 +21,8 @@
 		D00833B01BF409F700BB81D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */; };
 		D00833B21BF40A0100BB81D9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B11BF40A0100BB81D9 /* libz.tbd */; };
 		D00833B41BF40A0A00BB81D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */; };
+		D00893951CED2A0300CAC1D0 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D00893941CED2A0300CAC1D0 /* ApiKeys.plist */; };
+		D00893971CED2AE200CAC1D0 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00893961CED2AE200CAC1D0 /* ApiKeys.swift */; };
 		D02F1AC11C7DF5D200C4BD4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D02F1AC01C7DF5D200C4BD4C /* LaunchScreen.storyboard */; };
 		D0349C6E1C05395700759577 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6D1C05395700759577 /* RequestsViewController.swift */; };
 		D0349C701C056CF600759577 /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0349C6F1C056CF600759577 /* MainNavController.swift */; };
@@ -98,6 +100,8 @@
 		D00833AF1BF409F700BB81D9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D00833B11BF40A0100BB81D9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D00833B31BF40A0A00BB81D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		D00893941CED2A0300CAC1D0 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ApiKeys.plist; path = ../ApiKeys.plist; sourceTree = "<group>"; };
+		D00893961CED2AE200CAC1D0 /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiKeys.swift; path = ../ApiKeys.swift; sourceTree = "<group>"; };
 		D02F1AC01C7DF5D200C4BD4C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0349C6D1C05395700759577 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		D0349C6F1C056CF600759577 /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		D095F8A01BF176860068B58C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D00893961CED2AE200CAC1D0 /* ApiKeys.swift */,
+				D00893941CED2A0300CAC1D0 /* ApiKeys.plist */,
 				D095F89F1BF176760068B58C /* Fonts */,
 				D0A02B9B1C0585C20033D20C /* Vendors */,
 			);
@@ -395,9 +401,9 @@
 				D0D144F81BEFFFD5002DEBF9 /* AppDelegate.swift */,
 				D0D145021BEFFFD5002DEBF9 /* Assets.xcassets */,
 				D0A02BB81C0592DD0033D20C /* Dormy-Bridging-Header.h */,
-				D0D145071BEFFFD5002DEBF9 /* Info.plist */,
 				D02F1AC01C7DF5D200C4BD4C /* LaunchScreen.storyboard */,
 				D0D144FC1BEFFFD5002DEBF9 /* Main.storyboard */,
+				D0D145071BEFFFD5002DEBF9 /* Info.plist */,
 			);
 			path = Dormy;
 			sourceTree = "<group>";
@@ -493,6 +499,7 @@
 				D0A02C4A1C0595260033D20C /* .gitkeep in Resources */,
 				D0D144FE1BEFFFD5002DEBF9 /* Main.storyboard in Resources */,
 				D0A02B8E1C056E2F0033D20C /* InProgressCell.xib in Resources */,
+				D00893951CED2A0300CAC1D0 /* ApiKeys.plist in Resources */,
 				D0A02B961C0572620033D20C /* CompletedCell.xib in Resources */,
 				D0A02C4E1C0595260033D20C /* .gitkeep in Resources */,
 			);
@@ -594,6 +601,7 @@
 				D0921A7F1C61248D004D5A73 /* ReviewViewControllerP1.swift in Sources */,
 				D095F89D1BF15FF50068B58C /* UIColorExtensions.swift in Sources */,
 				D0A02BB51C058D0C0033D20C /* Job.swift in Sources */,
+				D00893971CED2AE200CAC1D0 /* ApiKeys.swift in Sources */,
 				D0349C701C056CF600759577 /* MainNavController.swift in Sources */,
 				D0D144F91BEFFFD5002DEBF9 /* AppDelegate.swift in Sources */,
 				D095E2F41C33586E00240BD6 /* ProfileViewController.swift in Sources */,
