@@ -30,8 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize Parse.
         Job.registerSubclass()
         //TODO: Store in 'Settings' file, which should be added to .gitignore
-        Parse.setApplicationId("egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8",
-            clientKey: "OERocQgPTWXBYP81XgUqOv9R1mqGtiQumVa03w02")
+        
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8"
+            $0.clientKey = "OERocQgPTWXBYP81XgUqOv9R1mqGtiQumVa03w02"
+            $0.server = "http://localhost:1337/parse"
+        }
+        Parse.initializeWithConfiguration(configuration)
+        //Parse.setApplicationId("egY9RdlgG71mSFb8PraMZA98nS9KX3UXS1vPsSU8",
+        //    clientKey: "OERocQgPTWXBYP81XgUqOv9R1mqGtiQumVa03w02")
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
@@ -42,31 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Stripe.setDefaultPublishableKey("pk_test_gUqDwP7kxpk4ygGsLmkPaau2")
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if PFUser.currentUser() != nil {
-            let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainNavController") as! MainNavController
-            //self.window?.rootViewController = mainVC
-            let root = self.window?.rootViewController as! RootViewController
-            root.mainVC = mainVC
-            root.addChildViewController(mainVC)
-            //???
-            root.view.addSubview(mainVC.view)
-            //root.presentViewController(requestsVC, animated: true, completion: {
-            //  nav.dismissViewControllerAnimated(true, completion: nil)
-            //})
-            //root.pageControl.hidden = true
-            root.mainVC!.didMoveToParentViewController(root)
-            //root.pageVC!.removeFromParentViewController()
-            //root.pageVC = nil
-        } else {
-            //let mainVC = storyboard.instantiateViewControllerWithIdentifier("RootViewController") as! RootViewController
-            //self.window?.rootViewController = mainVC
-        }
-        */
-
-        
+       
         return true
     }
     
